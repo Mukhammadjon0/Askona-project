@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Topadvenses from '../../assets/img/topadv.png'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import logoAksona from '../../assets/img/logo.png'
@@ -12,9 +12,12 @@ import { IoIosStats } from 'react-icons/io'
 import { HiBars3BottomLeft } from 'react-icons/hi2'
 import { FaPercentage } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
+import { StateContext } from '../../context'
 
 
 function Navbar() {
+  const { handleOpen } = useContext(StateContext)
+  const { toggleDrawer, basket } = useContext(StateContext)
 
 
   return (
@@ -49,7 +52,9 @@ function Navbar() {
             </div>
           </div>
           <div className='flex gap-3 text-2xl text-black '>
-            <BiUser className='cursor-pointer' />
+            <button onClick={handleOpen}>
+              <BiUser className='cursor-pointer' />
+            </button>
             <IoIosStats className='cursor-pointer' />
             <div className="relative cursor-pointer">
               <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
@@ -57,13 +62,19 @@ function Navbar() {
               </div>
               <AiOutlineHeart className='cursor-pointer' />
             </div>
-            <div className="relative cursor-pointer">
-              <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
-                <p className='font-semibold text-[12px] text-white'>0</p>
-              </div>
-              <CgShoppingCart className='cursor-pointer' />
-            </div>
-
+            {['right'].map((anchor) => (
+              <React.Fragment key={anchor}>
+                <button onClick={toggleDrawer(anchor, true)}>
+                  <div className="relative cursor-pointer">
+                    <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
+                      <p className='font-semibold text-[12px] text-white'>{basket.length}
+                      </p>
+                    </div>
+                    <CgShoppingCart className='cursor-pointer' />
+                  </div>
+                </button>
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>

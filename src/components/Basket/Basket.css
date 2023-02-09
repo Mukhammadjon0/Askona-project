@@ -1,0 +1,6 @@
+.cancel-basket:hover .stat-xmark {
+  color: red;
+}
+.cancel-basket:hover .xmark-text {
+  color: black;
+}

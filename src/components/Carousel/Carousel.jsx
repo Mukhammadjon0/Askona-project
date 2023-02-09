@@ -44,31 +44,31 @@ function Carousel() {
 
             >
                 <SwiperSlide >
-                    <img src={HomeTop} alt="img" />
+                    <img className="w-[700px]" src={HomeTop} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop1} alt="img" />
+                    <img className="w-[700px]" src={HomeTop1} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop2} alt="img" />
+                    <img className="w-[700px]" src={HomeTop2} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop} alt="img" />
+                    <img className="w-[700px]" src={HomeTop} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop1} alt="img" />
+                    <img className="w-[700px]" src={HomeTop1} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop2} alt="img" />
+                    <img className="w-[700px]" src={HomeTop2} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop} alt="img" />
+                    <img className="w-[700px]" src={HomeTop} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop1} alt="img" />
+                    <img className="w-[700px]" src={HomeTop1} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop2} alt="img" />
+                    <img className="w-[700px]" src={HomeTop2} alt="img" />
                 </SwiperSlide>
             </Swiper>
         </div>

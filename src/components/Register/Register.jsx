@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import PropTypes from 'prop-types';
@@ -12,6 +11,7 @@ import { AiFillGoogleCircle } from 'react-icons/ai';
 import { SiVk } from 'react-icons/si';
 import { FaOdnoklassnikiSquare } from 'react-icons/fa';
 import { BsFacebook } from 'react-icons/bs';
+import { StateContext } from '../../context';
 
 const style = {
     position: 'absolute',
@@ -58,9 +58,8 @@ function a11yProps(index) {
 }
 
 function Register() {
+    const { open, handleOpen, setOpen } = React.useContext(StateContext)
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const [value, setValue] = React.useState(0);
@@ -70,8 +69,6 @@ function Register() {
     };
     return (
         <div>
-
-            <Button onClick={handleOpen}>Open modal</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -128,8 +125,10 @@ function Register() {
                             </div>
                         </TabPanel>
                         <TabPanel value={value} index={2}>
-                            <h1 className='font-bold text-2xl'>Восстановление пароля</h1>
-                            <p>Укажите адрес эл. почты, который вы использовали при регистрации, чтобы мы отправили вам новый пароль</p>
+                            <div className="">
+                                <h1 className='font-bold text-2xl'>Восстановление пароля</h1>
+                                <p>Укажите адрес эл. почты, который вы использовали при регистрации, чтобы мы отправили вам новый пароль</p>
+                            </div>
                         </TabPanel>
 
                     </Box>

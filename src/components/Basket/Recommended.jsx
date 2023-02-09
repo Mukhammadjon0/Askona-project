@@ -6,8 +6,8 @@ import { IoIosStats } from 'react-icons/io';
 import { CiHeart } from 'react-icons/ci';
 import Chair2 from '../../assets/img/chair2.png'
 import Avinon from '../../assets/img/avinon.png'
-// import Height from '../../assets/icon/height.png'
-// import Weight from '../../assets/icon/weight.png'
+import Height from '../../assets/icon/height.png'
+import Weight from '../../assets/icon/weight.png'
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,7 +22,7 @@ function Recommended() {
 
     const recommend = [
         { image: Avinon, title: 'Анатомический матрас Askona Benefit', price: 48900, colors: { first: '#4E3A2F', second: '#183B51', 3: '#4E3A2F', 4: '#183B51', 5: '#4E3A2F', 6: '#183B51' }, oldPrice: 97800, id: 2 },
-        // { image: Chair2, title: 'Анатомический матрас Askona Benefit', price: 48900, heightImg: Height, heightTitle: 'Высота:', height: '19 cm', weightImg: Weight, weightTitle: 'Вес на спальное место:', weight: 'с выше 140 кг', oldPrice: 97800, id: 1 },
+        { image: Chair2, title: 'Анатомический матрас Askona Benefit', price: 48900, heightImg: Height, heightTitle: 'Высота:', height: '19 cm', weightImg: Weight, weightTitle: 'Вес на спальное место:', weight: 'с выше 140 кг', oldPrice: 97800, id: 1 },
         { image: Avinon, title: 'Анатомический матрас Askona Benefit', price: 48900, colors: { first: '#4E3A2F', second: '#183B51', 3: '#4E3A2F', 4: '#183B51', 5: '#4E3A2F', 6: '#183B51' }, oldPrice: 97800, id: 2 },
     ]
     return (
@@ -39,7 +39,7 @@ function Recommended() {
             >
                 {recommend.map((item) => (
                     <SwiperSlide key={item.id}>
-                        <div className="pt-2 bg-white border-[1px] border-gray-200 rounded cursor-pointer">
+                        <div className="pt-2 bg-white border-[1px] border-gray-200 rounded cursor-pointer text-start">
                             <div className="bg-white">
                                 <div style={{ backgroundImage: `url(${item.image})`, backgroundSize: 'cover' }} className='w-[246px] h-[128px] bg-center bg-no-repeat m-auto flex flex-col justify-between'>
                                     <div className="flex flex-row justify-between">
@@ -52,7 +52,7 @@ function Recommended() {
                                     </div>
                                     <div className="flex flex-row justify-between items-center">
                                         <div className="w-[34px] h-[34px] rounded-full flex justify-center items-center cursor-pointer">
-                                            <img src={Discount} alt="img" />
+                                            <img className='' src={Discount} alt="img" />
                                         </div>
                                         <div className="w-[76px] h-[18px] rounded-full flex justify-center items-center cursor-pointer">
                                             <img src={Count} alt="img" />
