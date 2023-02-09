@@ -12,7 +12,11 @@ import { IoIosStats } from 'react-icons/io'
 import { HiBars3BottomLeft } from 'react-icons/hi2'
 import { FaPercentage } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
+
+
 function Navbar() {
+
+
   return (
     <div className=''>
       <div className="flex w-full items-center bg-[#02B9BF]">
@@ -30,11 +34,11 @@ function Navbar() {
               <NavLink className='flex items-center font-normal text-sm leading-4' href="#!">Минск <BsChevronDown className='text-navTopbBg pl-2 text-3xl' /></NavLink>
               <p className='text-start flex items-center text-gray-400 text-sm'>Магазины: <span className='font-bold text-black pl-2'>30</span></p>
               <div className="flex gap-8">
-                <div className='rounded py-2 px-1 flex items-center gap-4 w-96 border border-solid'>
+                <div className='rounded py-2 px-2 flex items-center gap-4 w-96 border border-solid'>
                   <BiSearchAlt2 className='text-[#00B6C9] text-lg font-bold' />
                   <input type="text" placeholder='Поиск по товарам...' className="outline-none " />
                 </div>
-                <button className='rounded flex items-center border border-solid border-FormColor py-2 px-1 pl-5 text-center'><TbPhoneCall className='text-gray-400  pr-2 text-2xl' /> Перезвоните мне</button>
+                <button className='rounded flex items-center border border-solid py-2 px-2 text-center'><TbPhoneCall className='text-gray-400  pr-2 text-2xl' /> Перезвоните мне</button>
               </div>
             </div>
             <div className="flex ml-5 items-center">
@@ -45,10 +49,21 @@ function Navbar() {
             </div>
           </div>
           <div className='flex gap-3 text-2xl text-black '>
-            <BiUser />
-            <IoIosStats />
-            <AiOutlineHeart />
-            <CgShoppingCart />
+            <BiUser className='cursor-pointer' />
+            <IoIosStats className='cursor-pointer' />
+            <div className="relative cursor-pointer">
+              <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
+                <p className='font-semibold text-[12px] text-white'>0</p>
+              </div>
+              <AiOutlineHeart className='cursor-pointer' />
+            </div>
+            <div className="relative cursor-pointer">
+              <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
+                <p className='font-semibold text-[12px] text-white'>0</p>
+              </div>
+              <CgShoppingCart className='cursor-pointer' />
+            </div>
+
           </div>
         </div>
       </div>
@@ -68,12 +83,6 @@ function Navbar() {
         </div>
 
       </div>
-
-
-
-
-
-
     </div>
   )
 }

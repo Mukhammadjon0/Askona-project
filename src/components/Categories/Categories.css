@@ -20,9 +20,19 @@
   object-fit: cover;
 }
 
-.swiper-button-prev{
-    margin-top: -50px !important;
+.swiper-button-prev,
+.swiper-button-next {
+  margin-top: -50px !important;
+  border: 1px solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 50%;
+  
 }
-.swiper-button-next{
-    margin-top: -50px !important;
+.swiper-button-next:root {
+  height: 10px !important;
+}
+:root {
 }

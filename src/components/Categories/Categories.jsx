@@ -22,7 +22,10 @@ function Categories() {
 
     return (
         <div className='px-20'>
-            <Swiper
+            <Swiper style={{
+                "--swiper-navigation-color": "#00BAC1",
+                "--swiper-navigation-size": "20px"
+            }}
                 rewind={true}
                 navigation={true}
                 modules={[Navigation, Pagination]}
