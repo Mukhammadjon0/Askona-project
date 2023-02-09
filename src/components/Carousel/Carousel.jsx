@@ -4,9 +4,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper";
 import './Carousel.css'
-import HomeTop from '../../assets/image/home-top.png'
-import HomeTop1 from '../../assets/image/home-top2.png'
-import HomeTop2 from '../../assets/image/home-top3.png'
+import HomeTop from '../../assets/img/home-top.png'
+import HomeTop1 from '../../assets/img/home-top2.png'
+import HomeTop2 from '../../assets/img/home-top3.png'
 function Carousel() {
     return (
         <div className="py-5 cursor-pointer">
@@ -44,31 +44,31 @@ function Carousel() {
 
             >
                 <SwiperSlide >
-                    <img src={HomeTop} alt="img" />
+                    <img className="w-[700px]" src={HomeTop} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop1} alt="img" />
+                    <img className="w-[700px]" src={HomeTop1} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop2} alt="img" />
+                    <img className="w-[700px]" src={HomeTop2} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop} alt="img" />
+                    <img className="w-[700px]" src={HomeTop} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop1} alt="img" />
+                    <img className="w-[700px]" src={HomeTop1} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop2} alt="img" />
+                    <img className="w-[700px]" src={HomeTop2} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop} alt="img" />
+                    <img className="w-[700px]" src={HomeTop} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop1} alt="img" />
+                    <img className="w-[700px]" src={HomeTop1} alt="img" />
                 </SwiperSlide>
                 <SwiperSlide >
-                    <img src={HomeTop2} alt="img" />
+                    <img className="w-[700px]" src={HomeTop2} alt="img" />
                 </SwiperSlide>
             </Swiper>
         </div>

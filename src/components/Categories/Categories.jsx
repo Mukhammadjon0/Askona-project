@@ -5,18 +5,18 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
-import Category1 from '../../assets/image/matras.png'
-import Category2 from '../../assets/image/podush.png'
-import Category3 from '../../assets/image/kravat.png'
-import Category4 from '../../assets/image/odel.png'
-import Category5 from '../../assets/image/divan.png'
-import Category6 from '../../assets/image/mebel.png'
-import Category7 from '../../assets/image/dlya-doma.png'
-import Category8 from '../../assets/image/kreslo.png'
-import Category9 from '../../assets/image/pufi.png'
-import Category10 from '../../assets/image/pladi.png'
-import Category11 from '../../assets/image/namatras.png'
-import Category12 from '../../assets/image/posteli.png'
+import Category1 from '../../assets/img/matras.png'
+import Category2 from '../../assets/img/podush.png'
+import Category3 from '../../assets/img/kravat.png'
+import Category4 from '../../assets/img/odel.png'
+import Category5 from '../../assets/img/divan.png'
+import Category6 from '../../assets/img/mebel.png'
+import Category7 from '../../assets/img/dlya-doma.png'
+import Category8 from '../../assets/img/kreslo.png'
+import Category9 from '../../assets/img/pufi.png'
+import Category10 from '../../assets/img/pladi.png'
+import Category11 from '../../assets/img/namatras.png'
+import Category12 from '../../assets/img/posteli.png'
 
 function Categories() {
 
