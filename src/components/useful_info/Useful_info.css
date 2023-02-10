@@ -1,0 +1,41 @@
+.Useful_info {
+  padding: 66px 49px;
+}
+
+.Useful_info_df {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Useful_info_p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  text-align: center;
+  color: #7e7e7e;
+  margin: 32px 0;
+}
+
+.Useful_info_df_h2 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 140%;
+  text-align: center;
+  color: #212121;
+  margin-top: 24px;
+}
+
+.Useful_info_df_p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  text-align: center;
+  color: #7e7e7e;
+  margin: 8px 0;
+}
+
+.Useful_info_df_img {
+  display: block;
+  margin: auto;
+}

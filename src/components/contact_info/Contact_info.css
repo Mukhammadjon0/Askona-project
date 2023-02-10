@@ -1,0 +1,19 @@
+.Contact_info {
+  height: 467px;
+  background: #f4f4f4;
+  padding: 70px 109px;
+}
+
+.Contact_info_df {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Contact_info_df_a {
+  font-size: 14px;
+  line-height: 140%;
+  text-decoration-line: underline;
+  color: #00b9c0;
+  text-align: center;
+}

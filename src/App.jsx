@@ -13,6 +13,8 @@ import { AiFillQuestionCircle } from 'react-icons/ai';
 import Recommended from './components/Basket/Recommended';
 import Box from '@mui/material/Box';
 import Basket from './components/Basket/Basket';
+import Contact_info from './components/contact_info/Contact_info';
+import Useful_info from './components/useful_info/Useful_info';
 
 function App() {
 
@@ -83,6 +85,8 @@ function App() {
         <Categories />
         <Register />
         <Basket />
+        <Useful_info />
+        <Contact_info />
       </div>
     </StateContext.Provider>
   );
