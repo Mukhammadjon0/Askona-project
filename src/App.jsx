@@ -15,6 +15,7 @@ import Box from '@mui/material/Box';
 import Basket from './components/Basket/Basket';
 import Contact_info from './components/contact_info/Contact_info';
 import Useful_info from './components/useful_info/Useful_info';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -87,6 +88,7 @@ function App() {
         <Basket />
         <Useful_info />
         <Contact_info />
+        <Footer />
       </div>
     </StateContext.Provider>
   );
