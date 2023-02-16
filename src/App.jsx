@@ -5,7 +5,7 @@ import Categories from './components/Categories/Categories';
 import Navbar from './components/Navbar/Navbar';
 import Register from './components/Register/Register';
 import { StateContext } from './context';
-import MainCarousel from './components/main/mainCarousel'
+import MainCarousel from './components/main/mainCarousel/MainCarousel'
 import Cancel from './assets/icon/cancel.svg'
 import Prod from './assets/img/router.png'
 import BasketComponent from './components/Basket/BasketComponent'
@@ -17,7 +17,6 @@ import ContactInfo from './components/ContactInfo/ContactInfo';
 import UsefulInfo from './components/UsefulInfo/UsefulInfo';
 import Footer from './components/Footer/Footer';
 import EditUserInfo from './components/UserInfo/EditUserInfo';
-import MainCarousel from './components/main/mainCarousel/MainCarousel';
 import MainNovelties from './components/main/mainNovelties/MainNovelties'
 
 function App() {

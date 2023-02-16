@@ -16,8 +16,7 @@ function MainCarousel() {
               </div>
               <div className="main__card-status flex justify-between px-[13px]">
                 <img src={el.spanImg} alt="" />
-                <span className="main__card-span bg-[#FFD54F] w-[116px] h-[24px] rounded flex justify-center items-center text-[12px] font-medium">
-                  Товар недели
+                <span className="main__card-span bg-[#FFD54F] w-[116px] h-[24px] rounded flex justify-center items-center text-[12px] font-medium">Товар недели
                 </span>
               </div>
             </div>
