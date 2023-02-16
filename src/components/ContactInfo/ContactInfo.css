@@ -1,7 +1,9 @@
 .Contact_info {
   height: 467px;
   background: #f4f4f4;
-  padding: 70px 109px;
+  width: 1400px;
+  margin: 50px auto;
+  padding: 50px 30px;
 }
 
 .Contact_info_df {
@@ -16,4 +18,9 @@
   text-decoration-line: underline;
   color: #00b9c0;
   text-align: center;
+}
+.Contact_info_df1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

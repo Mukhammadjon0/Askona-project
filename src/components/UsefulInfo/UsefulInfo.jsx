@@ -2,12 +2,12 @@ import React from 'react'
 import icon1 from '../../assets/svg/Vector.svg'
 import icon2 from '../../assets/svg/Vector (1).svg'
 import icon3 from '../../assets/svg/eco.svg'
-import './Useful_info.css'
+import './UsefulInfo.css'
 
 function Useful_info() {
     return (
         <div className='Useful_info'>
-            <h2 className='title'>Askona заряжает сном</h2>
+            <h2 className='font-semibold text-4xl text-center'>Askona заряжает сном</h2>
             <p className='Useful_info_p'>Мы постоянно разрабатываем инновационные решения и выпускаем только такую продукцию, в которой <br />
                 уверены на 100%. День за днём мы работаем для того , чтобы каждую ночь вы погружались в здоровый сон, <br />
                 набираясь сил для новых свершений

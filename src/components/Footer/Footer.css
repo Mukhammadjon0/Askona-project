@@ -1,0 +1,12 @@
+.footer-link {
+  font-weight: 400;
+  font-size: 14px;
+  /* text-indent: 30px; */
+  color: #757575;
+  transition: 0.2s linear;
+}
+.footer-link:hover{
+    text-decoration: underline;
+    color: #00bac9;
+
+}

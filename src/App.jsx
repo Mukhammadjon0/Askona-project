@@ -13,13 +13,16 @@ import { AiFillQuestionCircle } from 'react-icons/ai';
 import Recommended from './components/Basket/Recommended';
 import Box from '@mui/material/Box';
 import Basket from './components/Basket/Basket';
-import Contact_info from './components/contact_info/Contact_info';
-import Useful_info from './components/useful_info/Useful_info';
+import ContactInfo from './components/ContactInfo/ContactInfo';
+import UsefulInfo from './components/UsefulInfo/UsefulInfo';
+import Footer from './components/Footer/Footer';
+import EditUserInfo from './components/UserInfo/EditUserInfo';
 
 function App() {
-
+  const [openEditUser, setOpenEditUser] = React.useState(false)
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false)
 
 
   const basket = [
@@ -78,15 +81,17 @@ function App() {
     </Box>
   );
   return (
-    <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket }}>
+    <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket, handleClose, openEditUser, setOpenEditUser }}>
       <div className="App">
         <Navbar />
         <Carousel />
         <Categories />
         <Register />
+        <EditUserInfo/>
         <Basket />
-        <Useful_info />
-        <Contact_info />
+        <UsefulInfo />
+        <ContactInfo />
+        <Footer />
       </div>
     </StateContext.Provider>
   );
