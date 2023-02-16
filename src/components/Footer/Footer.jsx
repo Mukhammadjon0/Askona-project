@@ -24,7 +24,7 @@ function Footer() {
     return (
         <div className="">
             <footer className='bg-[#F6F6F6C9] pt-16 pb-5'>
-                <div className="w-[1330px] m-auto flex flex-col gap-16">
+                <div className="w-[1400px] m-auto flex flex-col gap-16">
                     <div className="flex justify-between">
                         <div className="flex flex-row gap-24">
                             <div className="flex flex-col">
@@ -135,7 +135,7 @@ function Footer() {
                 </div>
             </footer>
             <div className="bg-[#F6F6F6C9] pb-16 border-t-[2px]">
-                <div className="w-[1330px] m-auto flex items-center justify-between">
+                <div className="w-[1400px] m-auto flex items-center justify-between">
                     <div className="">
                         <p className='font-semibold text-sm'>© 1990–2022. Компания «Аскона»</p>
                         <p className='font-normal text-sm'>В торг. реестре с 18.12.2019г., № 468759, УНП 193341168, Мингорисполком. ООО «ТД Аскона-Импорт» </p>

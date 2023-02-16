@@ -1,11 +1,14 @@
 .Useful_info {
-  padding: 66px 49px;
+  width: 1400px;
+  margin: auto;
+  padding: 30px 0px;
 }
 
 .Useful_info_df {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* gap: 40px; */
 }
 
 .Useful_info_p {

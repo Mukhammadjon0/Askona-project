@@ -21,7 +21,7 @@ import Category12 from '../../assets/img/posteli.png'
 function Categories() {
 
     return (
-        <div className='px-20'>
+        <div className='w-[1400px] m-auto'>
             <Swiper style={{
                 "--swiper-navigation-color": "#00BAC1",
                 "--swiper-navigation-size": "20px"
@@ -46,84 +46,84 @@ function Categories() {
                 }}
             >
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category1} alt="img" />
                         <p className='font-medium text-base'>Матрасы</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category2} alt="img" />
                         <p className='font-medium text-base'>Подушки</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category3} alt="img" />
                         <p className='font-medium text-base'>Кровати</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category4} alt="img" />
                         <p className='font-medium text-base'>Одеяла</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category5} alt="img" />
                         <p className='font-medium text-base'>Диваны</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category6} alt="img" />
                         <p className='font-medium text-base'>Мебель</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category7} alt="img" />
                         <p className='font-medium text-base'>Для дома</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category8} alt="img" />
                         <p className='font-medium text-base'>Кресла</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category9} alt="img" />
                         <p className='font-medium text-base'>Пуфы</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category10} alt="img" />
                         <p className='font-medium text-base'>Пледы</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category11} alt="img" />
                         <p className='font-medium text-base'>Наматрасники</p>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <div className="">
+                    <div className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                         <img className='w-20 h-10' src={Category12} alt="img" />
                         <p className='font-medium text-base'>Постельное белье</p>
                     </div>
