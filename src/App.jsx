@@ -19,6 +19,8 @@ import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes } from 'react-router-dom'
 import MainNovelties from './components/main/mainNovelties/MainNovelties'
+import Categories from './components/Categories/Categories';
+import Carousel from './components/Carousel/Carousel';
 
 function App() {
   const [openEditUser, setOpenEditUser] = React.useState(false)
@@ -93,8 +95,6 @@ function App() {
           <Route path='/Katalog' element={<Katalog/>}/>
         </Routes>
         
-        <Carousel />
-        <Categories />
         <MainCarousel/>
         <MainNovelties/>
         <Register />
