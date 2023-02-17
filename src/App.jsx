@@ -1,7 +1,5 @@
 import './App.css';
 import * as React from 'react';
-import Carousel from './components/Carousel/Carousel';
-import Categories from './components/Categories/Categories';
 import Navbar from './components/Navbar/Navbar';
 import Register from './components/Register/Register';
 import { StateContext } from './context';
@@ -13,10 +11,13 @@ import { AiFillQuestionCircle } from 'react-icons/ai';
 import Recommended from './components/Basket/Recommended';
 import Box from '@mui/material/Box';
 import Basket from './components/Basket/Basket';
-import ContactInfo from './components/ContactInfo/ContactInfo';
-import UsefulInfo from './components/UsefulInfo/UsefulInfo';
-import Footer from './components/Footer/Footer';
 import EditUserInfo from './components/UserInfo/EditUserInfo';
+import Footer from './components/Footer/Footer';
+import Home from './page/Home/Home';
+import Zakaz from './page/Zakaz/Zakaz';
+import Katalog from './page/Katalog/Katalog';
+import ProductDetail from './page/ProductDetail/ProductDetail';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const [openEditUser, setOpenEditUser] = React.useState(false)
@@ -84,13 +85,17 @@ function App() {
     <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket, handleClose, openEditUser, setOpenEditUser }}>
       <div className="App">
         <Navbar />
-        <Carousel />
-        <Categories />
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/ProductDetail' element={<ProductDetail/>}/>
+          <Route path='/Zakaz' element={<Zakaz/>}/>
+          <Route path='/Katalog' element={<Katalog/>}/>
+        </Routes>
+        
         <Register />
         <EditUserInfo/>
         <Basket />
-        <UsefulInfo />
-        <ContactInfo />
+       
         <Footer />
       </div>
     </StateContext.Provider>
