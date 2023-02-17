@@ -19,12 +19,6 @@ import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes } from 'react-router-dom'
 import MainNovelties from './components/main/mainNovelties/MainNovelties'
-import Categories from './components/Categories/Categories';
-import Carousel from './components/Carousel/Carousel';
-=======
-import EditUserInfo from './components/UserInfo/EditUserInfo';
-import ProductDetail from './components/ProductDetail/ProductDetail';
->>>>>>> e13d830992d756f37d6ba7081c70a9291b02a737
 
 function App() {
   const [openEditUser, setOpenEditUser] = React.useState(false)
@@ -93,21 +87,14 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/ProductDetail' element={<ProductDetail/>}/>
-          <Route path='/Zakaz' element={<Zakaz/>}/>
-          <Route path='/Katalog' element={<Katalog/>}/>
+          <Route path='/' element={<Home />} />
+          <Route path='/ProductDetail' element={<ProductDetail />} />
+          <Route path='/Zakaz' element={<Zakaz />} />
+          <Route path='/Katalog' element={<Katalog />} />
         </Routes>
-        
-        <MainCarousel/>
-        <MainNovelties/>
         <Register />
-        <EditUserInfo/>
+        <EditUserInfo />
         <Basket />
-       
-        <UsefulInfo />
-        <ContactInfo />
-        <ProductDetail/>
         <Footer />
       </div>
     </StateContext.Provider>

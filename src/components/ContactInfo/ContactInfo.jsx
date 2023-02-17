@@ -4,7 +4,7 @@ import icon2 from '../../assets/svg/videokonsultaciya.svg'
 import icon3 from '../../assets/svg/faq.svg'
 import { Link } from 'react-router-dom'
 import './ContactInfo.css'
-function Contact_info() {
+function ContactInfo() {
   return (
     <div className='Contact_info container'>
       <h2 className='font-semibold text-4xl text-center'>Всегда на связи</h2>
@@ -43,4 +43,4 @@ function Contact_info() {
   )
 }
 
-export default Contact_info
+export default ContactInfo
