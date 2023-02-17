@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import './ContactInfo.css'
 function Contact_info() {
   return (
-    <div className='Contact_info'>
+    <div className='Contact_info container'>
       <h2 className='font-semibold text-4xl text-center'>Всегда на связи</h2>
       <p className='Useful_info_p'>Мы постоянно разрабатываем инновационные решения и выпускаем только такую продукцию, в которой <br />
         уверены на 100%. День за днём мы работаем для того , чтобы каждую ночь вы погружались в здоровый сон, <br />
