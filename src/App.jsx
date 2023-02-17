@@ -17,10 +17,12 @@ import Home from './page/Home/Home';
 import Zakaz from './page/Zakaz/Zakaz';
 import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
-import { Route, Routes } from 'react-router-dom'
-import MainNovelties from './components/main/mainNovelties/MainNovelties'
+import { Route, Routes } from 'react-router-dom';
+import MainNovelties from './components/main/mainNovelties/MainNovelties';
+import Products from './components/Products/Products';
 
 function App() {
+  const [userInfo, setUserInfo] = React.useState({})
   const [openEditUser, setOpenEditUser] = React.useState(false)
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -83,7 +85,7 @@ function App() {
     </Box>
   );
   return (
-    <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket, handleClose, openEditUser, setOpenEditUser }}>
+    <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket, handleClose, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
       <div className="App">
         <Navbar />
         <Routes>

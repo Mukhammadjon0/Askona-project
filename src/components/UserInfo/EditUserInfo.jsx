@@ -1,11 +1,14 @@
 import Logo from '../../assets/img/logo.svg'
 import { Box, Modal } from '@mui/material'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { MdCancel } from 'react-icons/md';
 import { StateContext } from '../../context';
 
 function EditUserInfo() {
-  const { openEditUser, setOpenEditUser } = useContext(StateContext)
+  const { openEditUser, setOpenEditUser, userInfo } = useContext(StateContext)
+
+
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -17,11 +20,13 @@ function EditUserInfo() {
     p: 4,
   };
 
+
   const handleCloseEdit = () => setOpenEditUser(false)
 
   const handleEditUser = (e) => {
     e.preventDefault()
   }
+
 
 
   return (
@@ -31,7 +36,7 @@ function EditUserInfo() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        {/* SignUp user modal ================================================ */}
+        {/* Edit User Info ================================================ */}
         <Box sx={style} className='rounded-xl'>
           <Box sx={{ width: '100%' }}>
             <Box sx={{}}>
@@ -39,11 +44,10 @@ function EditUserInfo() {
               <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
             </Box>
             <form onSubmit={handleEditUser} action="" className='flex flex-col items-center gap-5'>
-              <input name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="text" placeholder='Имя' />
-              <input name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="email" placeholder='Адрес электронной почты' />
-              <input name='mobile' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="tel" placeholder='Тел' />
-              <input name='password' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="password" placeholder='Пароль' />
-              <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>Зарегистрироваться</button>
+              <input value={userInfo.name} name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="text" placeholder='Имя' />
+              <input value={userInfo.email} name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="email" placeholder='Адрес электронной почты' />
+              <input value={userInfo.mobile} name='mobile' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="tel" placeholder='Тел' />
+              <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>Редактировать</button>
             </form>
           </Box>
         </Box>

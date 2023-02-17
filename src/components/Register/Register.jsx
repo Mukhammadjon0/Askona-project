@@ -155,6 +155,7 @@ function Register() {
             method: "regis",
             params: user,
         }
+        console.log(user)
         axios.post("https://askona.herokuapp.com/api/v1/auth/", postAuthData)
             .then(res => {
                 if (res.data?.Error) {
@@ -164,7 +165,7 @@ function Register() {
                 localStorage.setItem("userData", JSON.stringify(res.data.result))
                 handleCloseRegister();
             })
-            .catch(err => console.log(err.message))
+            .catch(err => console.log(err))
 
     }
     return (
