@@ -3,7 +3,6 @@ import * as React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Register from './components/Register/Register';
 import { StateContext } from './context';
-import MainCarousel from './components/main/mainCarousel/MainCarousel'
 import Cancel from './assets/icon/cancel.svg'
 import Prod from './assets/img/router.png'
 import BasketComponent from './components/Basket/BasketComponent'
@@ -18,7 +17,6 @@ import Zakaz from './page/Zakaz/Zakaz';
 import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes } from 'react-router-dom';
-import MainNovelties from './components/main/mainNovelties/MainNovelties';
 import Products from './components/Products/Products';
 import { Autocomplete, TextField } from '@mui/material';
 

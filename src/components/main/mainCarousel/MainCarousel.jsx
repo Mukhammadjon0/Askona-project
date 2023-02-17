@@ -9,7 +9,7 @@ function MainCarousel() {
       <h1 className="title">Хиты продаж</h1>
       <div className="main__cards flex gap-4 container">
         {bestSales.map((el) => (
-          <div className="main__card bg-red-400 p-4">
+          <div key={el.id} className="main__card bg-red-400 p-4">
             <div className="main__card-head">
               <div className="main__card-img">
                 <img src={el.image} alt="" />

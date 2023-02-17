@@ -9,7 +9,7 @@ function MainNovelties() {
       <h1 className="title mt-[65px]">Новинки</h1>
       <div className="main__cards flex gap-4 container">
         {bestSales.map((el) => (
-          <div className="main__card bg-red-400 p-4">
+          <div key={el.id} className="main__card bg-red-400 p-4">
             <div className="main__card-head">
               <div className="main__card-img">
                 <img src={el.image} alt="" />
@@ -38,14 +38,14 @@ function MainNovelties() {
               </p>
               <div className="card__body-desc flex gap-[14px]">
                 <div className="card__body-descLeft flex gap-[18.3px] items-center">
-                 <VscSymbolRuler/>
+                  <VscSymbolRuler />
                   <div className="card__body-descInfo">
                     <h2>Высота:</h2>
                     <p>{el.height}</p>
                   </div>
                 </div>
                 <div className="card__body-descRight flex gap-[14.53px] items-center">
-                <VscSymbolRuler className="card__icon" />
+                  <VscSymbolRuler className="card__icon" />
                   <div className="card__body-descInfo">
                     <h2>Вес на спальное место:</h2>
                     <p>{el.weight}</p>
