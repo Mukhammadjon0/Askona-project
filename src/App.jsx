@@ -20,6 +20,7 @@ import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes } from 'react-router-dom';
 import MainNovelties from './components/main/mainNovelties/MainNovelties';
 import Products from './components/Products/Products';
+import { Autocomplete, TextField } from '@mui/material';
 
 function App() {
   const [userInfo, setUserInfo] = React.useState({})
@@ -27,6 +28,7 @@ function App() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false)
+
 
 
   const basket = [
@@ -83,6 +85,7 @@ function App() {
       </div>
 
     </Box>
+
   );
   return (
     <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket, handleClose, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>

@@ -75,8 +75,6 @@ function Register() {
         email: "",
     })
 
-
-
     const [openRegister, setOpenRegister] = React.useState(false)
     const [openOtp, setOpenOtp] = React.useState(false)
 

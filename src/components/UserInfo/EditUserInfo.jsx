@@ -1,12 +1,47 @@
 import Logo from '../../assets/img/logo.svg'
 import { Box, Modal } from '@mui/material'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { MdCancel } from 'react-icons/md';
 import { StateContext } from '../../context';
+import axios from 'axios';
 
 function EditUserInfo() {
-  const { openEditUser, setOpenEditUser, userInfo } = useContext(StateContext)
+  const { openEditUser, setOpenEditUser, userInfo, setUserInfo } = useContext(StateContext)
+  const userData = JSON.parse(localStorage.getItem("userData"))
 
+  const [editUserInfo, setEditUserInfo] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+  })
+  const handleCloseEdit = () => setOpenEditUser(false)
+
+  const editHandler = (e) => {
+    e.preventDefault();
+    const body = {
+      name: editUserInfo.name,
+      email: editUserInfo.email,
+      mobile: editUserInfo.mobile
+    }
+    const headers = {
+      Authorization: `Bearer ${userData?.token}`
+    }
+    axios.put("https://askona.herokuapp.com/api/v1/user/",body, { headers })
+      .then(res => {
+        console.log(res.data)
+        setUserInfo(res.data)
+        handleCloseEdit()
+      })
+      .catch(err => console.log(err))
+
+  }
+  const handelEditUser = (e) => {
+    e.preventDefault();
+    setEditUserInfo({
+      ...editUserInfo,
+      [e.target.name]: e.target.value
+    });
+  }
 
 
   const style = {
@@ -19,16 +54,6 @@ function EditUserInfo() {
     boxShadow: 24,
     p: 4,
   };
-
-
-  const handleCloseEdit = () => setOpenEditUser(false)
-
-  const handleEditUser = (e) => {
-    e.preventDefault()
-  }
-
-
-
   return (
     <div>
       <Modal
@@ -36,6 +61,7 @@ function EditUserInfo() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+
         {/* Edit User Info ================================================ */}
         <Box sx={style} className='rounded-xl'>
           <Box sx={{ width: '100%' }}>
@@ -43,10 +69,10 @@ function EditUserInfo() {
               <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseEdit}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
               <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
             </Box>
-            <form onSubmit={handleEditUser} action="" className='flex flex-col items-center gap-5'>
-              <input value={userInfo.name} name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="text" placeholder='Имя' />
-              <input value={userInfo.email} name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="email" placeholder='Адрес электронной почты' />
-              <input value={userInfo.mobile} name='mobile' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="tel" placeholder='Тел' />
+            <form onSubmit={editHandler} action="" className='flex flex-col items-center gap-5'>
+              <input onChange={handelEditUser} defaultValue={userInfo.name} name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="text" placeholder='Имя' />
+              <input onChange={handelEditUser} defaultValue={userInfo.email} name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="email" placeholder='Адрес электронной почты' />
+              <input onChange={handelEditUser} defaultValue={userInfo.mobile} name='mobile' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="tel" placeholder='Тел' />
               <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>Редактировать</button>
             </form>
           </Box>

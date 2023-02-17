@@ -21,7 +21,7 @@ function Navbar() {
   const { toggleDrawer, basket } = useContext(StateContext)
 
   const [categories, setCategories] = useState(true);
-  const loggedIn = true;
+  const loggedIn = false;
 
 
   return (
@@ -96,15 +96,15 @@ function Navbar() {
           <div className="container">
             <div className="flex items-center justify-between">
               <button onClick={() => setCategories((p) => !p)} className='w-[180px] border border-solid bg-[#00B6C9] px-4 py-3 flex items-center text-white font-bold whitespace-nowrap'><HiBars3BottomLeft className='mr-5' />  Все товары </button>
-              <NavLink className='text-black text-lg font-medium' href="">Матрасы</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Подушки</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Кровати</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Одеяла</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Диваны</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Детские товары</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Мебель </NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Для дома</NavLink>
-              <NavLink className='text-red-400 flex items-center text-lg' href=""> <FaPercentage /> Акции</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Матрасы</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Подушки</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Кровати</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Одеяла</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Диваны</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Детские товары</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Мебель </NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Для дома</NavLink>
+              <NavLink className='text-red-400 flex items-center text-lg' to=""> <FaPercentage /> Акции</NavLink>
             </div>
           </div>
         </div>

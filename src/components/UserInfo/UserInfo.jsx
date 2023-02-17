@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { IconButton, Menu, } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios'
@@ -10,11 +10,7 @@ function UserInfo() {
 
     const userData = JSON.parse(localStorage.getItem("userData"))
 
-
-
-
     const userBtn = async () => {
-        console.log(userData)
         await axios.get('https://askona.herokuapp.com/api/v1/user/',
             {
                 headers: {
@@ -29,7 +25,6 @@ function UserInfo() {
     useEffect(() => {
         userBtn()
     }, [])
-    console.log(userInfo)
 
 
 
@@ -59,7 +54,7 @@ function UserInfo() {
                     </IconButton>
                 </Box>
                 <Menu
-                className='p-0'
+                    className='p-0'
                     sx={{ padding: '0' }}
                     anchorEl={anchorEl}
                     id="account-menu"
