@@ -13,12 +13,17 @@ import Box from '@mui/material/Box';
 import Basket from './components/Basket/Basket';
 import EditUserInfo from './components/UserInfo/EditUserInfo'
 import Footer from './components/Footer/Footer';
+<<<<<<< HEAD
 import Home from './page/Home/Home';
 import Zakaz from './page/Zakaz/Zakaz';
 import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes } from 'react-router-dom'
 import MainNovelties from './components/main/mainNovelties/MainNovelties'
+=======
+import EditUserInfo from './components/UserInfo/EditUserInfo';
+import ProductDetail from './components/ProductDetail/ProductDetail';
+>>>>>>> b637efb... tayyor
 
 function App() {
   const [openEditUser, setOpenEditUser] = React.useState(false)
@@ -101,6 +106,9 @@ function App() {
         <EditUserInfo/>
         <Basket />
        
+        <UsefulInfo />
+        <ContactInfo />
+        <ProductDetail/>
         <Footer />
       </div>
     </StateContext.Provider>
