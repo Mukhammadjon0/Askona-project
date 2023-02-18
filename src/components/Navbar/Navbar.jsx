@@ -21,7 +21,7 @@ function Navbar() {
   const { toggleDrawer, basket } = useContext(StateContext)
 
   const [categories, setCategories] = useState(true);
-  const loggedIn = false;
+  const loggedIn = true;
 
 
   return (
