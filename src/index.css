@@ -25,7 +25,10 @@
   margin: 0 auto;
   padding: 0 40px;
 }
-
+.slider-container{
+  max-width: 1440px;
+  width: 100%;
+}
 .title{
   text-align: center;
   font-size: 36px;

@@ -80,3 +80,12 @@
   color: #878787;
   font-weight: 400;
 }
+.swiper-button-prev{
+  left: 0 !important;
+  right: auto;
+}
+.swiper-button-next{
+  right: 0 !important;
+  left: auto;
+}
+

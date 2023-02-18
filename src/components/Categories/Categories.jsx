@@ -26,10 +26,10 @@ function Categories() {
                 "--swiper-navigation-color": "#00BAC1",
                 "--swiper-navigation-size": "20px"
             }}
-                // rewind={true}
+                rewind={true}
                 navigation={true}
                 modules={[Navigation, Pagination]}
-                className="mySwiper"
+                className="mySwiper slider-container overflow-hidden"
                 breakpoints={{
                     "@0.00": {
                         slidesPerView: 2,

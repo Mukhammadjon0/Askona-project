@@ -20,20 +20,20 @@ function MainCarousel() {
           paddingRight: "50px",
         }}
         slidesPerView={4}
-        spaceBetween={20}
+        spaceBetween={30}
+        rewind={true}
         navigation={true}
         pagination={true}
         freeMode={true}
         modules={[FreeMode, Navigation, Pagination]}
-        className="mySwiper"
+        className="mySwiper slider-container overflow-hidden"
 
       >
-        <div className="container overflow-hidden">
+        <div className="">
 
           {bestSales.map((el) => (
             <SwiperSlide key={el.id}>
-              {/* <div className="main__cards flex gap-4 container"/> */}
-              <div key={el.id} className="main__card bg-red-400 p-4 overflow-hidden">
+              <div className="main__card bg-red-400 p-4">
                 <div className="main__card-head">
                   <div className="main__card-img">
                     <img src={el.image} alt="" />
@@ -48,9 +48,9 @@ function MainCarousel() {
                 <div className="main__card-body mt-[27px]">
                   <h2>{el.title}</h2>
                   <p className="card__body-price">
-                    от{" "}
+                    от
                     <span className="card__body-spanPrice text-[#00B9C0]">
-                      {el.price} {el.value}{" "}
+                      {el.price} {el.value}
                     </span>
                     <span className="card__body-spanOldPrice">
                       {el.oldPrice} {el.value}
@@ -78,7 +78,6 @@ function MainCarousel() {
                 </div>
               </div>
 
-              {/* </div> */}
             </SwiperSlide>
           ))}
         </div>

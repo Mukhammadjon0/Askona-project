@@ -91,15 +91,15 @@ function UserInfo() {
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                    <div className="flex flex-col">
-                        <div className="p-8 flex flex-col border-b-[1px] border-gray-500">
-                            <span className='font-semibold text-xl'>{userInfo.name}</span>
-                            <span className='font-medium text-ms'>{userInfo.email}</span>
-                            <span>{userInfo.mobile}</span>
-                        </div>
-                        <button onClick={handleOpenEditUser} className='w-full py-2 bg-[#00bac9] text-white'>Редактировать</button>
-                        <button className='w-full border-t-[1px] py-2 border-gray-500 bg-[#00bac9] text-white'>Выйти</button>
+                    {/* <div className="flex flex-col"> */}
+                    <div className="p-8 flex flex-col">
+                        <span className='font-semibold text-xl'>{userInfo.name}</span>
+                        <span className='font-medium text-ms'>{userInfo.email}</span>
+                        <span>{userInfo.mobile}</span>
                     </div>
+                    <button onClick={handleOpenEditUser} className='w-full py-2 bg-[#00bac9] text-white'>Редактировать</button>
+                    <button className='w-full border-t-[1px] py-2 border-white bg-[#00bac9] text-white rounded-b-sm'>Выйти</button>
+                    {/* </div> */}
                 </Menu>
             </React.Fragment>
         </div>
