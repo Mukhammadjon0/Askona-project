@@ -3,7 +3,6 @@ import * as React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Register from './components/Register/Register';
 import { StateContext } from './context';
-import MainCarousel from './components/main/mainCarousel/MainCarousel'
 import Cancel from './assets/icon/cancel.svg'
 import Prod from './assets/img/router.png'
 import BasketComponent from './components/Basket/BasketComponent'
@@ -13,23 +12,21 @@ import Box from '@mui/material/Box';
 import Basket from './components/Basket/Basket';
 import EditUserInfo from './components/UserInfo/EditUserInfo'
 import Footer from './components/Footer/Footer';
-<<<<<<< HEAD
 import Home from './page/Home/Home';
 import Zakaz from './page/Zakaz/Zakaz';
 import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
-import { Route, Routes } from 'react-router-dom'
-import MainNovelties from './components/main/mainNovelties/MainNovelties'
-=======
-import EditUserInfo from './components/UserInfo/EditUserInfo';
-import ProductDetail from './components/ProductDetail/ProductDetail';
->>>>>>> b637efb... tayyor
+import { Route, Routes } from 'react-router-dom';
+import Products from './components/Products/Products';
+import { Autocomplete, TextField } from '@mui/material';
 
 function App() {
+  const [userInfo, setUserInfo] = React.useState({})
   const [openEditUser, setOpenEditUser] = React.useState(false)
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false)
+
 
 
   const basket = [
@@ -86,29 +83,21 @@ function App() {
       </div>
 
     </Box>
+
   );
   return (
-    <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket, handleClose, openEditUser, setOpenEditUser }}>
+    <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket, handleClose, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/ProductDetail' element={<ProductDetail/>}/>
-          <Route path='/Zakaz' element={<Zakaz/>}/>
-          <Route path='/Katalog' element={<Katalog/>}/>
+          <Route path='/' element={<Home />} />
+          <Route path='/ProductDetail' element={<ProductDetail />} />
+          <Route path='/Zakaz' element={<Zakaz />} />
+          <Route path='/Katalog' element={<Katalog />} />
         </Routes>
-        
-        <Carousel />
-        <Categories />
-        <MainCarousel/>
-        <MainNovelties/>
         <Register />
-        <EditUserInfo/>
+        <EditUserInfo />
         <Basket />
-       
-        <UsefulInfo />
-        <ContactInfo />
-        <ProductDetail/>
         <Footer />
       </div>
     </StateContext.Provider>

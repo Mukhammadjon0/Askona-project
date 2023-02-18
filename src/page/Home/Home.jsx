@@ -1,15 +1,19 @@
 import React from "react";
 import Carousel from "../../components/Carousel/Carousel";
 import Categories from "../../components/Categories/Categories";
-import Contact_info from "../../components/ContactInfo/ContactInfo";
-import Useful_info from "../../components/UsefulInfo/UsefulInfo";
+import ContactInfo from "../../components/ContactInfo/ContactInfo";
+import UsefulInfo from "../../components/UsefulInfo/UsefulInfo";
+import MainCarousel from "../../components/main/mainCarousel/MainCarousel";
+import MainNovelties from "../../components/main/mainNovelties/MainNovelties";
 function Home() {
   return (
     <div>
       <Carousel />
       <Categories />
-      <Useful_info />
-      <Contact_info />
+      <MainCarousel />
+      <MainNovelties />
+      <UsefulInfo />
+      <ContactInfo />
     </div>
   );
 }

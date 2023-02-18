@@ -33,7 +33,7 @@ function Navbar() {
         </button>
       </div>
       <nav className='w-full py-5'>
-        <div className='w-[1400px] m-auto flex items-center'>
+        <div className='container m-auto flex items-center'>
           <div className="w-full flex flex-row items-center justify-between">
             <div className="flex flex-row items-center">
               <div className="flex flex-row items-center gap-10">
@@ -59,7 +59,7 @@ function Navbar() {
 
               {loggedIn ?
                 <UserInfo />
-                : <IconButton onClick={handleOpen}> <CgLogIn className='text-black'/></IconButton>
+                : <IconButton onClick={handleOpen}> <CgLogIn className='text-black' /></IconButton>
               }
 
               <IconButton>
@@ -78,13 +78,13 @@ function Navbar() {
               {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
                   <IconButton onClick={toggleDrawer(anchor, true)}>
-                      <div className="relative cursor-pointer">
-                        <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
-                          <p className='font-semibold text-[12px] text-white'>{basket.length}
-                          </p>
-                        </div>
-                        <CgShoppingCart className='cursor-pointer text-black' />
+                    <div className="relative cursor-pointer">
+                      <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
+                        <p className='font-semibold text-[12px] text-white'>{basket.length}
+                        </p>
                       </div>
+                      <CgShoppingCart className='cursor-pointer text-black' />
+                    </div>
                   </IconButton>
                 </React.Fragment>
               ))}
@@ -93,18 +93,18 @@ function Navbar() {
         </div>
 
         <div className='w-full border-b-[1px] border-gray-200 py-3'>
-          <div className="w-[1400px] m-auto">
+          <div className="container">
             <div className="flex items-center justify-between">
               <button onClick={() => setCategories((p) => !p)} className='w-[180px] border border-solid bg-[#00B6C9] px-4 py-3 flex items-center text-white font-bold whitespace-nowrap'><HiBars3BottomLeft className='mr-5' />  Все товары </button>
-              <NavLink className='text-black text-lg font-medium' href="">Матрасы</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Подушки</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Кровати</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Одеяла</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Диваны</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Детские товары</NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Мебель </NavLink>
-              <NavLink className='text-black text-lg font-medium' href="">Для дома</NavLink>
-              <NavLink className='text-red-400 flex items-center text-lg' href=""> <FaPercentage /> Акции</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Матрасы</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Подушки</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Кровати</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Одеяла</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Диваны</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Детские товары</NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Мебель </NavLink>
+              <NavLink className='text-black text-lg font-medium' to="">Для дома</NavLink>
+              <NavLink className='text-red-400 flex items-center text-lg' to=""> <FaPercentage /> Акции</NavLink>
             </div>
           </div>
         </div>
