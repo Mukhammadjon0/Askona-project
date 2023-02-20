@@ -4,7 +4,7 @@ import icon2 from '../../assets/svg/Vector (1).svg'
 import icon3 from '../../assets/svg/eco.svg'
 import './UsefulInfo.css'
 
-function Useful_info() {
+function UsefulInfo() {
     return (
         <div className='Useful_info'>
             <h2 className='font-semibold text-4xl text-center'>Askona заряжает сном</h2>
@@ -43,4 +43,4 @@ function Useful_info() {
     )
 }
 
-export default Useful_info
+export default UsefulInfo

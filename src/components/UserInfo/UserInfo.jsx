@@ -1,22 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { IconButton, Menu, } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios'
 import { BiUser } from 'react-icons/bi';
-import EditUserInfo from './EditUserInfo';
 import { StateContext } from '../../context';
 
 function UserInfo() {
-    const { setOpenEditUser } = useContext(StateContext)
+    const { setOpenEditUser, userInfo, setUserInfo } = useContext(StateContext)
 
-    const [userInfo, setUserInfo] = useState({})
     const userData = JSON.parse(localStorage.getItem("userData"))
 
-
-
-
     const userBtn = async () => {
-        console.log(userData)
         await axios.get('https://askona.herokuapp.com/api/v1/user/',
             {
                 headers: {
@@ -31,7 +25,6 @@ function UserInfo() {
     useEffect(() => {
         userBtn()
     }, [])
-    console.log(userInfo)
 
 
 
@@ -61,50 +54,52 @@ function UserInfo() {
                     </IconButton>
                 </Box>
                 <Menu
-                    sx={{ paddingBottom: '0' }}
+                    className='p-0'
+                    sx={{ padding: '0' }}
                     anchorEl={anchorEl}
                     id="account-menu"
                     open={open}
                     onClose={handleClose}
-                // onClick={handleClose}
-                // PaperProps={{
-                //     elevation: 0,
-                //     sx: {
-                //         overflow: 'visible',
-                //         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                //         mt: 1.5,
-                //         '& .MuiAvatar-root': {
-                //             width: 100,
-                //             height: 100,
-                //             ml: -0.5,
-                //             mr: 1,
-                //         },
-                //         '&:before': {
-                //             content: '""',
-                //             display: 'block',
-                //             position: 'absolute',
-                //             top: 0,
-                //             right: 14,
-                //             width: 10,
-                //             height: 10,
-                //             bgcolor: 'background.paper',
-                //             transform: 'translateY(-50%) rotate(45deg)',
-                //             zIndex: 0,
-                //         },
-                //     },
-                // }}
-                // transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                // anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+
+                    onClick={handleClose}
+                    PaperProps={{
+                        elevation: 0,
+                        sx: {
+                            overflow: 'visible',
+                            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                            mt: 1.5,
+                            '& .MuiAvatar-root': {
+                                width: 100,
+                                height: 100,
+                                ml: -0.5,
+                                mr: 1,
+                            },
+                            '&:before': {
+                                content: '""',
+                                display: 'block',
+                                position: 'absolute',
+                                top: 0,
+                                right: 14,
+                                width: 10,
+                                height: 10,
+                                bgcolor: 'background.paper',
+                                transform: 'translateY(-50%) rotate(45deg)',
+                                zIndex: 0,
+                            },
+                        },
+                    }}
+                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                    <div className="flex flex-col">
-                        <div className="p-8 flex flex-col border-b-[1px] border-gray-500">
-                            <span className='font-semibold text-xl'>{userInfo.name}</span>
-                            <span className='font-medium text-ms'>{userInfo.email}</span>
-                            <span>{userInfo.mobile}</span>
-                        </div>
-                        <button onClick={handleOpenEditUser} className='w-full py-2 bg-[#00bac9] text-white'>Редактировать</button>
-                        <button className='w-full border-t-[1px] py-2 border-gray-500 bg-[#00bac9] text-white'>Выйти</button>
+                    {/* <div className="flex flex-col"> */}
+                    <div className="p-8 flex flex-col">
+                        <span className='font-semibold text-xl'>{userInfo.name}</span>
+                        <span className='font-medium text-ms'>{userInfo.email}</span>
+                        <span>{userInfo.mobile}</span>
                     </div>
+                    <button onClick={handleOpenEditUser} className='w-full py-2 bg-[#00bac9] text-white'>Редактировать</button>
+                    <button className='w-full border-t-[1px] py-2 border-white bg-[#00bac9] text-white rounded-b-sm'>Выйти</button>
+                    {/* </div> */}
                 </Menu>
             </React.Fragment>
         </div>

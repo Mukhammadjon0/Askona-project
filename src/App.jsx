@@ -1,11 +1,8 @@
 import './App.css';
 import * as React from 'react';
-import Carousel from './components/Carousel/Carousel';
-import Categories from './components/Categories/Categories';
 import Navbar from './components/Navbar/Navbar';
 import Register from './components/Register/Register';
 import { StateContext } from './context';
-
 import Cancel from './assets/icon/cancel.svg'
 import Prod from './assets/img/router.png'
 import BasketComponent from './components/Basket/BasketComponent'
@@ -13,18 +10,28 @@ import { AiFillQuestionCircle } from 'react-icons/ai';
 import Recommended from './components/Basket/Recommended';
 import Box from '@mui/material/Box';
 import Basket from './components/Basket/Basket';
-import ContactInfo from './components/ContactInfo/ContactInfo';
-import UsefulInfo from './components/UsefulInfo/UsefulInfo';
+import EditUserInfo from './components/UserInfo/EditUserInfo'
 import Footer from './components/Footer/Footer';
+
 import EditUserInfo from './components/UserInfo/EditUserInfo';
 import BasketTop from './components/BasketTop/BasketTop';
 import Sidebar from './components/Sidebar/Sidebar';
+import Home from './page/Home/Home';
+import Zakaz from './page/Zakaz/Zakaz';
+import Katalog from './page/Katalog/Katalog';
+import ProductDetail from './page/ProductDetail/ProductDetail';
+import { Route, Routes } from 'react-router-dom';
+import Products from './components/Products/Products';
+import { Autocomplete, TextField } from '@mui/material';
+ 
 
 function App() {
+  const [userInfo, setUserInfo] = React.useState({})
   const [openEditUser, setOpenEditUser] = React.useState(false)
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false)
+
 
 
   const basket = [
@@ -81,20 +88,28 @@ function App() {
       </div>
 
     </Box>
+
   );
   return (
-    <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket, handleClose, openEditUser, setOpenEditUser }}>
+    <StateContext.Provider value={{ open, handleOpen, setOpen, toggleDrawer, state, list, basket, handleClose, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
       <div className="App">
         <Navbar />
-        <Carousel />
-        <Categories />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/ProductDetail' element={<ProductDetail />} />
+          <Route path='/Zakaz' element={<Zakaz />} />
+          <Route path='/Katalog' element={<Katalog />} />
+        </Routes>
         <Register />
-        <EditUserInfo/>
+        <EditUserInfo />
         <Basket />
+
         <UsefulInfo />
         <ContactInfo />
         <BasketTop/>
       <Sidebar/>
+
+
         <Footer />
       </div>
     </StateContext.Provider>

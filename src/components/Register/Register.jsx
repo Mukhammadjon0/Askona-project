@@ -75,8 +75,6 @@ function Register() {
         email: "",
     })
 
-
-
     const [openRegister, setOpenRegister] = React.useState(false)
     const [openOtp, setOpenOtp] = React.useState(false)
 
@@ -155,6 +153,7 @@ function Register() {
             method: "regis",
             params: user,
         }
+        console.log(user)
         axios.post("https://askona.herokuapp.com/api/v1/auth/", postAuthData)
             .then(res => {
                 if (res.data?.Error) {
@@ -164,7 +163,7 @@ function Register() {
                 localStorage.setItem("userData", JSON.stringify(res.data.result))
                 handleCloseRegister();
             })
-            .catch(err => console.log(err.message))
+            .catch(err => console.log(err))
 
     }
     return (
@@ -262,7 +261,7 @@ function Register() {
                         <form onSubmit={handleSignUp} action="" className='flex flex-col items-center gap-5'>
                             <input onChange={handelRegisterUser} name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="text" placeholder='Имя' />
                             <input onChange={handelRegisterUser} name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="email" placeholder='Адрес электронной почты' />
-                            <input onChange={handelRegisterUser} name='mobile' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="tel" placeholder='Тел' defaultValue={tel} />
+                            <input onChange={handelRegisterUser} name='mobile' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="tel" placeholder='Тел' />
                             <input onChange={handelRegisterUser} name='password' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="password" placeholder='Пароль' />
                             <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>Зарегистрироваться</button>
                         </form>

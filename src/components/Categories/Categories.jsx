@@ -21,7 +21,7 @@ import Category12 from '../../assets/img/posteli.png'
 function Categories() {
 
     return (
-        <div className='w-[1400px] m-auto'>
+        <div className='container'>
             <Swiper style={{
                 "--swiper-navigation-color": "#00BAC1",
                 "--swiper-navigation-size": "20px"
@@ -29,7 +29,7 @@ function Categories() {
                 rewind={true}
                 navigation={true}
                 modules={[Navigation, Pagination]}
-                className="mySwiper"
+                className="mySwiper slider-container overflow-hidden"
                 breakpoints={{
                     "@0.00": {
                         slidesPerView: 2,
