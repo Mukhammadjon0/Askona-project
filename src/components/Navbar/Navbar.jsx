@@ -48,11 +48,11 @@ function Navbar() {
                   <button className='rounded flex items-center border border-solid py-2 px-2 text-center'><TbPhoneCall className='text-gray-400  pr-2 text-2xl' /> Перезвоните мне</button>
                 </div>
               </div>
-              <div className="flex ml-5 items-center">
-                <p className='text-black text-lg flex font-semibold'>7176</p>
-                <span className='text-[#00B6C9] text-xs flex flex-col leading-4'>
-                  <span>показать</span><span>номера</span>
-                </span>
+              <div className="flex ml-5 items-center gap-2">
+                <h2 className='text-black text-lg flex font-semibold'>7176</h2>
+                <p className='text-[#00B6C9] text-xs flex flex-col leading-4 w-[50px]'>
+                     показать номера
+                </p>
               </div>
             </div>
             <div className='flex gap-3 text-2xl text-black items-center '>

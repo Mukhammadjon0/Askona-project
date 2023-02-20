@@ -2,8 +2,8 @@ import React from "react";
 
 import { bestSales } from "../../../datas";
 import { VscSymbolRuler } from "react-icons/vsc";
+import { HiOutlineChevronDoubleDown } from "react-icons/hi";
 function MainNovelties() {
-
   return (
     <div className="container">
       <h1 className="title mt-[65px]">Новинки</h1>
@@ -25,9 +25,9 @@ function MainNovelties() {
             <div className="main__card-body mt-[27px]">
               <h2>{el.title}</h2>
               <p className="card__body-price">
-                от{" "}
+                от
                 <span className="card__body-spanPrice text-[#00B9C0]">
-                  {el.price} {el.value}{" "}
+                  {el.price} {el.value}
                 </span>
                 <span className="card__body-spanOldPrice">
                   {el.oldPrice} {el.value}
@@ -38,14 +38,14 @@ function MainNovelties() {
               </p>
               <div className="card__body-desc flex gap-[14px]">
                 <div className="card__body-descLeft flex gap-[18.3px] items-center">
-                 <VscSymbolRuler/>
+                  <VscSymbolRuler className="text-[35px]" />
                   <div className="card__body-descInfo">
                     <h2>Высота:</h2>
                     <p>{el.height}</p>
                   </div>
                 </div>
                 <div className="card__body-descRight flex gap-[14.53px] items-center">
-                <VscSymbolRuler className="card__icon" />
+                  <HiOutlineChevronDoubleDown className="card__icon text-[18px]" />
                   <div className="card__body-descInfo">
                     <h2>Вес на спальное место:</h2>
                     <p>{el.weight}</p>

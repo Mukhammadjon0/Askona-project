@@ -44,7 +44,7 @@ function MainCarousel() {
                   </div>
                 </div>
                 <div className="card__body-descRight flex gap-[14.53px] items-center">
-                <VscSymbolRuler className="card__icon" />
+                <VscSymbolRuler className="card__icon text-[18px]" />
                   <div className="card__body-descInfo">
                     <h2>Вес на спальное место:</h2>
                     <p>{el.weight}</p>
