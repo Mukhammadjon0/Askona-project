@@ -1,0 +1,82 @@
+.said_top {
+  display: flex;
+  justify-content: space-between;
+  padding: 38px 32px 0;
+}
+.said_top > h1 {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+}
+.our,.our2{
+    display: flex;
+    justify-content: space-between;
+  
+}
+
+.our{
+    margin-top: 19px;
+    margin-bottom: 25px;
+    padding: 25px 0;
+   
+    border-bottom: 1px solid rgb(222, 219, 219);
+    border-top:  1px solid rgb(222, 219, 219);
+}
+.our3{
+    padding: 25px 0;
+    border-bottom: 1px solid rgb(222, 219, 219);
+    border-top: 1px solid rgb(222, 219, 219);  
+    margin-top: 25px;
+}
+.image{
+    display: flex;
+    
+
+
+}
+.image>img{
+   margin-right: 36px;
+
+}
+.ourTop{
+    padding:19px 32px;
+}
+.ourTop h1{
+    font-family: 'Gilroy';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 30px;
+
+}
+.lastdown,.our4{
+    margin-top: 25px;
+}
+.lastdown{
+    padding: 25px 34px ;
+}
+
+
+.ourTop p{
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+}
+.ourTop p{
+    margin-top: 16px;
+}
+.downlist>ul{
+    margin-left: 20px;
+}
+.downlist>ul>li{
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    list-style-type:disc;
+}

@@ -18,6 +18,7 @@ import UsefulInfo from './components/UsefulInfo/UsefulInfo';
 import Footer from './components/Footer/Footer';
 import EditUserInfo from './components/UserInfo/EditUserInfo';
 import BasketTop from './components/BasketTop/BasketTop';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const [openEditUser, setOpenEditUser] = React.useState(false)
@@ -93,6 +94,7 @@ function App() {
         <UsefulInfo />
         <ContactInfo />
         <BasketTop/>
+      <Sidebar/>
         <Footer />
       </div>
     </StateContext.Provider>
