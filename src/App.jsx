@@ -12,8 +12,6 @@ import Box from '@mui/material/Box';
 import Basket from './components/Basket/Basket';
 import EditUserInfo from './components/UserInfo/EditUserInfo'
 import Footer from './components/Footer/Footer';
-
-import EditUserInfo from './components/UserInfo/EditUserInfo';
 import BasketTop from './components/BasketTop/BasketTop';
 import Sidebar from './components/Sidebar/Sidebar';
 import Home from './page/Home/Home';
@@ -21,8 +19,7 @@ import Zakaz from './page/Zakaz/Zakaz';
 import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes } from 'react-router-dom';
-import Products from './components/Products/Products';
-import { Autocomplete, TextField } from '@mui/material';
+
  
 
 function App() {
@@ -104,8 +101,7 @@ function App() {
         <EditUserInfo />
         <Basket />
 
-        <UsefulInfo />
-        <ContactInfo />
+      
         <BasketTop/>
       <Sidebar/>
 
