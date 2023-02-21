@@ -20,7 +20,7 @@ import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes } from 'react-router-dom';
 
- 
+
 
 function App() {
   const [userInfo, setUserInfo] = React.useState({})
@@ -101,9 +101,9 @@ function App() {
         <EditUserInfo />
         <Basket />
 
-      
-        <BasketTop/>
-      <Sidebar/>
+
+        <BasketTop />
+        <Sidebar />
 
 
         <Footer />

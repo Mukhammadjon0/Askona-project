@@ -33,8 +33,8 @@ export default function Sidebar() {
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 740 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      // onClick={toggleDrawer(anchor, false)}
+      // onKeyDown={toggleDrawer(anchor, false)}
     >
       <div>
         <div className="said_top">
