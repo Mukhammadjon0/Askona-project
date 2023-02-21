@@ -21,10 +21,13 @@ import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes } from 'react-router-dom';
 
 
+import Liked from './components/Liked/Liked';
+import Products from './page/Products/Products';
 
 function App() {
   const [userInfo, setUserInfo] = React.useState({})
   const [openEditUser, setOpenEditUser] = React.useState(false)
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false)
@@ -93,6 +96,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/products' element={<Products />} />
           <Route path='/ProductDetail' element={<ProductDetail />} />
           <Route path='/Zakaz' element={<Zakaz />} />
           <Route path='/Katalog' element={<Katalog />} />

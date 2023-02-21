@@ -21,9 +21,10 @@ import { FreeMode, Pagination } from "swiper";
 function Recommended() {
 
     const recommend = [
-        { image: Avinon, title: 'Анатомический матрас Askona Benefit', price: 48900, colors: { first: '#4E3A2F', second: '#183B51', 3: '#4E3A2F', 4: '#183B51', 5: '#4E3A2F', 6: '#183B51' }, oldPrice: 97800, id: 2 },
-        { image: Chair2, title: 'Анатомический матрас Askona Benefit', price: 48900, heightImg: Height, heightTitle: 'Высота:', height: '19 cm', weightImg: Weight, weightTitle: 'Вес на спальное место:', weight: 'с выше 140 кг', oldPrice: 97800, id: 1 },
-        { image: Avinon, title: 'Анатомический матрас Askona Benefit', price: 48900, colors: { first: '#4E3A2F', second: '#183B51', 3: '#4E3A2F', 4: '#183B51', 5: '#4E3A2F', 6: '#183B51' }, oldPrice: 97800, id: 2 },
+        { image: Avinon, title: 'Анатомический матрас Askona Benefit', price: 48900, colors: { first: '#4E3A2F', second: '#183B51', 3: '#4E3A2F', 4: '#183B51', 5: '#4E3A2F', 6: '#183B51' }, oldPrice: 97800, id: 1 },
+        { image: Chair2, title: 'Анатомический матрас Askona Benefit', price: 48900, heightImg: Height, heightTitle: 'Высота:', height: '19 cm', weightImg: Weight, weightTitle: 'Вес на спальное место:', weight: 'с выше 140 кг', oldPrice: 97800, id: 2 },
+        { image: Avinon, title: 'Анатомический матрас Askona Benefit', price: 48900, colors: { first: '#4E3A2F', second: '#183B51', 3: '#4E3A2F', 4: '#183B51', 5: '#4E3A2F', 6: '#183B51' }, oldPrice: 97800, id: 3 },
+        { image: Chair2, title: 'Анатомический матрас Askona Benefit', price: 48900, heightImg: Height, heightTitle: 'Высота:', height: '19 cm', weightImg: Weight, weightTitle: 'Вес на спальное место:', weight: 'с выше 140 кг', oldPrice: 97800, id: 4 },
     ]
     return (
         <div className="flex gap-7 flex-row p-6">

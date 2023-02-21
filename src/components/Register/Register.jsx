@@ -268,7 +268,6 @@ function Register() {
                     </Box>
                 </Box>
             </Modal>
-
         </div>
     )
 }
