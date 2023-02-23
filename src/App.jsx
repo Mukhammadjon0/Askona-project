@@ -12,8 +12,6 @@ import Box from '@mui/material/Box';
 import Basket from './components/Basket/Basket';
 import EditUserInfo from './components/UserInfo/EditUserInfo'
 import Footer from './components/Footer/Footer';
-import BasketTop from './components/BasketTop/BasketTop';
-import Sidebar from './components/Sidebar/Sidebar';
 import Home from './page/Home/Home';
 import Zakaz from './page/Zakaz/Zakaz';
 import Katalog from './page/Katalog/Katalog';
