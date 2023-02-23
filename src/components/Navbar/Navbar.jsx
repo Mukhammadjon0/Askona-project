@@ -25,25 +25,29 @@ import Category8 from "../../assets/img/kreslo.png";
 import "./Navbar.css";
 import Card from "../card/Card";
 function Navbar() {
-  const { handleOpen } = useContext(StateContext);
-  const { toggleDrawer, basket } = useContext(StateContext);
-  import React, { useContext, useState } from 'react'
-  import Topadvenses from '../../assets/img/topadv.png'
-  import { BiSearchAlt2 } from 'react-icons/bi'
-  import logoAksona from '../../assets/img/logo.png'
-  import { AiFillCloseCircle } from 'react-icons/ai'
-  import { BsChevronDown } from 'react-icons/bs'
-  import { TbPhoneCall } from 'react-icons/tb'
-  import { AiOutlineHeart } from 'react-icons/ai'
-  import { CgLogIn, CgShoppingCart } from 'react-icons/cg'
-  import { IoIosStats } from 'react-icons/io'
-  import { HiBars3BottomLeft } from 'react-icons/hi2'
-  import { FaPercentage } from 'react-icons/fa'
-  import { Link, NavLink } from 'react-router-dom'
-  import { StateContext } from '../../context'
-  import UserInfo from '../UserInfo/UserInfo'
-  import { IconButton } from '@mui/material'
-  import Liked from '../Liked/Liked'
+  // const { handleOpen } = useContext(StateContext);
+  // const { toggleDrawer, basket } = useContext(StateContext);
+  // import React, { useContext, useState } from 'react'
+  // import Topadvenses from '../../assets/img/topadv.png'
+  // import { BiSearchAlt2 } from 'react-icons/bi'
+  // import logoAksona from '../../assets/img/logo.png'
+  // import { AiFillCloseCircle } from 'react-icons/ai'
+  // import { BsChevronDown } from 'react-icons/bs'
+  // import { TbPhoneCall } from 'react-icons/tb'
+  // import { AiOutlineHeart } from 'react-icons/ai'
+  // import { CgLogIn, CgShoppingCart } from 'react-icons/cg'
+  // import { IoIosStats } from 'react-icons/io'
+  // import { HiBars3BottomLeft } from 'react-icons/hi2'
+  // import { FaPercentage } from 'react-icons/fa'
+  // import { Link, NavLink } from 'react-router-dom'
+  // import { StateContext } from '../../context'
+  // import UserInfo from '../UserInfo/UserInfo'
+  // import { IconButton } from '@mui/material'
+  // import Liked from '../Liked/Liked'
+  const { handleOpen, toggleDrawer, basket } = useContext(StateContext)
+
+  const [categories, setCategories] = useState(true);
+  const loggedIn = true;
 
 
   function Navbar() {
@@ -239,8 +243,8 @@ function Navbar() {
           </div>
           <div
             className={`${categories
-                ? "hidden"
-                : "bg-white w-full absolute z-50 border-2 flex"
+              ? "hidden"
+              : "bg-white w-full absolute z-50 border-2 flex"
               }`}
             style={{ bgcolor: "background.paper" }}
           >

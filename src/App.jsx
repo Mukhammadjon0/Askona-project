@@ -19,9 +19,6 @@ import Zakaz from './page/Zakaz/Zakaz';
 import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes } from 'react-router-dom';
-
-
-import Liked from './components/Liked/Liked';
 import Products from './page/Products/Products';
 
 function App() {
@@ -104,12 +101,6 @@ function App() {
         <Register />
         <EditUserInfo />
         <Basket />
-
-
-        <BasketTop />
-        <Sidebar />
-
-
         <Footer />
       </div>
     </StateContext.Provider>

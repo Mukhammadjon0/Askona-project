@@ -1,8 +1,11 @@
 import React from 'react'
+import BasketTop from '../../components/BasketTop/BasketTop'
 
 function Zakaz() {
   return (
-    <div>Zakaz</div>
+    <div>
+      <BasketTop/>
+    </div>
   )
 }
 
