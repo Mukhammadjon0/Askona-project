@@ -1,0 +1,13 @@
+.filter-left{
+    width: 30%;
+    border-right: 1px solid #ebebeb;
+}
+.filter-right{
+    width: 100%;
+}
+.filter-right >div{
+    display: grid;
+    grid-template-columns:repeat(3,33%);
+
+   
+}
