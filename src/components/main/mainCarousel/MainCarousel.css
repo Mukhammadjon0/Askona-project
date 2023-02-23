@@ -6,6 +6,12 @@
   margin-top: 31px;
   text-align: start !important;
 }
+.product-card {
+  width: 100%;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #eeeeee;
+}
 
 .main__card-head {
   position: relative;
@@ -80,12 +86,11 @@
   color: #878787;
   font-weight: 400;
 }
-.swiper-button-prev{
+.swiper-button-prev {
   left: 0 !important;
   right: auto;
 }
-.swiper-button-next{
+.swiper-button-next {
   right: 0 !important;
   left: auto;
 }
-

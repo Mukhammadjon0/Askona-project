@@ -1,16 +1,16 @@
 import React from 'react'
 import { VscSymbolRuler } from 'react-icons/vsc'
 import spanImg from '../../assets/img/spanImg.png'
+import Photo from '../../assets/img/Mebil2.png'
 
-
-function ProductCard({ name, price, images, massa, balandligi }) {
+function ProductCard({ name, price, images, massa, balandligi, credit }) {
   console.log(images[0]);
   return (
     <div>
-      <div className="main__card bg-red-400 p-4">
+      <div className="product-card p-4">
         <div className="main__card-head">
-          <div className="main__card-img">
-            <img src={images[0]} alt="" />
+          <div className="main__card-img cursor-pointer">
+            <img src={Photo} alt="" />
           </div>
           <div className="main__card-status flex justify-between px-[13px]">
             <img src={spanImg} alt="img" />
@@ -31,7 +31,7 @@ function ProductCard({ name, price, images, massa, balandligi }) {
             </span>
           </p>
           <p className="card__body-payment">
-            Рассрочка от <span className="text-[#212121]">289.5 BYN</span>
+            Рассрочка от <span className="text-[#212121]">{credit} BYN</span>
           </p>
           <div className="card__body-desc flex gap-[14px]">
             <div className="card__body-descLeft flex gap-[18.3px] items-center">

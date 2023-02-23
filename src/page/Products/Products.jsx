@@ -4,7 +4,6 @@ import ProductCard from './ProductCard'
 
 function Products() {
     const [products, setProducts] = useState([])
-    console.log(products);
     const [isLoading, setIsLoading] = useState(true)
 
     const productsInfo = async () => {
@@ -22,7 +21,7 @@ function Products() {
     }, [])
     console.log(products)
     return (
-        <div className='flex flex-row flex-wrap'>
+        <div className='grid grid-cols-4 gap-5 py-10'>
             {isLoading ? <h1>Loading...</h1> :
                 products.map(product => <ProductCard key={product.id} {...product} />)
             }
