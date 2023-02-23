@@ -1,33 +1,10 @@
-import React, { useContext, useEffect } from 'react'
-import { IconButton, Menu, } from '@mui/material';
-import { Box } from '@mui/system';
-import axios from 'axios'
-import { BiUser } from 'react-icons/bi';
-import { StateContext } from '../../context';
+import React from 'react'
+import { Box, IconButton, Menu } from '@mui/material';
+import Prod from '../../assets/img/router.png'
+import { AiOutlineHeart } from 'react-icons/ai';
+import LikedCard from './LikedCard';
 
-function UserInfo() {
-    const { setOpenEditUser, userInfo, setUserInfo } = useContext(StateContext)
-
-    const userData = JSON.parse(localStorage.getItem("userData"))
-
-    const userBtn = async () => {
-        await axios.get('https://askona.herokuapp.com/api/v1/user/',
-            {
-                headers: {
-                    Authorization: `Bearer ${userData?.token}`
-                }
-            })
-            .then(res => {
-                setUserInfo(res.data)
-            })
-            .catch((err) => console.log(err))
-    }
-    useEffect(() => {
-        userBtn()
-    }, [])
-
-
-
+function Liked() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -37,7 +14,11 @@ function UserInfo() {
         setAnchorEl(null);
     };
 
-    const handleOpenEditUser = () => setOpenEditUser(true)
+    const liked = [
+        { image: Prod, title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 1 },
+        { image: Prod, title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 2 },
+        { image: Prod, title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 3 },
+    ]
     return (
         <div>
             <React.Fragment>
@@ -50,7 +31,12 @@ function UserInfo() {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <BiUser className='cursor-pointer text-black' />
+                        <div className="relative cursor-pointer">
+                            <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
+                                <p className='font-semibold text-[12px] text-white'>{liked.length}</p>
+                            </div>
+                            <AiOutlineHeart className='cursor-pointer text-black' />
+                        </div>
                     </IconButton>
                 </Box>
                 <Menu
@@ -61,7 +47,7 @@ function UserInfo() {
                     open={open}
                     onClose={handleClose}
 
-                    onClick={handleClose}
+                    // onClick={handleClose}
                     PaperProps={{
                         elevation: 0,
                         sx: {
@@ -91,16 +77,12 @@ function UserInfo() {
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                    <div className="p-4">
-                        <div className="p-4 pt-0 flex flex-col items-center">
-                            <span className='font-semibold text-xl'>{userInfo.name}</span>
-                            <span className='font-medium text-ms'>{userInfo.email}</span>
-                            <span>{userInfo.mobile}</span>
-                        </div>
+                    <div className="flex flex-col p-3 gap-5">
                         <div className="flex flex-col gap-2">
-                            <button onClick={handleOpenEditUser} className='w-full py-2 bg-[#00bac9] text-white rounded'>Редактировать</button>
-                            <button className='w-full border-t-[1px] py-2 bg-[#00bac9] text-white rounded-b-sm rounded'>Выйти</button>
+                            {liked.map(item => <LikedCard key={item.id} {...item} />)}
                         </div>
+
+                        <button className='w-full py-2 bg-[#00bac9] text-white'>delete all</button>
                     </div>
                 </Menu>
             </React.Fragment>
@@ -108,4 +90,4 @@ function UserInfo() {
     )
 }
 
-export default UserInfo
+export default Liked

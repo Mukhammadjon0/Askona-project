@@ -8,7 +8,13 @@ import Frame1 from "../../assets/img/Frame2.png"
 import Frame2 from "../../assets/img/Frame (1).png"
 import Frame3 from "../../assets/img/Frame (2).png"
 import Group from "../../assets/img/Group.png"
+import { Button, Drawer } from '@mui/material'
+import { StateContext } from '../../context'
+import Sidebar from '../Sidebar/Sidebar'
 function DivanHunburg() {
+
+  const { toggleDrawer, state } = React.useContext(StateContext)
+
   return (
     <div>
       <div>
@@ -79,13 +85,27 @@ function DivanHunburg() {
               </div>
               <img src={Knopka} alt="" />
             </div>
-            <div className="mt-5 flex items-center justify-between border-b border-solid border-gray-300 pb-5 ">
-              <div className="flex items-center">
-                <img className="mr-2" src={Group} alt="" />
-                <h2>Доставка и самовывоз</h2>
-              </div>
-              <img src={Knopka} alt="" />
-            </div>
+
+            {["right"].map((anchor) => (
+              <React.Fragment key={anchor}>
+                <button onClick={toggleDrawer(anchor, true)} className='w-full'>
+                  <div className="mt-5 flex items-center duration-300 justify-between border-b border-solid border-gray-300 pb-5 ">
+                    <div className="flex items-center">
+                      <img className="mr-2" src={Group} alt="" />
+                      <h2>Доставка и самовывоз</h2>
+                    </div>
+                    <img src={Knopka} alt="" />
+                  </div>
+                </button>
+                <Drawer
+                  anchor={anchor}
+                  open={state[anchor]}
+                  onClose={toggleDrawer(anchor, false)}
+                >
+                  <Sidebar />
+                </Drawer>
+              </React.Fragment>
+            ))}
             <div className="mt-5 flex items-center justify-between border-b border-solid border-gray-300 pb-5 ">
               <div className="flex items-center">
                 <img className="mr-2" src={Frame2} alt="" />

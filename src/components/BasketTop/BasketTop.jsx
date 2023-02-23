@@ -62,14 +62,14 @@ function BasketTop() {
         <h1>Стоимость заказа</h1>
         <h2>Сроки доставки уточнит менеджер при обработке заказа</h2>
         <div className="prod1">
-        <div className="product">
-          <p>Товары (2)</p>
-          <p>Скидка</p>
-        </div>
-        <div className="sale">
-          <p>100 BYN</p>
-          <p>-0 BYN</p>
-        </div>
+          <div className="product">
+            <p>Товары (2)</p>
+            <p>Скидка</p>
+          </div>
+          <div className="sale">
+            <p>100 BYN</p>
+            <p>-0 BYN</p>
+          </div>
         </div>
         <hr />
         <select>
@@ -79,24 +79,24 @@ function BasketTop() {
         </select>
         <hr />
         <div className="tot1">
-        <div className="total">
-          <h4>Итого</h4>
-          <h3>Сейчас к оплате</h3>
-        </div>
-        <div className="pay">
-          <p>127 BYN</p>
-          <p>127 BYN</p>
-        </div>
+          <div className="total">
+            <h4>Итого</h4>
+            <h3>Сейчас к оплате</h3>
+          </div>
+          <div className="pay">
+            <p>127 BYN</p>
+            <p>127 BYN</p>
+          </div>
         </div>
         <div className="btns">
           <button className="butt1">Купить в 1 клик</button>
           <button className="butt2">Отправить заказ</button>
         </div>
         <div className="end1">
-        <p>
-          Нажимая на кнопку, вы соглашаетесь с <span> договором-оферты </span>и <span>  политикой
-          обработки и защиты персональных данных.</span>
-        </p>
+          <p>
+            Нажимая на кнопку, вы соглашаетесь с <span> договором-оферты </span>и <span>  политикой
+              обработки и защиты персональных данных.</span>
+          </p>
         </div>
       </div>
     </div>
