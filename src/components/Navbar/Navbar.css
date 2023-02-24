@@ -1,13 +1,15 @@
-.filter-left{
-    width: 30%;
-    border-right: 1px solid #ebebeb;
+.filter-left {
+  width: 30%;
+  border-right: 1px solid #ebebeb;
 }
-.filter-right{
-    width: 100%;
+.filter-right {
+  width: 100%;
 }
-.filter-right >div{
-    display: grid;
-    grid-template-columns:repeat(3,33%);
-
-   
+.filter-right > div {
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+}
+.father .search-input:focus {
+  border-color: #00b6c9;
+  color: red;
 }

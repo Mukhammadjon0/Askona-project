@@ -1,22 +1,29 @@
 import React from 'react'
 import { VscSymbolRuler } from 'react-icons/vsc'
 import spanImg from '../../assets/img/spanImg.png'
-import Photo from '../../assets/img/Mebil2.png'
 
-function ProductCard({ name, price, images, massa, balandligi, credit }) {
-  console.log(images[0]);
+import { useNavigate } from 'react-router-dom';
+
+function ProductCard({ product }) {
+  const { id, name, price, images, massa, balandligi, credit } = product
+  const navigate = useNavigate()
+  const getDetail = () => {
+    navigate(`/ProductDetail/${id}`)
+  }
   return (
     <div>
       <div className="product-card p-4">
         <div className="main__card-head">
-          <div className="main__card-img cursor-pointer">
-            <img src={Photo} alt="" />
-          </div>
-          <div className="main__card-status flex justify-between px-[13px]">
-            <img src={spanImg} alt="img" />
-            <span className="main__card-span bg-[#FFD54F] w-[116px] h-[24px] rounded flex justify-center items-center text-[12px] font-medium">Товар недели
-            </span>
-          </div>
+          <button onClick={getDetail}>
+            <div className="main__card-img cursor-pointer">
+              <img src={`https://askona.herokuapp.com/${images[0]}`} alt="product" />
+            </div>
+            <div className="main__card-status flex justify-between px-[13px]">
+              <img src={spanImg} alt="img" />
+              <span className="main__card-span bg-[#FFD54F] w-[116px] h-[24px] rounded flex justify-center items-center text-[12px] font-medium">Товар недели
+              </span>
+            </div>
+          </button>
         </div>
         <span className="main__card-line"></span>
         <div className="main__card-body mt-[27px]">

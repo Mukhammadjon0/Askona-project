@@ -27,10 +27,10 @@ import Card from "../card/Card";
 import Liked from '../Liked/Liked'
 
 function Navbar() {
-  const { handleOpen, toggleDrawer, basket } = useContext(StateContext)
+  const { handleOpen, toggleDrawer } = useContext(StateContext)
 
   const [categories, setCategories] = useState(true);
-  const loggedIn = false;
+  const loggedIn = true
   const data = [
     {
       title: "По категориям",
@@ -112,15 +112,15 @@ function Navbar() {
                 <NavLink className='flex items-center font-normal text-sm leading-4' href="#!">Минск <BsChevronDown className='text-navTopbBg pl-2 text-3xl' /></NavLink>
                 <span className='text-start flex items-center text-gray-400 text-sm'>Магазины: <p className='font-bold text-black pl-2'>30</p></span>
                 <div className="flex gap-8">
-                  <div className="rounded py-2 px-2 flex items-center gap-4 w-96 border border-solid active:border-[#00b6c9]">
+                  <div className="father rounded py-2 px-2 flex items-center gap-4 w-96 border border-gray-300">
                     <BiSearchAlt2 className="text-[#00B6C9] text-lg font-bold" />
                     <input
                       type="text"
                       placeholder="Поиск по товарам..."
-                      className="outline-none w-full"
+                      className="outline-none w-full search-input"
                     />
                   </div>
-                  <button className="group rounded flex items-center border border-solid py-2 px-2 text-center hover:text-[#00b6c9] hover:border-[#00b6c9]">
+                  <button className="group rounded flex items-center border border-gray-300 py-2 px-2 text-center hover:text-[#00b6c9] hover:border-[#00b6c9]">
                     <TbPhoneCall className="text-gray-400  pr-2 text-2xl group-hover:text-[#00b6c9]" />
                     Перезвоните мне
                   </button>
@@ -155,7 +155,7 @@ function Navbar() {
                   <IconButton onClick={toggleDrawer(anchor, true)}>
                     <div className="relative cursor-pointer">
                       <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
-                        <p className='font-semibold text-[12px] text-white'>{basket.length}</p>
+                        <p className='font-semibold text-[12px] text-white'>2</p>
                       </div>
                       <CgShoppingCart className="cursor-pointer text-black" />
                     </div>
@@ -170,14 +170,14 @@ function Navbar() {
 
       <div className="w-full border-b-[1px] border-gray-200 py-3">
         <div className="container">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-wrap">
             <button
               onClick={() => setCategories((p) => !p)}
               className="w-[180px] border border-solid bg-[#00B6C9] px-4 py-3 flex items-center text-white font-bold whitespace-nowrap"
             >
               <HiBars3BottomLeft className="mr-5" /> Все товары{" "}
             </button>
-            <NavLink className="text-black text-lg font-medium" to="">
+            <NavLink className="text-black text-lg font-medium" to="/products">
               Матрасы
             </NavLink>
             <NavLink className="text-black text-lg font-medium" to="">
@@ -251,7 +251,6 @@ function Navbar() {
         </div>
         <div className="filter-right">
           <h1>Матрасы</h1>
-
           <div>
             {data.map((item, index) => (
               <Card key={index} {...item} />

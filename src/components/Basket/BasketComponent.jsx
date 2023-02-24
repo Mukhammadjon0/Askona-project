@@ -4,10 +4,23 @@ import Minus from '../../assets/icon/minus.svg'
 import Plus from '../../assets/icon/plus.svg'
 import { HiXMark } from 'react-icons/hi2';
 import { IoIosStats } from 'react-icons/io';
+import axios from 'axios';
 
 
-function BasketComponent({ image, title, price, oldPrice }) {
+function BasketComponent({ product }) {
     const [count, setCount] = useState(1)
+
+    const userData = JSON.parse(localStorage.getItem("userData"))
+
+    const deleteFromBasket = () => {
+        const body = {
+            bron_id: 1
+        }
+        const headers = {
+            Authorization: `Bearer ${userData?.token}`,
+        };
+        axios.delete('https://askona.herokuapp.com/api/v1/basket', { headers }, body)
+    }
     const minusBtn = () => {
         if (count > 1) setCount((p) => p - 1);
         else setCount(1);
@@ -17,26 +30,26 @@ function BasketComponent({ image, title, price, oldPrice }) {
 
             <div className='flex bg-white py-6 justify-between group'>
                 <div className="flex">
-                    <img src={image} alt="img" />
+                    <img src={product.image} alt="img" />
                     <div className="flex flex-col justify-between ml-8">
-                        <h1 className='font-semibold text-sm group-hover:text-[#00B9C0] duration-200'>{title}</h1>
+                        <h1 className='font-semibold text-sm group-hover:text-[#00B9C0] duration-200'>{product.name}</h1>
                         <div className="flex justify-between">
                             <div className="flex gap-2 cursor-pointer cancel-basket">
                                 <IoIosStats className='stat-xmark' />
                                 <span className='font-normal text-[10px] text-gray-400 xmark-text'>Добавить к сравнению</span>
                             </div>
-                            <div className="flex gap-3 cursor-pointer cancel-basket">
+                            <button onClick={deleteFromBasket} className="flex gap-3 cursor-pointer cancel-basket">
                                 <HiXMark className='stat-xmark' />
                                 <span className='font-normal text-[10px] text-gray-400 xmark-text'>Удалить</span>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <div className="flex flex-col justify-between">
                     <div className="flex flex-col">
-                        <p className='text-[#00B9C0] font-semibold text-sm'>{price} BYN</p>
-                        <span className='text-gray-400 line-through text-xs'>{oldPrice} BYN</span>
+                        <p className='text-[#00B9C0] font-semibold text-sm'>{product.price} BYN</p>
+                        <span className='text-gray-400 line-through text-xs'>98 000 BYN</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <button onClick={minusBtn} className='py-1'>
