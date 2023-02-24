@@ -1,0 +1,126 @@
+.Discount {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  margin-top: 25px;
+}
+
+/* Address_shop */
+
+.Address_shop {
+  background-image: url(../../assets/image/screenshot-yandex\ 1.png);
+  background-repeat: no-repeat;
+  width: 406px;
+  height: 288px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Address_shop_h3 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin-top: 57px;
+}
+
+.Address_shop_p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.Address_shop_button {
+  width: 261.77px;
+  height: 39px;
+  background: #00b9bf;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  margin: 60px 0 47px;
+}
+
+/* quality */
+
+.quality {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #00b9bf;
+  border-radius: 4px;
+  width: 845px;
+  padding: 30px 60px 30px 50px;
+}
+
+.quality_left {
+  margin-top: 10px;
+}
+
+.quality_left_h1 {
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.quality_left_df_h1 {
+  font-weight: 800;
+  font-size: 58px;
+  line-height: 72px;
+  text-transform: uppercase;
+  color: #ffd54f;
+}
+
+.quality_left_df_h2 {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 25px;
+  text-transform: uppercase;
+  color: #ffd54f;
+}
+
+.quality_left_df {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 35px;
+  gap: 5px;
+  width: 199px;
+}
+
+.quality_left_button {
+  width: 148px;
+  height: 39px;
+  background: #ffffff;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #00b6c9;
+}
+
+/* Selection_mattresses */
+
+.Selection_mattresses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 406px;
+  height: 288px;
+  background-color: #e8e5e9;
+  position: relative;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.Selection_mattresses_img {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
