@@ -1,29 +1,15 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import ProductCard from './ProductCard'
+import { StateContext } from '../../context'
 
 function Products() {
-    const [products, setProducts] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    const { products, isLoading } = useContext(StateContext)
 
-    const productsInfo = async () => {
-        try {
-            const response = await axios.get('https://askona.herokuapp.com/api/v1/product/')
-            setProducts(response.data)
-            setIsLoading(false)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    useEffect(() => {
-        productsInfo()
-    }, [])
-    console.log(products)
     return (
-        <div className='grid grid-cols-4 gap-5 py-10'>
+        <div className='grid grid-cols-4 gap-5 container'>
+
             {isLoading ? <h1>Loading...</h1> :
-                products.map(product => <ProductCard key={product.id} {...product} />)
+                products.map(product => <ProductCard key={product.id} product={product} {...product} />)
             }
         </div>
     )

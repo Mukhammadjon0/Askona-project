@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, FreeMode, Pagination } from "swiper";
-import { bestSales } from "../../../datas";
 import { VscSymbolRuler } from "react-icons/vsc";
+import { StateContext } from "../../../context";
+import { useNavigate } from "react-router-dom";
 function MainNovelties() {
-
+  const { products } = useContext(StateContext)
+  const navigate = useNavigate()
+  const getDetail = () => {
+    navigate(`/products`)
+  }
   return (
     <div className="">
       <h1 className="title">Новинки</h1>
@@ -30,9 +35,9 @@ function MainNovelties() {
       >
         <div className="">
 
-          {bestSales.map((el) => (
+          {products.map((el) => (
             <SwiperSlide key={el.id}>
-              <div className="main__card bg-red-400 p-4">
+              <div onClick={getDetail} className="main__card bg-red-400 p-4">
                 <div className="main__card-head">
                   <div className="main__card-img">
                     <img src={el.image} alt="" />
