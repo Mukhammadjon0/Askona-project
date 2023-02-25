@@ -26,7 +26,7 @@ function EditUserInfo() {
     const headers = {
       Authorization: `Bearer ${userData?.token}`
     }
-    axios.put("https://askona.herokuapp.com/api/v1/user/",body, { headers })
+    axios.put("https://askona.herokuapp.com/api/v1/user/", body, { headers })
       .then(res => {
         console.log(res.data)
         setUserInfo(res.data)

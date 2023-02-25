@@ -3,7 +3,7 @@ import BasketTop from '../../components/BasketTop/BasketTop'
 
 function Zakaz() {
   return (
-    <div>
+    <div className='py-10 bg-gray-200'>
       <BasketTop/>
     </div>
   )

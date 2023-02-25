@@ -8,15 +8,16 @@ function ProductCard({ product }) {
   const { id, name, price, images, massa, balandligi, credit } = product
   const navigate = useNavigate()
   const getDetail = () => {
-    navigate(`/ProductDetail/${id}`)
+    navigate(`/productdetail/${id}`)
   }
+  console.log(product)
   return (
     <div>
       <div className="product-card p-4">
         <div className="main__card-head">
           <button onClick={getDetail}>
             <div className="main__card-img cursor-pointer">
-              <img src={`https://askona.herokuapp.com/${images[0]}`} alt="product" />
+              <img src={`https://askona.herokuapp.com${images[0]}`} alt="product" />
             </div>
             <div className="main__card-status flex justify-between px-[13px]">
               <img src={spanImg} alt="img" />

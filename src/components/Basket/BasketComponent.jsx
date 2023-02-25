@@ -1,36 +1,36 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Basket.css'
 import Minus from '../../assets/icon/minus.svg'
 import Plus from '../../assets/icon/plus.svg'
 import { HiXMark } from 'react-icons/hi2';
 import { IoIosStats } from 'react-icons/io';
 import axios from 'axios';
+import { StateContext } from '../../context';
 
 
-function BasketComponent({ product }) {
+function BasketComponent({ product, }) {
     const [count, setCount] = useState(1)
-
-    const userData = JSON.parse(localStorage.getItem("userData"))
+    const { userData } = useContext(StateContext)
 
     const deleteFromBasket = () => {
-        const body = {
-            bron_id: 1
+        const params = {
+            bron_id: product.id
         }
         const headers = {
             Authorization: `Bearer ${userData?.token}`,
         };
-        axios.delete('https://askona.herokuapp.com/api/v1/basket', { headers }, body)
+        axios.delete('https://askona.herokuapp.com/api/v1/basket', params, { headers })
     }
+
     const minusBtn = () => {
         if (count > 1) setCount((p) => p - 1);
         else setCount(1);
     };
     return (
         <div className="">
-
             <div className='flex bg-white py-6 justify-between group'>
                 <div className="flex">
-                    <img src={product.image} alt="img" />
+                    <img className='w-32' src={`https://askona.herokuapp.com${product.images[0]}`} alt="img" />
                     <div className="flex flex-col justify-between ml-8">
                         <h1 className='font-semibold text-sm group-hover:text-[#00B9C0] duration-200'>{product.name}</h1>
                         <div className="flex justify-between">

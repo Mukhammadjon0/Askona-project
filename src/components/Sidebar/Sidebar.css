@@ -32,13 +32,8 @@
 }
 .image{
     display: flex;
-    
-
-
-}
-.image>img{
-   margin-right: 36px;
-
+    align-items: center;
+    justify-content: space-between;
 }
 .ourTop{
     padding:19px 32px;
