@@ -13,6 +13,17 @@ import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Products from './page/Products/Products';
 import axios from 'axios';
+import Cancel from './assets/icon/cancel.svg'
+import Prod from './assets/img/router.png'
+import BasketComponent from './components/Basket/BasketComponent'
+import { AiFillQuestionCircle } from 'react-icons/ai';
+import Recommended from './components/Basket/Recommended';
+import Box from '@mui/material/Box';
+import Basket from './components/Basket/Basket';
+import Contact_info from './components/contact_info/Contact_info';
+import Useful_info from './components/useful_info/Useful_info';
+import Order from './components/order/Order';
+import Discount from './components/discount/Discount';
 
 function App() {
 
@@ -34,7 +45,7 @@ function App() {
   React.useEffect(() => {
     productsInfo()
   }, [])
-  
+
 
 
 
@@ -68,6 +79,10 @@ function App() {
         <Register />
         <EditUserInfo />
         <Basket />
+        <Discount />
+        <Useful_info />
+        <Contact_info />
+        {/* <Order /> */}
         <Footer />
       </div>
     </StateContext.Provider>
