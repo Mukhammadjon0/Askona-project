@@ -1,7 +1,7 @@
 import React from 'react'
 import './Discount.css'
-import img1 from '../../assets/image/pngwing 14.png'
-import img2 from '../../assets/image/pngwing 13.png'
+import img1 from '../../assets/img/pngwing 14.png'
+import img2 from '../../assets/img/pngwing 13.png'
 
 
 function Discount() {

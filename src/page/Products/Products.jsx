@@ -1,16 +1,14 @@
-import React, { useContext } from 'react'
 import ProductCard from './ProductCard'
-import { StateContext } from '../../context'
+import { useProductsQuery } from '../../services/productApi';
 
 function Products() {
-    const { products, isLoading } = useContext(StateContext)
 
+    const { data: products,  isLoading: productsIsloading, isSuccess: productsIsSuccess } = useProductsQuery()
     return (
         <div className='grid grid-cols-4 gap-5 container'>
+            {productsIsloading && <h1>Loading...</h1>}
+            {productsIsSuccess && products.map(product => <ProductCard key={product.id} product={product} {...product} />)}
 
-            {isLoading ? <h1>Loading...</h1> :
-                products.map(product => <ProductCard key={product.id} product={product} {...product} />)
-            }
         </div>
     )
 }

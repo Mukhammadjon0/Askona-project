@@ -5,16 +5,17 @@ import { Box } from '@mui/material';
 import BasketComponent from './BasketComponent';
 import Cancel from '../../assets/icon/cancel.svg'
 import { AiFillQuestionCircle } from 'react-icons/ai';
-import Prod from '../../assets/img/router.png'
 import Recommended from './Recommended';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Basket() {
-    const { toggleDrawer, state, basket, setBasket } = React.useContext(StateContext)
-    const [isLoading, setIsLoading] = React.useState(true)
-    const userData = JSON.parse(localStorage.getItem("userData"))
 
-    const productsInfo = async () => {
+    const { toggleDrawer, state, basket, setBasket, userData } = React.useContext(StateContext)
+    const [isLoading, setIsLoading] = React.useState(true)
+    const navigate = useNavigate()
+
+    const basketInfo = async () => {
         await axios.get('https://askona.herokuapp.com/api/v1/basket/', {
             headers: {
                 Authorization: `Bearer ${userData?.token}`
@@ -26,11 +27,17 @@ function Basket() {
             })
             .catch((err) => console.log(err))
     }
+console.log(basket)
+    const zakazHandler = () => {
+        toggleDrawer(false)
+        navigate('/zakaz')
+
+    }
+
 
     React.useEffect(() => {
-        productsInfo()
+        basketInfo()
     }, [])
-    console.log(basket)
     return (
         <div>
             {['right'].map((anchor) => (
@@ -38,7 +45,7 @@ function Basket() {
                     <Drawer
                         anchor={anchor}
                         open={state[anchor]}
-                        onClose={toggleDrawer(anchor, false)}
+                        onClose={toggleDrawer(false)}
                     >
                         <Box
                             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 'auto' }}
@@ -53,7 +60,9 @@ function Basket() {
                                     </button>
                                 </div>
                                 <div className="divide-y px-6">
-                                    {basket.map(basketProd => <BasketComponent key={basketProd.id} {...basketProd} />)}
+                                    {basket?
+                                        (basket.map(basketProd => <BasketComponent key={basketProd.id} {...basketProd} />))
+                                        : <h1>продукты не найдены</h1>}
                                 </div>
                                 <div className="flex flex-row justify-between px-6 py-5 border-t-[1px] border-gray-300">
                                     <h1 className='font-bold text-xl text-black'>Итого:</h1>
@@ -66,8 +75,8 @@ function Basket() {
                                     </div>
                                 </div>
                                 <div className="flex px-6 py-6 flex-row justify-between">
-                                    <button className='text-gray-500 text-base px-16 border-[1px] border-gray-500 py-2 rounded'>Купить в 1 клик</button>
-                                    <button className='text-white bg-[#00B6C9] text-base px-16 py-2 rounded'>Оформить заказ</button>
+                                    <button onClick={zakazHandler} className='text-gray-500 text-base px-16 border-[1px] border-gray-500 py-2 rounded'>Купить в 1 клик</button>
+                                    <button onClick={zakazHandler} className='text-white bg-[#00B6C9] text-base px-16 py-2 rounded'>Оформить заказ</button>
                                 </div>
                                 <div className="flex flex-row items-center p-6 justify-between">
                                     <h1 className='font-bold text-2xl text-black'>С этим товаром покупают</h1>

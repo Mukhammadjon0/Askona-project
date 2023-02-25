@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, FreeMode, Pagination } from "swiper";
 import { VscSymbolRuler } from "react-icons/vsc";
-import { StateContext } from "../../../context";
 import { useNavigate } from "react-router-dom";
+import { useProductsQuery } from "../../../services/productApi";
 function MainNovelties() {
-  const { products } = useContext(StateContext)
+  const {data:products,isLoading:productsIsloading,isSuccess:productsIsSuccess}=useProductsQuery()
+
   const navigate = useNavigate()
   const getDetail = () => {
     navigate(`/products`)
@@ -34,13 +34,13 @@ function MainNovelties() {
 
       >
         <div className="">
-
-          {products.map((el) => (
+           {productsIsloading && <p>Loading...</p>}
+           {productsIsSuccess && products.map((el) => (
             <SwiperSlide key={el.id}>
               <div onClick={getDetail} className="main__card bg-red-400 p-4">
                 <div className="main__card-head">
                   <div className="main__card-img">
-                    <img src={el.image} alt="" />
+                    <img src={`https://askona.herokuapp.com${el.images[0]}`} alt="" />
                   </div>
                   <div className="main__card-status flex justify-between px-[13px]">
                     <img src={el.spanImg} alt="" />

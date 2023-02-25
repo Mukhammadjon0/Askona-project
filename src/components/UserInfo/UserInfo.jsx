@@ -1,15 +1,14 @@
 import React, { useContext, useEffect } from 'react'
-import { IconButton, Menu, } from '@mui/material';
+import { Button, IconButton, Menu, } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios'
 import { BiUser } from 'react-icons/bi';
 import { StateContext } from '../../context';
 
 function UserInfo() {
-    const { setOpenEditUser, userInfo, setUserInfo } = useContext(StateContext)
+    const { setOpenEditUser, userInfo, setUserInfo, setOpenChangePassword, setUserData } = useContext(StateContext)
 
     const userData = JSON.parse(localStorage.getItem("userData"))
-
     const userBtn = async () => {
         await axios.get('https://askona.herokuapp.com/api/v1/user/',
             {
@@ -26,6 +25,11 @@ function UserInfo() {
         userBtn()
     }, [])
 
+    const handleLogOut = () => {
+        // localStorage.removeItem('userData')
+        setUserData({})
+        localStorage.removeItem('askonaToken')
+    }
 
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -36,8 +40,8 @@ function UserInfo() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     const handleOpenEditUser = () => setOpenEditUser(true)
+    const handleOpenChangePassword = () => setOpenChangePassword(true)
     return (
         <div>
             <React.Fragment>
@@ -98,8 +102,11 @@ function UserInfo() {
                             <span>{userInfo.mobile}</span>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <button onClick={handleOpenEditUser} className='w-full py-2 bg-[#00bac9] text-white rounded'>Редактировать</button>
-                            <button className='w-full border-t-[1px] py-2 bg-[#00bac9] text-white rounded-b-sm rounded'>Выйти</button>
+                            <Button onClick={handleOpenEditUser} className='w-full py-2 bg-[#00bac9] text-white rounded'>
+                                Редактировать
+                            </Button>
+                            <button onClick={handleOpenChangePassword} className='w-full border-t-[1px] py-2 bg-[#00bac9] text-white rounded'>Изменить пароль</button>
+                            <button onClick={handleLogOut} className='w-full border-t-[1px] py-2 bg-[#00bac9] text-white rounded'>Выйти</button>
                         </div>
                     </div>
                 </Menu>
