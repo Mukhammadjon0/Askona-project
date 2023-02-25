@@ -13,8 +13,6 @@ import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes, } from 'react-router-dom';
 import Products from './page/Products/Products';
 import axios from 'axios';
-import Contact_info from './components/contact_info/Contact_info';
-import Useful_info from './components/useful_info/Useful_info';
 import Discount from './components/discount/Discount';
 
 function App() {
@@ -72,8 +70,6 @@ function App() {
         <EditUserInfo />
         <Basket />
         <Discount />
-        <Useful_info />
-        <Contact_info />
         {/* <Order /> */}
         <Footer />
       </div>
