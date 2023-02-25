@@ -27,7 +27,7 @@ import Card from "../card/Card";
 import Liked from '../Liked/Liked'
 
 function Navbar() {
-  const { handleOpen, toggleDrawer, basket,userData  } = useContext(StateContext)
+  const { handleOpen, toggleDrawer, basket, userData } = useContext(StateContext)
 
   const [categories, setCategories] = useState(true);
   console.log(userData)

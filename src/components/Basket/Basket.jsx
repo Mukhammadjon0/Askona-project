@@ -24,11 +24,10 @@ function Basket() {
             .then((res) => {
                 setBasket(res.data)
                 setIsLoading(false)
-                console.log(res.data)
             })
             .catch((err) => console.log(err))
     }
-
+console.log(basket)
     const zakazHandler = () => {
         toggleDrawer(false)
         navigate('/zakaz')
@@ -61,7 +60,7 @@ function Basket() {
                                     </button>
                                 </div>
                                 <div className="divide-y px-6">
-                                    {basket > 0 ?
+                                    {basket?
                                         (basket.map(basketProd => <BasketComponent key={basketProd.id} {...basketProd} />))
                                         : <h1>продукты не найдены</h1>}
                                 </div>

@@ -8,8 +8,8 @@ import axios from 'axios';
 import { StateContext } from '../../context';
 
 
-function BasketComponent({ product, }) {
-    const [count, setCount] = useState(1)
+function BasketComponent({ product, soni }) {
+    const [count, setCount] = useState(soni)
     const { userData } = useContext(StateContext)
 
     const deleteFromBasket = () => {
