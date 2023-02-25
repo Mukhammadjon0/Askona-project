@@ -12,8 +12,6 @@ import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes, } from 'react-router-dom';
 import Products from './page/Products/Products';
-import axios from 'axios';
-import Discount from './components/discount/Discount'
 import ChangePassword from './components/UserInfo/ChangePassword';
 
 function App() {
@@ -56,8 +54,6 @@ function App() {
         <EditUserInfo />
         <ChangePassword />
         <Basket />
-        <Discount />
-        {/* <Order /> */}
         <Footer />
       </div>
     </StateContext.Provider>

@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import "./BasketTop.css";
-import meb from "../../assets/img/download 1.svg";
-import ud from "../../assets/img/Удаление.svg";
-import Order from "../Order/Order";
+import Order from "../order/Order";
 import { useNavigate } from "react-router-dom";
 import BasketComponent from "../Basket/BasketComponent";
 import { StateContext } from "../../context";
