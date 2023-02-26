@@ -1,6 +1,5 @@
 import './App.css';
 import * as React from 'react';
-import Navbar from './components/Navbar/Navbar';
 import Register from './components/Register/Register';
 import { StateContext } from './context';
 import Basket from './components/Basket/Basket';
@@ -13,6 +12,10 @@ import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes, } from 'react-router-dom';
 import Products from './page/Products/Products';
 import ChangePassword from './components/UserInfo/ChangePassword';
+import Header from './components/Header/Header';
+import Nav from './components/Navbar/Nav';
+import NavCategories from './components/Navbar/NavCategories';
+import ScrollTop from './components/ScrollTop/ScrollTop';
 
 function App() {
   const [userData, setUserData] = React.useState(JSON.parse(localStorage.getItem("userData")) || {})
@@ -29,7 +32,7 @@ function App() {
     right: false,
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const handleOpenBasket = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
@@ -40,9 +43,11 @@ function App() {
   }, [userData])
 
   return (
-    <StateContext.Provider value={{ basket, userData, setUserData, setBasket, open, openChangePassword, setOpenChangePassword, handleOpen, setOpen, toggleDrawer, state, handleClose, category, setCategory, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
+    <StateContext.Provider value={{ basket, userData, setUserData, setBasket, open, openChangePassword, setOpenChangePassword, handleOpen, setOpen, handleOpenBasket, state, handleClose, category, setCategory, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
       <div className="App">
-        <Navbar />
+        <Header />
+        <Nav />
+        <NavCategories />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<Products />} />
@@ -55,6 +60,7 @@ function App() {
         <ChangePassword />
         <Basket />
         <Footer />
+        <ScrollTop/>
       </div>
     </StateContext.Provider>
   );

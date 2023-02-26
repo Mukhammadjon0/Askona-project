@@ -7,7 +7,6 @@ import { IoIosStats } from 'react-icons/io';
 import axios from 'axios';
 import { StateContext } from '../../context';
 
-
 function BasketComponent({ product, soni }) {
     const [count, setCount] = useState(soni)
     const { userData } = useContext(StateContext)

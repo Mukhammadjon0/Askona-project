@@ -102,11 +102,11 @@ function UserInfo() {
                             <span>{userInfo.mobile}</span>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <Button onClick={handleOpenEditUser} className='w-full py-2 bg-[#00bac9] text-white rounded'>
+                            <button onClick={handleOpenEditUser} className='w-full py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>
                                 Редактировать
-                            </Button>
-                            <button onClick={handleOpenChangePassword} className='w-full border-t-[1px] py-2 bg-[#00bac9] text-white rounded'>Изменить пароль</button>
-                            <button onClick={handleLogOut} className='w-full border-t-[1px] py-2 bg-[#00bac9] text-white rounded'>Выйти</button>
+                            </button>
+                            <button onClick={handleOpenChangePassword} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>Изменить пароль</button>
+                            <button onClick={handleLogOut} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>Выйти</button>
                         </div>
                     </div>
                 </Menu>

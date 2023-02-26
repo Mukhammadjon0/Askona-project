@@ -86,7 +86,7 @@ function ProductDetail({ handleOpen, userData }) {
                   </button>
                 </div>
                 <div className="w-[750px] border-2 border-solid border-gray-100 relative">
-                  <div className="flex flex-col items-end absolute z-50 right-4">
+                  <div className="flex flex-col items-end absolute z-20 right-4">
                     <p className="rounded bg-[#4FB7FF] px-2 py-1 w-32 text-white">
                       Товар недели
                     </p>
