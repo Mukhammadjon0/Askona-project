@@ -11,9 +11,13 @@ import Liked from '../Liked/Liked'
 import { StateContext } from '../../context'
 import { BsChevronDown } from 'react-icons/bs'
 import Search from '../Search/Search'
+import { useGetBasketQuery } from '../../services/basketApi'
+import Call from '../CallClient/Call'
 
 function Nav() {
-    const { handleOpen, handleOpenBasket, basket, userData } = useContext(StateContext)
+    const { data: basket, isSuccess: isBasketSuccess } = useGetBasketQuery();
+
+    const { handleOpen, handleOpenBasket, userData } = useContext(StateContext)
 
     return (
         <nav className="w-full py-5 bg-white sticky top-0 z-50 shadow">
@@ -27,13 +31,8 @@ function Nav() {
                             <NavLink className='flex items-center font-normal text-sm leading-4' href="#!">Минск <BsChevronDown className='text-navTopbBg pl-2 text-3xl' /></NavLink>
                             <span className='text-start flex items-center text-gray-400 text-sm'>Магазины: <p className='font-bold text-black pl-2'>30</p></span>
                             <div className="flex gap-8">
-
                                 <Search />
-
-                                <button className="group rounded flex items-center border border-gray-300 py-2 px-2 text-center hover:text-[#00b6c9] hover:border-[#00b6c9]">
-                                    <TbPhoneCall className="text-gray-400  pr-2 text-2xl group-hover:text-[#00b6c9]" />
-                                    Перезвоните мне
-                                </button>
+                                <Call />
                             </div>
                         </div>
                         <div className="flex ml-5 items-center gap-1">
@@ -65,7 +64,7 @@ function Nav() {
                                 <IconButton onClick={handleOpenBasket(anchor, true)}>
                                     <div className="relative cursor-pointer">
                                         <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
-                                            <p className='font-semibold text-[12px] text-white'>{basket.length}</p>
+                                            <p className='font-semibold text-[12px] text-white'>{(isBasketSuccess && basket?.length) || 0}</p>
                                         </div>
                                         <CgShoppingCart className="cursor-pointer text-black" />
                                     </div>

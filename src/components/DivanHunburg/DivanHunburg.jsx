@@ -12,25 +12,36 @@ import { Box, Drawer } from '@mui/material'
 import { StateContext } from '../../context'
 import Sidebar from '../Sidebar/Sidebar'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { AiOutlineHeart } from 'react-icons/ai'
-function DivanHunburg({ data, comments, toggleDrawer, state, }) {
+import { useAddProductToBasketMutation } from '../../services/basketApi'
+import { useGetCommentsQuery } from '../../services/commentApi'
+function DivanHunburg({ data, setState, state }) {
+
+  const { data: comments = [] } = useGetCommentsQuery(data.id)
+
+  const [addProduct] = useAddProductToBasketMutation()
   const { userData, handleOpen } = useContext(StateContext)
   const navigate = useNavigate()
 
+
+  const handleAddProduct = (productId) => {
+    addProduct(productId)
+  }
   const addToBasket = () => {
     if (userData.token) {
-      const body = {
-        product_id: data.id
-      }
-      const headers = {
-        Authorization: `Bearer ${userData?.token}`
-      }
-      axios.post("https://askona.herokuapp.com/api/v1/basket/", body, { headers })
+      handleAddProduct(data.id)
     }
     else handleOpen()
   }
-
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
+  };
   return (
     <div>
       <div className='w-full'>
@@ -135,6 +146,7 @@ function DivanHunburg({ data, comments, toggleDrawer, state, }) {
                 </Drawer>
               </React.Fragment>
             ))}
+
             <div className="mt-5 flex items-center justify-between border-b border-solid border-gray-300 pb-5 ">
               <div className="flex items-center">
                 <img className="mr-2" src={Frame2} alt="" />
@@ -150,7 +162,7 @@ function DivanHunburg({ data, comments, toggleDrawer, state, }) {
             <div className="mt-5 flex items-center justify-between border-b border-solid border-gray-300 pb-5 ">
               <div className="flex items-center">
                 <img className="mr-2" src={Frame3} alt="" />
-                <h2>Отзывы ({comments.length})</h2>
+                <h2>Отзывы ({comments?.length || 0})</h2>
               </div>
             </div>
           </div>

@@ -4,20 +4,31 @@ import Order from "../order/Order";
 import { useNavigate } from "react-router-dom";
 import BasketComponent from "../Basket/BasketComponent";
 import { StateContext } from "../../context";
+import { useGetBasketQuery } from "../../services/basketApi";
 
 function BasketTop() {
-  const { basket } = useContext(StateContext)
+  const { data: basket } = useGetBasketQuery()
   const navigate = useNavigate()
   return (
     <div className="flex flex-col container bg-gray-200 py-14">
       <h1 className="font-bold text-2xl">Оформление заказа</h1>
-
       <div className="basket__Container gap-8">
         <div className="flex flex-col gap-8">
           <div className="bask1 flex flex-col gap-8">
             <div className="basket__Box bg-white p-5">
-              <h2>Ваш заказ ({basket?.length})</h2>
-              {basket?.map(basketProd => <BasketComponent key={basketProd.id} {...basketProd} />)}
+              <h2>Ваш заказ ({basket?.length || 0})</h2>
+              {basket?.length > 0 ? (
+                basket.map((item) => (
+                  <BasketComponent
+                    key={item.id}
+                    product={item.product}
+                    soni={item.quantity}
+                    id={item.bron_id}
+                  />
+                ))
+              ) : (
+                <p></p>
+              )}
             </div>
             <Order />
           </div>
@@ -29,7 +40,7 @@ function BasketTop() {
           <h2>Сроки доставки уточнит менеджер при обработке заказа</h2>
           <div className="prod1">
             <div className="product">
-              <p>Товары (2)</p>
+              <p>Товары ({basket?.length || 0})</p>
               <p>Скидка</p>
             </div>
             <div className="sale">

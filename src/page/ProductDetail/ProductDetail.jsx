@@ -4,17 +4,17 @@ import search from "../../assets/img/search.png";
 import Pauz from "../../assets/img/Pauz.png";
 import DivanHunburg from "../../components/DivanHunburg/DivanHunburg";
 import Comments from '../../components/Comments/Comments';
-import { StateContext } from '../../context';
 import { useParams } from 'react-router-dom';
 import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from 'react-icons/md';
 import { useProductItemDetailsQuery } from '../../services/productApi';
+import AddComment from '../../components/Comments/AddComment';
 
 
 function ProductDetail({ handleOpen, userData }) {
   const { id } = useParams()
 
   // const data = products.find(item => item.id === Number(id))
-  const { data, isSuccess, isLoading } = useProductItemDetailsQuery(Number(id))
+  const { data, isSuccess, } = useProductItemDetailsQuery(Number(id))
   const [mainImgId, setMainImgId] = useState(0)
 
   const nextImg = () => {
@@ -39,32 +39,10 @@ function ProductDetail({ handleOpen, userData }) {
     }
   }, [mainImgId])
 
-  const comments = [
-    {
-      name: 'Ирина', text: 'Мягкий и на высоких деревянных ножках, в духе ультрамодных тенденций. Сдержанный дизайн и продуманная до мелочей функциональность – в актуальном скандинавском стиле. Компактный Talo освободит пространство даже на небольших площадях.', id: 1
-    },
-    {
-      name: 'Ирина', text: 'Мягкий и на высоких деревянных ножках, в духе ультрамодных тенденций. Сдержанный дизайн и продуманная до мелочей функциональность – в актуальном скандинавском стиле. Компактный Talo освободит пространство даже на небольших площадях.', id: 2
-    },
-    {
-      name: 'Ирина', text: 'Мягкий и на высоких деревянных ножках, в духе ультрамодных тенденций. Сдержанный дизайн и продуманная до мелочей функциональность – в актуальном скандинавском стиле. Компактный Talo освободит пространство даже на небольших площадях.', id: 3
-    },
-  ]
   const [state, setState] = React.useState({
     right: false,
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-  // console.log(data.images)
 
   return (
     <div>
@@ -166,12 +144,13 @@ function ProductDetail({ handleOpen, userData }) {
                   Диван трансформируется в полноценную кровать, с ровным, без заломов спальным местом. Усиленный механизм «Клик-кляк» обеспечит ежедневную трансформацию без особых усилий. Геометрическая стежка чехла подчеркивает лаконичность и выразительность модели. Плавные линии, мягкие углы и ребра делают Talo безопасным даже для детей.</p>
               </div>
               <div id='comment'>
-                <Comments comments={comments} />
+                <AddComment data={data} />
+                <Comments data={data}/>
               </div>
             </div>
 
             <div className='w-full'>
-              <DivanHunburg data={data} comments={comments} toggleDrawer={toggleDrawer} state={state} />
+              <DivanHunburg data={data} setState={setState} state={state} />
             </div>
           </div>
 

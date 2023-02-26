@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Basket.css'
 import Minus from '../../assets/icon/minus.svg'
 import Plus from '../../assets/icon/plus.svg'
@@ -6,25 +6,32 @@ import { HiXMark } from 'react-icons/hi2';
 import { IoIosStats } from 'react-icons/io';
 import axios from 'axios';
 import { StateContext } from '../../context';
+import { useRemoveProductFromBasketMutation, useUpdateProductQuantityInBasketMutation } from '../../services/basketApi';
 
-function BasketComponent({ product, soni }) {
+function BasketComponent({ product, soni, id }) {
     const [count, setCount] = useState(soni)
-    const { userData } = useContext(StateContext)
+    const [updateQuantity, { isLoading }] = useUpdateProductQuantityInBasketMutation();
+    const [deleteProduct] = useRemoveProductFromBasketMutation()
 
-    const deleteFromBasket = () => {
-        const params = {
-            bron_id: product.id
-        }
-        const headers = {
-            Authorization: `Bearer ${userData?.token}`,
-        };
-        axios.delete('https://askona.herokuapp.com/api/v1/basket', params, { headers })
+    // useEffect(() => {
+    const handleUpdateQuantity = async () => {
+        await updateQuantity({ bron_id: product.id, quantity: count });
+    };
+    // }, [])
+
+    const plusBtn = () => {
+        setCount(p => p + 1)
+        handleUpdateQuantity()
+
     }
-
     const minusBtn = () => {
         if (count > 1) setCount((p) => p - 1);
         else setCount(1);
+        handleUpdateQuantity()
     };
+    const handleDeleteProduct = (bron_Id) => {
+        deleteProduct(bron_Id)
+    }
     return (
         <div className="">
             <div className='flex bg-white py-6 justify-between group'>
@@ -37,7 +44,7 @@ function BasketComponent({ product, soni }) {
                                 <IoIosStats className='stat-xmark' />
                                 <span className='font-normal text-[10px] text-gray-400 xmark-text'>Добавить к сравнению</span>
                             </div>
-                            <button onClick={deleteFromBasket} className="flex gap-3 cursor-pointer cancel-basket">
+                            <button onClick={() => handleDeleteProduct(id)} className="flex gap-3 cursor-pointer cancel-basket">
                                 <HiXMark className='stat-xmark' />
                                 <span className='font-normal text-[10px] text-gray-400 xmark-text'>Удалить</span>
                             </button>
@@ -55,7 +62,7 @@ function BasketComponent({ product, soni }) {
                             <img src={Minus} alt="icon" />
                         </button>
                         <span type="number" className=' flex border-2 border-gray-500 w-9 h-6 text-center justify-center'>{count}</span>
-                        <button onClick={() => setCount(p => p + 1)}>
+                        <button onClick={plusBtn}>
                             <img src={Plus} alt="icon" />
                         </button>
                     </div>

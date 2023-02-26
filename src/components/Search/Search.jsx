@@ -3,22 +3,35 @@ import { BiSearchAlt2 } from 'react-icons/bi'
 import { useProductsQuery } from '../../services/productApi'
 import SearchResult from './SearchResult';
 
+function debounce(func, delay) {
+    let timer;
+    return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
 function Search() {
     const { data: products, isLoading: productsIsLoading, isSuccess: productsIsSuccess } = useProductsQuery()
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [isFocused, setIsFocused] = useState(false);
+    const [isSearching, setIsSearching] = useState(false);
 
     useEffect(() => {
-        // search for products based on search term
-        if (productsIsSuccess) {
-            const results = products.filter((product) =>
-                product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                product.sub_ctg.name.toLowerCase().includes(searchTerm.toLowerCase())
+        const delayedSearch = debounce(() => {
+            setIsSearching(true);
+            const results = products?.filter(
+                (product) =>
+                    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    product.sub_ctg.name.toLowerCase().includes(searchTerm.toLowerCase())
             );
             setSearchResults(results);
-        }
-    }, [products, productsIsSuccess, searchTerm]);
+            setIsSearching(false);
+        }, 500);
+
+        delayedSearch();
+    }, [searchTerm, products]);
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -53,7 +66,7 @@ function Search() {
 
     return (
         <div className=''>
-            <form className={`rounded py-2 px-2 flex items-center gap-4 w-96 border ${isFocused ? 'border-[#00B6C9]' : 'border-gray-300'}`}>
+            <div className={`rounded py-2 px-2 flex items-center gap-4 w-96 border ${isFocused ? 'border-[#00B6C9]' : 'border-gray-300'}`}>
                 <BiSearchAlt2 className="text-[#00B6C9] text-lg font-bold" />
                 <input
                     type="text"
@@ -63,7 +76,7 @@ function Search() {
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                 />
-            </form>
+            </div>
             <div className="absolute z-[9999] bg-white w-1/3 shadow-2xl mt-5 p-5 divide-y">
                 {searchTerm !== "" && searchResults.length === 0 ? (
                     <p>товар не найден</p>

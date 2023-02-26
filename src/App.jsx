@@ -21,7 +21,6 @@ function App() {
   const [userData, setUserData] = React.useState(JSON.parse(localStorage.getItem("userData")) || {})
   const [userInfo, setUserInfo] = React.useState({})
   const [category, setCategory] = React.useState([])
-  const [basket, setBasket] = React.useState([])
   const [openEditUser, setOpenEditUser] = React.useState(false)
   const [openChangePassword, setOpenChangePassword] = React.useState(false)
   const [open, setOpen] = React.useState(false);
@@ -43,7 +42,7 @@ function App() {
   }, [userData])
 
   return (
-    <StateContext.Provider value={{ basket, userData, setUserData, setBasket, open, openChangePassword, setOpenChangePassword, handleOpen, setOpen, handleOpenBasket, state, handleClose, category, setCategory, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
+    <StateContext.Provider value={{ userData, setUserData, open, openChangePassword, setOpenChangePassword, handleOpen, setOpen, handleOpenBasket, state, handleClose, category, setCategory, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
       <div className="App">
         <Header />
         <Nav />
@@ -60,7 +59,7 @@ function App() {
         <ChangePassword />
         <Basket />
         <Footer />
-        <ScrollTop/>
+        <ScrollTop />
       </div>
     </StateContext.Provider>
   );

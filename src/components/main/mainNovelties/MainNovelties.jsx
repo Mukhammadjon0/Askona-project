@@ -7,7 +7,7 @@ import { VscSymbolRuler } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { useProductsQuery } from "../../../services/productApi";
 function MainNovelties() {
-  const {data:products,isLoading:productsIsloading,isSuccess:productsIsSuccess}=useProductsQuery()
+  const { data: products, isLoading: productsIsloading, isSuccess: productsIsSuccess } = useProductsQuery()
 
   const navigate = useNavigate()
   const getDetail = () => {
@@ -23,6 +23,7 @@ function MainNovelties() {
           paddingLeft: "50px",
           paddingRight: "50px",
         }}
+        loop={true}
         slidesPerView={4}
         spaceBetween={30}
         rewind={true}
@@ -34,8 +35,8 @@ function MainNovelties() {
 
       >
         <div className="">
-           {productsIsloading && <p>Loading...</p>}
-           {productsIsSuccess && products.map((el) => (
+          {productsIsloading && <p>Loading...</p>}
+          {productsIsSuccess && products.map((el) => (
             <SwiperSlide key={el.id}>
               <div onClick={getDetail} className="main__card bg-red-400 p-4">
                 <div className="main__card-head">
