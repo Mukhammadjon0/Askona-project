@@ -14,6 +14,7 @@ root.render(
       <ScrollToTop>
         <Provider store={store}>
           <App />
+          
         </Provider>
       </ScrollToTop>
     </BrowserRouter>
