@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function SearchResult({ sub_ctg, name, images, id, setSearchTerm }) {
+function SearchResult({ name, images, id, setSearchTerm }) {
     const navigate = useNavigate()
     const handleProductClick = () => {
         setSearchTerm("");

@@ -6,31 +6,15 @@ import BasketComponent from './BasketComponent';
 import Cancel from '../../assets/icon/cancel.svg'
 import { AiFillQuestionCircle } from 'react-icons/ai';
 import Recommended from './Recommended';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useGetBasketQuery } from '../../services/basketApi';
 
 function Basket() {
-
-    const { handleOpenBasket, state, basket, setBasket, userData } = React.useContext(StateContext)
-    const [isLoading, setIsLoading] = React.useState(true)
+    const { data: basket, isLoading: isBasketLoading, isSuccess: isBasketSuccess } = useGetBasketQuery();
+    const { handleOpenBasket, state, userData } = React.useContext(StateContext)
     const navigate = useNavigate()
-
-    const basketInfo = async () => {
-        await axios.get('https://askona.herokuapp.com/api/v1/basket/', {
-            headers: {
-                Authorization: `Bearer ${userData?.token}`
-            }
-        })
-            .then((res) => {
-                setBasket(res.data)
-                setIsLoading(false)
-            })
-            .catch((err) => console.log(err))
-    }
     console.log(basket)
-    React.useEffect(() => {
-        basketInfo()
-    }, [])
+
     return (
         <div>
             {['right'].map((anchor) => (
@@ -47,15 +31,25 @@ function Basket() {
 
                             <div className='bg-white w-[604px] h-screen '>
                                 <div className="flex justify-between items-center px-6 py-6 border-b-[1px] border-gray-300">
-                                    <h1 className='font-semibold text-3xl'>В корзине {basket.length} товара</h1>
+                                    <h1 className='font-semibold text-3xl'>В корзине ({basket?.length || 0}) товара</h1>
                                     <button onClick={handleOpenBasket(anchor, false)}>
                                         <img src={Cancel} alt="icon" />
                                     </button>
                                 </div>
                                 <div className="divide-y px-6">
-                                    {basket ?
-                                        (basket.map(basketProd => <BasketComponent key={basketProd.id} {...basketProd} />))
-                                        : <h1>продукты не найдены</h1>}
+                                    {isBasketLoading && <h1>loading...</h1>}
+                                    {basket?.length > 0 ? (
+                                        basket.map((item) => (
+                                            <BasketComponent
+                                                key={item.id}
+                                                product={item.product}
+                                                soni={item.quantity}
+                                                id={item.bron_id}
+                                            />
+                                        ))
+                                    ) : (
+                                        <p>Ваша корзина пуста</p>
+                                    )}
                                 </div>
                                 <div className="flex flex-row justify-between px-6 py-5 border-t-[1px] border-gray-300">
                                     <h1 className='font-bold text-xl text-black'>Итого:</h1>

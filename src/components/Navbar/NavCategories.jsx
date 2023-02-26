@@ -12,10 +12,14 @@ import Category7 from "../../assets/img/dlya-doma.png";
 import Category8 from "../../assets/img/kreslo.png";
 import Card from '../card/Card';
 import { data } from '../../datas';
+import { useGetCategoriesQuery } from '../../services/categoryApi';
 
 function NavCategories() {
+    const { data: categories, isSuccess: isSuccessCategory } = useGetCategoriesQuery()
+    console.log(categories)
+    console.log(isSuccessCategory)
+    const [categoriesOpen, setCategoriesOpen] = useState(true);
 
-    const [categories, setCategories] = useState(true);
 
     return (
         <div className='shadow'>
@@ -23,44 +27,28 @@ function NavCategories() {
                 <div className="container">
                     <div className="flex items-center justify-between flex-wrap">
                         <button
-                            onClick={() => setCategories((p) => !p)}
+                            onClick={() => setCategoriesOpen((p) => !p)}
                             className="w-[180px] border border-solid px-4 py-3 flex items-center text-white font-bold whitespace-nowrap bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95"
                         >
                             <HiBars3BottomLeft className="mr-5" /> Все товары{" "}
                         </button>
-                        <NavLink className="text-black text-lg font-medium" to="/products">
-                            Матрасы
-                        </NavLink>
-                        <NavLink className="text-black text-lg font-medium" to="">
-                            Подушки
-                        </NavLink>
-                        <NavLink className="text-black text-lg font-medium" to="">
-                            Кровати
-                        </NavLink>
-                        <NavLink className="text-black text-lg font-medium" to="">
-                            Одеяла
-                        </NavLink>
-                        <NavLink className="text-black text-lg font-medium" to="">
-                            Диваны
-                        </NavLink>
-                        <NavLink className="text-black text-lg font-medium" to="">
-                            Детские товары
-                        </NavLink>
-                        <NavLink className="text-black text-lg font-medium" to="">
-                            Мебель{" "}
-                        </NavLink>
-                        <NavLink className="text-black text-lg font-medium" to="">
-                            Для дома
-                        </NavLink>
-                        <NavLink className="text-red-400 flex items-center text-lg" to="">
-                            {" "}
+                        {isSuccessCategory && categories.data?.map(category =>
+                            <NavLink
+                                to={`/products?category=${category.content}`}
+                                key={category.id}
+                                className='text-black text-lg font-medium hover:text-[#00B6C9] duration-200'
+                            >
+                                {category.content}
+                            </NavLink>
+                        )}
+                        <NavLink className="text-red-400 flex items-center text-lg" to="/products">
                             <FaPercentage /> Акции
                         </NavLink>
                     </div>
                 </div>
             </div>
             <div
-                className={`${categories
+                className={`${categoriesOpen
                     ? "hidden"
                     : "bg-white w-full absolute z-50 border-2 flex"
                     }`}
@@ -109,7 +97,7 @@ function NavCategories() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

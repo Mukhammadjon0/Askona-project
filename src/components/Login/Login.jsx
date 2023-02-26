@@ -4,7 +4,7 @@ import { StateContext } from '../../context'
 import PhoneInput from 'react-phone-input-2'
 
 function Login() {
-    const { handleClose,setUserData } = useContext(StateContext)
+    const { handleClose, setUserData } = useContext(StateContext)
     const [loginTel, setLoginTel] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
     const loginHandler = (e) => {
@@ -12,7 +12,7 @@ function Login() {
         const loginData = {
             method: "login",
             params: {
-                mobile: "+998975875355",
+                mobile: `${loginTel}`,
                 password: loginPassword,
             },
         }
