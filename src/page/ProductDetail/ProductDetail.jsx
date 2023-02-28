@@ -4,10 +4,11 @@ import search from "../../assets/img/search.png";
 import Pauz from "../../assets/img/Pauz.png";
 import DivanHunburg from "../../components/DivanHunburg/DivanHunburg";
 import Comments from '../../components/Comments/Comments';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from 'react-icons/md';
 import { useProductItemDetailsQuery } from '../../services/productApi';
 import AddComment from '../../components/Comments/AddComment';
+import { BiHomeSmile } from 'react-icons/bi';
 
 
 function ProductDetail({ handleOpen, userData }) {
@@ -39,15 +40,13 @@ function ProductDetail({ handleOpen, userData }) {
     }
   }, [mainImgId])
 
-  const [state, setState] = React.useState({
-    right: false,
-  });
-
-
   return (
     <div>
       {isSuccess && (
         <div className='py-8 px-10'>
+          <Link to={'/'} className='text-gray-400 text-xl mb-10 flex items-center'>
+            <BiHomeSmile /> /
+          </Link>
           <div className="flex flex-row gap-10">
             <div className='flex flex-col gap-12 w-[60%]'>
               <div className="flex">
@@ -145,12 +144,12 @@ function ProductDetail({ handleOpen, userData }) {
               </div>
               <div id='comment'>
                 <AddComment data={data} />
-                <Comments data={data}/>
+                <Comments data={data} />
               </div>
             </div>
 
             <div className='w-full'>
-              <DivanHunburg data={data} setState={setState} state={state} />
+              <DivanHunburg data={data} />
             </div>
           </div>
 

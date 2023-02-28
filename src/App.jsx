@@ -14,7 +14,6 @@ import Products from './page/Products/Products';
 import ChangePassword from './components/UserInfo/ChangePassword';
 import Header from './components/Header/Header';
 import Nav from './components/Navbar/Nav';
-import NavCategories from './components/Navbar/NavCategories';
 import ScrollTop from './components/ScrollTop/ScrollTop';
 
 function App() {
@@ -42,11 +41,10 @@ function App() {
   }, [userData])
 
   return (
-    <StateContext.Provider value={{ userData, setUserData, open, openChangePassword, setOpenChangePassword, handleOpen, setOpen, handleOpenBasket, state, handleClose, category, setCategory, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
+    <StateContext.Provider value={{ userData, setUserData, open, openChangePassword, setOpenChangePassword, handleOpenBasket, handleOpen, setOpen, state, setState, handleClose, category, setCategory, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
       <div className="App">
         <Header />
         <Nav />
-        <NavCategories />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<Products />} />
@@ -57,7 +55,7 @@ function App() {
         <Register />
         <EditUserInfo />
         <ChangePassword />
-        <Basket />
+        <Basket setState={setState} />
         <Footer />
         <ScrollTop />
       </div>

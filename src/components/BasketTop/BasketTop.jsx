@@ -4,10 +4,10 @@ import Order from "../order/Order";
 import { useNavigate } from "react-router-dom";
 import BasketComponent from "../Basket/BasketComponent";
 import { StateContext } from "../../context";
-import { useGetBasketQuery } from "../../services/basketApi";
+import { useBasketQuery } from "../../services/basketApi";
 
 function BasketTop() {
-  const { data: basket } = useGetBasketQuery()
+  const { data: basket } = useBasketQuery()
   const navigate = useNavigate()
   return (
     <div className="flex flex-col container bg-gray-200 py-14">
@@ -22,8 +22,8 @@ function BasketTop() {
                   <BasketComponent
                     key={item.id}
                     product={item.product}
-                    soni={item.quantity}
-                    id={item.bron_id}
+                    soni={item.soni}
+                    bronId={item.id}
                   />
                 ))
               ) : (

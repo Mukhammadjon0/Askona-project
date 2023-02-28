@@ -8,42 +8,53 @@ const baseQuery = fetchBaseQuery({
     prepareHeaders: (headers, { getState }) => {
         const user = JSON.parse(localStorage.getItem('userData'))
         if (user) {
-            headers.set('authorization', `Bearer ${user.token}`)
+            headers.set('Authorization', `Bearer ${user.token}`)
         }
         return headers
     },
 })
-
+const user = JSON.parse(localStorage.getItem('userData'))
 
 export const basketApi = createApi({
     reducerPath: 'basketApi',
     baseQuery,
+    tagTypes: ["Basket"],
     endpoints: (builder) => ({
+        basket: builder.query({
+            query: () => '/basket',
+            providesTags: ['Basket']
+        }),
         addProductToBasket: builder.mutation({
-            query: ({ product_id }) => ({
-                url: '/basket',
+            query: id => ({
+                url: '/basket/',
                 method: 'POST',
-                body: { product_id },
+                body: { product_id: id },
+                headers: {
+                    Authorization: `Bearer ${user.token}`
+                }
             }),
+            invalidatesTags: ['Basket']
         }),
         removeProductFromBasket: builder.mutation({
-            query: (bronId) => ({
+            query: (id) => ({
                 url: `/basket/`,
                 method: 'DELETE',
-                body: { bron_id: bronId },
+                body: { bron_id: id },
+
             }),
+            invalidatesTags: ['Basket']
+
         }),
         updateProductQuantityInBasket: builder.mutation({
             query: ({ bron_id, quantity }) => ({
-                url: '/basket',
+                url: '/basket/',
                 method: 'PUT',
                 body: { bron_id, quantity },
             }),
+            invalidatesTags: ['Basket']
         }),
-        getBasket: builder.query({
-            query: () => '/basket',
-        }),
+
     }),
 });
 
-export const { useAddProductToBasketMutation, useRemoveProductFromBasketMutation, useUpdateProductQuantityInBasketMutation, useGetBasketQuery } = basketApi;
+export const { useAddProductToBasketMutation, useRemoveProductFromBasketMutation, useUpdateProductQuantityInBasketMutation, useBasketQuery } = basketApi;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, IconButton, Menu } from '@mui/material';
-import Prod from '../../assets/img/router.png'
+// import Prod from '../../assets/img/router.png'
 import { AiOutlineHeart } from 'react-icons/ai';
 import LikedCard from './LikedCard';
 
@@ -15,9 +15,9 @@ function Liked() {
     };
 
     const liked = [
-        { image: Prod, title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 1 },
-        { image: Prod, title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 2 },
-        { image: Prod, title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 3 },
+        {  title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 1 },
+        {  title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 2 },
+        {  title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 3 },
     ]
     return (
         <div>
