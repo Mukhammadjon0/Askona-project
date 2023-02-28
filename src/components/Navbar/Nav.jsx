@@ -1,32 +1,29 @@
 import React, { useContext } from 'react'
-import { BiSearchAlt2 } from 'react-icons/bi'
-import { TbPhoneCall } from 'react-icons/tb'
 import { Link, NavLink } from 'react-router-dom'
 import { IconButton } from '@mui/material'
 import { CgLogIn, CgShoppingCart } from 'react-icons/cg'
-import { IoIosStats } from 'react-icons/io'
-import logoAksona from "../../assets/img/logo.png";
+import logoAksona from "../../assets/img/logo.svg";
 import UserInfo from '../UserInfo/UserInfo'
 import Liked from '../Liked/Liked'
 import { StateContext } from '../../context'
 import { BsChevronDown } from 'react-icons/bs'
 import Search from '../Search/Search'
-import { useGetBasketQuery } from '../../services/basketApi'
+import { useBasketQuery } from '../../services/basketApi'
 import Call from '../CallClient/Call'
 
 function Nav() {
-    const { data: basket, isSuccess: isBasketSuccess } = useGetBasketQuery();
+    const { data: basket, isSuccess: isBasketSuccess } = useBasketQuery();
 
     const { handleOpen, handleOpenBasket, userData } = useContext(StateContext)
 
     return (
-        <nav className="w-full py-5 bg-white sticky top-0 z-50 shadow">
+        <nav className="w-full bg-white sticky top-0 z-50 shadow">
             <div className="container m-auto flex items-center">
                 <div className="w-full flex flex-row items-center justify-between">
                     <div className="flex flex-row items-center">
                         <div className="flex flex-row items-center gap-10">
                             <Link to={'/'}>
-                                <img className='' src={logoAksona} alt="logo" />
+                                <img className='w-40 ' src={logoAksona} alt="logo" />
                             </Link>
                             <NavLink className='flex items-center font-normal text-sm leading-4' href="#!">Минск <BsChevronDown className='text-navTopbBg pl-2 text-3xl' /></NavLink>
                             <span className='text-start flex items-center text-gray-400 text-sm'>Магазины: <p className='font-bold text-black pl-2'>30</p></span>
@@ -50,11 +47,6 @@ function Nav() {
                                 <CgLogIn className="text-black" />
                             </IconButton>
                         )}
-
-                        <IconButton>
-                            <IoIosStats className="cursor-pointer text-black" />
-                        </IconButton>
-
                         <div className=''>
                             <Liked />
                         </div>

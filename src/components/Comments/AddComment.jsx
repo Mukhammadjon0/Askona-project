@@ -1,15 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { StateContext } from '../../context'
-import { useAddCommentMutation, useGetCommentsQuery } from '../../services/commentApi'
+import { useAddCommentMutation, useCommentsQuery } from '../../services/commentApi'
 
 function AddComment({ data }) {
     const [addCommentOpen, setAddCommentOpen] = useState(true)
     const { userData } = useContext(StateContext)
     const [text, setText] = useState('')
 
-    const [addComment, { isLoading, isError, isSuccess }] = useAddCommentMutation()
-    const { data: comments = [] } = useGetCommentsQuery(data.id)
-
+    const [addComment] = useAddCommentMutation()
+    const { data: comments = [] } = useCommentsQuery(data.id)
 
     const handleSubmitComment = (event) => {
         event.preventDefault()
@@ -20,7 +19,7 @@ function AddComment({ data }) {
     return (
         <div>
             <div className="flex justify-between">
-                <h1 className='font-bold text-2xl'>Отзывы ({comments?.length || 0})</h1>
+                <h1 className='font-bold text-2xl'>Отзывы ({comments?.cnt})</h1>
                 <button onClick={() => setAddCommentOpen((p) => !p)} className='py-1 px-6 bg-[#00B9C0] rounded text-white'>Оставить отзыв</button>
             </div>
 

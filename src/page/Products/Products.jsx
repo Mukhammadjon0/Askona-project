@@ -1,6 +1,8 @@
 import ProductCard from './ProductCard'
 import { useProductsQuery } from '../../services/productApi';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { BiHomeSmile } from 'react-icons/bi';
+import Categories from '../../components/Categories/Categories';
 function Products() {
     const { data: products, isLoading: productsIsloading, isSuccess: productsIsSuccess } = useProductsQuery()
     const location = useLocation();
@@ -13,8 +15,14 @@ function Products() {
         : products;
 
     return (
-        <div className="py-10">
-            <div style={{ paddingBottom: '60px', paddingTop: '30px' }} className='grid grid-cols-4 gap-5 container'>
+        <div className="py-10 container">
+            <Link to={'/'} className='text-gray-400 text-xl my-10 flex items-center'>
+                <BiHomeSmile /> /
+            </Link>
+            <div className="p-0">
+                <Categories />
+            </div>
+            <div style={{ paddingBottom: '60px', paddingTop: '10px' }} className='grid grid-cols-4 gap-5'>
                 {productsIsloading && <h1>Loading...</h1>}
                 {productsIsSuccess && filteredProducts.map(product => <ProductCard key={product.id} product={product} {...product} />)}
             </div>

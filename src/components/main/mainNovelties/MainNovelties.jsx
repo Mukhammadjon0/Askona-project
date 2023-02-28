@@ -6,16 +6,15 @@ import { Navigation, FreeMode, Pagination } from "swiper";
 import { VscSymbolRuler } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { useProductsQuery } from "../../../services/productApi";
-function MainNovelties() {
-  const { data: products, isLoading: productsIsloading, isSuccess: productsIsSuccess } = useProductsQuery()
+import DiscountImg from '../../../assets/img/spanImg.png'
+import Weight from '../../../assets/icon/weight.png'
 
+function MainCarousel() {
+  const { data: products, isSuccess: productsIsSuccess } = useProductsQuery()
   const navigate = useNavigate()
-  const getDetail = () => {
-    navigate(`/products`)
-  }
   return (
     <div className="">
-      <h1 className="title">Новинки</h1>
+      <h1 className="title">Хиты продаж</h1>
       <Swiper
         style={{
           "--swiper-navigation-color": "#00BAC1",
@@ -23,8 +22,8 @@ function MainNovelties() {
           paddingLeft: "50px",
           paddingRight: "50px",
         }}
-        loop={true}
         slidesPerView={4}
+        loop={true}
         spaceBetween={30}
         rewind={true}
         navigation={true}
@@ -35,48 +34,50 @@ function MainNovelties() {
 
       >
         <div className="">
-          {productsIsloading && <p>Loading...</p>}
+
           {productsIsSuccess && products.map((el) => (
             <SwiperSlide key={el.id}>
-              <div onClick={getDetail} className="main__card bg-red-400 p-4">
+              <div className="main__card p-4">
                 <div className="main__card-head">
                   <div className="main__card-img">
-                    <img src={`https://askona.herokuapp.com${el.images[0]}`} alt="" />
+                    {
+                      <img onClick={() => navigate(`productdetail/${el.id}`)} src={`https://askona.herokuapp.com${el.images[0]}` || `MockImg`} alt="" />
+                    }
                   </div>
                   <div className="main__card-status flex justify-between px-[13px]">
-                    <img src={el.spanImg} alt="" />
+                    <img src={DiscountImg} alt="" />
                     <span className="main__card-span bg-[#FFD54F] w-[116px] h-[24px] rounded flex justify-center items-center text-[12px] font-medium">Товар недели
                     </span>
                   </div>
                 </div>
                 <span className="main__card-line"></span>
                 <div className="main__card-body mt-[27px]">
-                  <h2>{el.title}</h2>
+                  <h2>{el.name}</h2>
                   <p className="card__body-price">
                     от
                     <span className="card__body-spanPrice text-[#00B9C0]">
-                      {el.price} {el.value}
+                      {el.price} BYN
                     </span>
                     <span className="card__body-spanOldPrice">
-                      {el.oldPrice} {el.value}
+                      8900 BYN
                     </span>
                   </p>
                   <p className="card__body-payment">
-                    Рассрочка от <span className="text-[#212121]">289.5 BYN</span>
+                    Рассрочка от <span className="text-[#212121]">{el.credit} BYN</span>
                   </p>
                   <div className="card__body-desc flex gap-[14px]">
                     <div className="card__body-descLeft flex gap-[18.3px] items-center">
                       <VscSymbolRuler />
                       <div className="card__body-descInfo">
                         <h2>Высота:</h2>
-                        <p>{el.height}</p>
+                        <p>{el.balandligi} m</p>
                       </div>
                     </div>
                     <div className="card__body-descRight flex gap-[14.53px] items-center">
-                      <VscSymbolRuler className="card__icon" />
+                      <img src={Weight} alt="icon" />
                       <div className="card__body-descInfo">
                         <h2>Вес на спальное место:</h2>
-                        <p>{el.weight}</p>
+                        <p>{el.massa} </p>
                       </div>
                     </div>
                   </div>
@@ -92,4 +93,4 @@ function MainNovelties() {
   );
 }
 
-export default MainNovelties;
+export default MainCarousel;

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import span from "../../assets/img/span.png"
+import span from "../../assets/img/spanImg.png"
 import undov from "../../assets/img/undov.png"
-import Knopka from "../../assets/img/Knopka2.png"
-import Image from "../../assets/img/Image.png"
+// import Knopka from "../../assets/img/Knopka2.png"
+// import Image from "../../assets/img/Image.png"
 import Frame from "../../assets/img/Frame.png"
 import Frame1 from "../../assets/img/Frame2.png"
 import Frame2 from "../../assets/img/Frame (1).png"
@@ -14,25 +14,34 @@ import Sidebar from '../Sidebar/Sidebar'
 import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { useAddProductToBasketMutation } from '../../services/basketApi'
-import { useGetCommentsQuery } from '../../services/commentApi'
-function DivanHunburg({ data, setState, state }) {
+import { useCommentsQuery } from '../../services/commentApi'
+import { MdKeyboardArrowRight } from 'react-icons/md'
+function DivanHunburg({ data, }) {
 
-  const { data: comments = [] } = useGetCommentsQuery(data.id)
+  const { data: comments = [] } = useCommentsQuery(data.id)
 
   const [addProduct] = useAddProductToBasketMutation()
   const { userData, handleOpen } = useContext(StateContext)
   const navigate = useNavigate()
 
 
-  const handleAddProduct = (productId) => {
-    addProduct(productId)
-  }
   const addToBasket = () => {
     if (userData.token) {
-      handleAddProduct(data.id)
+      addProduct(data.id)
     }
     else handleOpen()
   }
+  const kupitClick = () => {
+    if (userData.token) {
+      addProduct(data.id)
+      navigate('/zakaz')
+    }
+    else handleOpen()
+  }
+
+  const [state, setState] = React.useState({
+    right: false,
+  });
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -89,12 +98,12 @@ function DivanHunburg({ data, setState, state }) {
         </div>
         <div className="mt-7">
           <h1>Ткань:</h1>
-          <div className="h-10 flex justify-between border-2 border-solid border-gray-300 items-center px-2 rounded mt-3">
+          <div className="h-10 flex justify-between border-2 border-solid border-gray-300 items-center px-2 rounded mt-3 cursor-pointer">
             <div className="flex items-center">
               <img className="mr-2" src={Image} alt="" />
               <h2>Sky Velvet 99</h2>
             </div>
-            <img src={Knopka} alt="" />
+            <MdKeyboardArrowRight className='text-[#00B6C9]' />
           </div>
           <div>
             <button className="h-10 w-[100%] bg-gray flex justify-center border-2 border-solid  border-gray-300 items-center px-2 rounded mt-5 bg-">Изменить конфигурацию</button>
@@ -102,7 +111,7 @@ function DivanHunburg({ data, setState, state }) {
               <button onClick={addToBasket} className="w-[47%] rounded bg-[#00B9C0] text-white py-2">
                 В корзину
               </button>
-              <button onClick={() => navigate('/zakaz')} className="w-[47%] border-2 border-solid  border-gray-300 py-2 rounded">
+              <button onClick={kupitClick} className="w-[47%] border-2 border-solid  border-gray-300 py-2 rounded">
                 Купить в 1 клик
               </button>
             </div>
@@ -110,13 +119,14 @@ function DivanHunburg({ data, setState, state }) {
 
           <div>
             <div className="mt-10 flex items-center justify-between border-b border-solid border-gray-300 pb-5 ">
-              <Link to={'/'}>
+              <Link to={'/products'}>
                 <div className="flex items-center">
                   <img className="mr-2" src={Frame} alt="" />
                   <h2>Мы рекомендуем к товару</h2>
                 </div>
               </Link>
-              <img src={Knopka} alt="" />
+              <MdKeyboardArrowRight className='text-[#00B6C9]' />
+
             </div>
 
             {["right"].map((anchor) => (
@@ -127,7 +137,7 @@ function DivanHunburg({ data, setState, state }) {
                       <img className="mr-2" src={Group} alt="" />
                       <h2>Доставка и самовывоз</h2>
                     </div>
-                    <img src={Knopka} alt="" />
+                    <MdKeyboardArrowRight className='text-[#00B6C9]' />
                   </div>
                 </button>
                 <Drawer
@@ -141,7 +151,7 @@ function DivanHunburg({ data, setState, state }) {
                   // onClick={toggleDrawer(anchor, false)}
                   // onKeyDown={toggleDrawer(anchor, false)}
                   >
-                    <Sidebar />
+                    <Sidebar setState={setState} />
                   </Box>
                 </Drawer>
               </React.Fragment>
@@ -162,7 +172,7 @@ function DivanHunburg({ data, setState, state }) {
             <div className="mt-5 flex items-center justify-between border-b border-solid border-gray-300 pb-5 ">
               <div className="flex items-center">
                 <img className="mr-2" src={Frame3} alt="" />
-                <h2>Отзывы ({comments?.length || 0})</h2>
+                <h2>Отзывы ({comments?.cnt})</h2>
               </div>
             </div>
           </div>

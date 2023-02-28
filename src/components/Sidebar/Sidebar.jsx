@@ -1,8 +1,4 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import Cancel from "../../assets/icon/cancel.svg";
 import "./Sidebar.css";
 import Select1 from "../Select/Select1";
 import Hilding from "../../assets/img/HildingLogo.png";
@@ -12,19 +8,17 @@ import ApplePay from "../../assets/img/applepayLogo.jpg";
 import GooglePay from "../../assets/img/googlepayLogo.png";
 import MirPay from "../../assets/img/mirLogo.jpg";
 import Opl from "../../assets/img/oplLogo.png";
-import { StateContext } from "../../context";
+import { HiXMark } from "react-icons/hi2";
 
 
-export default function Sidebar() {
-  const { toggleDrawer, } = React.useContext(StateContext)
+export default function Sidebar({ setState }) {
   return (
     <div>
-
       <div>
         <div className="said_top">
           <h1>Доставка и самовывоз</h1>
-          <button onClick={toggleDrawer(false)}>
-            <img src={Cancel} alt="icon" />
+          <button onClick={() => setState({ right: false })}>
+            <HiXMark className="text-[#00B6C9] text-lg" />
           </button>
         </div>
         <div className="ourTop">
@@ -94,6 +88,6 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FaPercentage } from 'react-icons/fa'
 import { HiBars3BottomLeft } from 'react-icons/hi2'
 import { NavLink } from 'react-router-dom'
-import Category1 from "../../assets/img/matras.png";
-import Category2 from "../../assets/img/podush.png";
-import Category3 from "../../assets/img/kravat.png";
-import Category4 from "../../assets/img/odel.png";
-import Category5 from "../../assets/img/divan.png";
-import Category6 from "../../assets/img/mebel.png";
-import Category7 from "../../assets/img/dlya-doma.png";
-import Category8 from "../../assets/img/kreslo.png";
 import Card from '../card/Card';
 import { data } from '../../datas';
 import { useGetCategoriesQuery } from '../../services/categoryApi';
 
 function NavCategories() {
     const { data: categories, isSuccess: isSuccessCategory } = useGetCategoriesQuery()
-    console.log(categories)
-    console.log(isSuccessCategory)
     const [categoriesOpen, setCategoriesOpen] = useState(true);
-
-
     return (
         <div className='shadow'>
             <div className="w-full border-b-[1px] border-gray-200 py-3">
@@ -36,12 +24,12 @@ function NavCategories() {
                             <NavLink
                                 to={`/products?category=${category.content}`}
                                 key={category.id}
-                                className='text-black text-lg font-medium hover:text-[#00B6C9] duration-200'
+                                className='text-black text-base font-medium hover:text-[#00B6C9] duration-200'
                             >
                                 {category.content}
                             </NavLink>
                         )}
-                        <NavLink className="text-red-400 flex items-center text-lg" to="/products">
+                        <NavLink className="text-red-400 flex items-center text-base" to="/products">
                             <FaPercentage /> Акции
                         </NavLink>
                     </div>
@@ -54,44 +42,18 @@ function NavCategories() {
                     }`}
                 style={{ bgcolor: "background.paper" }}
             >
-                <div className="filter-left">
-                    <div className="flex items-center hover:text-[#00bac9] cursor-pointer justify-center">
-                        <img className="w-20 h-10" src={Category1} alt="img" />
-                        <p className="font-medium text-base">Матрасы</p>
-                    </div>
-                    <div className="flex items-center hover:text-[#00bac9] cursor-pointer justify-center">
-                        <img className="w-20 h-10" src={Category2} alt="img" />
-                        <p className="font-medium text-base">Подушки</p>
-                    </div>
-                    <div className="flex items-center hover:text-[#00bac9] cursor-pointer justify-center">
-                        <img className="w-20 h-10" src={Category3} alt="img" />
-                        <p className="font-medium text-base">Кровати</p>
-                    </div>
-                    <div className="flex items-center hover:text-[#00bac9] cursor-pointer justify-center">
-                        <img className="w-20 h-10" src={Category4} alt="img" />
-                        <p className="font-medium text-base">Одеяла</p>
-                    </div>
-                    <div className="flex items-center hover:text-[#00bac9] cursor-pointer justify-center">
-                        <img className="w-20 h-10" src={Category5} alt="img" />
-                        <p className="font-medium text-base">Диваны</p>
-                    </div>
-                    <div className="flex items-center hover:text-[#00bac9] cursor-pointer justify-center">
-                        <img className="w-20 h-10" src={Category7} alt="img" />
-                        <p className="font-medium text-base">Детские товары</p>
-                    </div>
-                    <div className="flex items-center hover:text-[#00bac9] cursor-pointer justify-center">
-                        <img className="w-20 h-10" src={Category6} alt="img" />
-                        <p className="font-medium text-base">Мебель</p>
-                    </div>
-                    <div className="flex items-center hover:text-[#00bac9] cursor-pointer justify-center">
-                        <img className="w-20 h-10" src={Category8} alt="img" />
-                        <p className="font-medium text-base">Для дома</p>
-                    </div>
+                <div className="filter-left flex flex-col items-center border-r-2 border-gray-200">
+                    {isSuccessCategory && categories?.data.map((item) => (
+                        <div key={item.id} className="flex items-center hover:text-[#00bac9] cursor-pointer justify-center gap-2 p-3">
+                            <img className="" src={`https://askona.herokuapp.com${item.img}`} alt="img" />
+                            <p className="font-medium text-base">{item.content}</p>
+                        </div>
+                    ))}
                 </div>
                 <div className="filter-right">
                     <h1>Матрасы</h1>
                     <div>
-                        {data.map((item, index) => (
+                        {data?.map((item, index) => (
                             <Card key={index} {...item} />
                         ))}
                     </div>

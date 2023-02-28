@@ -1,48 +1,39 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const API_URL = 'https://askona.herokuapp.com/api/v1/'
+const API_URL = 'https://askona.herokuapp.com/api/v1'
+const user = JSON.parse(localStorage.getItem('userData'))
 
 export const commentsApi = createApi({
     reducerPath: 'commentsApi',
     baseQuery: fetchBaseQuery({
         baseUrl: API_URL,
-        prepareHeaders: (headers, { getState }) => {
-            // Here you can add your authorization token to the headers
-            const user = JSON.parse(localStorage.getItem('userData'))
-            if (user) {
-                headers.set('Authorization', `Bearer ${user?.token}`)
-            }
-            return headers
-        },
+       
     }),
+    tagTypes: ["Comment"],
+
     endpoints: (builder) => ({
+        comments: builder.query({
+            query: (id) => `/comment/${id}`,
+            providesTags: ["Comment"]
+        }),
         // Define the POST request
         addComment: builder.mutation({
             query: (data) => ({
-                url: 'comment',
+                url: '/comment/',
                 method: 'POST',
                 body: {
                     method: 'commentadd',
                     params: data,
                 },
+                headers: {
+                    'Authorization': `Bearer ${user?.token}`
+                }
             }),
-        }),
+            invalidatesTags: ['Comment']
 
-        // Define the GET request
-        getComments: builder.query({
-            query: (productId) => ({
-                url: 'comment',
-                method: 'GET',
-                params: {
-                    method: 'commentadd',
-                    params: {
-                        product_id: productId,
-                    },
-                },
-            }),
         }),
     }),
 })
 
 // Export the hooks to use the API endpoints
-export const { useAddCommentMutation, useGetCommentsQuery } = commentsApi
+export const { useAddCommentMutation, useCommentsQuery } = commentsApi

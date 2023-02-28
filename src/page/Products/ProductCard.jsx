@@ -1,8 +1,8 @@
 import React from 'react'
 import { VscSymbolRuler } from 'react-icons/vsc'
 import spanImg from '../../assets/img/spanImg.png'
-
 import { useNavigate } from 'react-router-dom';
+import Weight from '../../assets/icon/weight.png'
 
 function ProductCard({ product }) {
   const { id, name, price, images, massa, balandligi, credit } = product
@@ -17,7 +17,10 @@ function ProductCard({ product }) {
         <div className="main__card-head">
           <button onClick={getDetail}>
             <div className="main__card-img cursor-pointer">
-              <img src={`https://askona.herokuapp.com${images[0]}`} alt="product" />
+              {
+                <img src={`https://askona.herokuapp.com${images[0]}`} alt="product" />
+
+              }
             </div>
             <div className="main__card-status flex justify-between px-[13px]">
               <img src={spanImg} alt="img" />
@@ -50,7 +53,7 @@ function ProductCard({ product }) {
               </div>
             </div>
             <div className="card__body-descRight flex gap-[14.53px] items-center">
-              <VscSymbolRuler className="card__icon" />
+              <img src={Weight} alt="ucion" />
               <div className="card__body-descInfo">
                 <h2>Вес на спальное место:</h2>
                 <p>{massa}</p>
