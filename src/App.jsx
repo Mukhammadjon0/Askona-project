@@ -19,7 +19,6 @@ import Aksi from './page/Aksi/Aksi';
 function App() {
   const [userData, setUserData] = React.useState(JSON.parse(localStorage.getItem("userData")) || {})
   const [userInfo, setUserInfo] = React.useState({})
-  const [category, setCategory] = React.useState([])
   const [openEditUser, setOpenEditUser] = React.useState(false)
   const [openChangePassword, setOpenChangePassword] = React.useState(false)
   const [open, setOpen] = React.useState(false);
@@ -29,19 +28,19 @@ function App() {
   const [state, setState] = React.useState({
     right: false,
   });
-
   const handleOpenBasket = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
     setState({ ...state, [anchor]: open });
   };
+
   React.useEffect(() => {
     localStorage.setItem("userData", JSON.stringify(userData))
   }, [userData])
 
   return (
-    <StateContext.Provider value={{ userData, setUserData, open, openChangePassword, setOpenChangePassword, handleOpenBasket, handleOpen, setOpen, state, setState, handleClose, category, setCategory, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
+    <StateContext.Provider value={{ userData,setUserData, open, openChangePassword, setOpenChangePassword, handleOpenBasket, handleOpen, setOpen, state, setState, handleClose, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
       <div className="App">
         <Header />
         <Nav />

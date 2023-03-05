@@ -39,11 +39,9 @@ function MainCarousel() {
         freeMode={true}
         modules={[FreeMode, Navigation, Pagination]}
         className="mySwiper slider-container overflow-hidden"
-
       >
         <div className="">
-
-          {productsIsSuccess && products.map((el) => (
+          {productsIsSuccess && products?.map((el) => (
             <SwiperSlide key={el.id}>
               <div className="main__card p-4">
                 <div className="main__card-head">
@@ -94,11 +92,9 @@ function MainCarousel() {
                   </div>
                 </div>
               </div>
-
             </SwiperSlide>
           ))}
         </div>
-
       </Swiper>
     </div>
   );

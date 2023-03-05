@@ -1,17 +1,13 @@
-import React, { useContext } from 'react'
-import './Recommended.css'
+import React from 'react'
 import Discount from '../../assets/img/spanImg.png'
-
-
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Pagination } from "swiper";
+import { useProductsQuery } from '../../services/productApi';
+import { useNavigate } from 'react-router-dom';
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-
-import { FreeMode, Pagination } from "swiper";
-import { useProductsQuery } from '../../services/productApi';
-import { useNavigate } from 'react-router-dom';
 
 function Recommended({ setState }) {
     const { data: products, isSuccess: productsIsSuccess } = useProductsQuery()
@@ -36,7 +32,6 @@ function Recommended({ setState }) {
                                 <div onClick={() => {
                                     navigate(`/productdetail/${item.id}`);
                                     setState({ right: false })
-
                                 }} style={{ backgroundImage: `url(https://askona.herokuapp.com/${item.images[0]})`, backgroundSize: 'cover' }} className='w-[246px] h-[128px] bg-center bg-no-repeat m-auto flex flex-col justify-between p-3'>
                                     <div className="flex flex-row justify-between mt-24">
                                         <div className="rounded-full flex items-center justify-center cursor-pointer">
@@ -57,8 +52,6 @@ function Recommended({ setState }) {
                     </SwiperSlide>
                 ))}
             </Swiper>
-
-
         </div>
     )
 }

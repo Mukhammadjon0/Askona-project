@@ -26,7 +26,7 @@ function Aksi() {
                 </div>
                 <div style={{ paddingBottom: '60px', paddingTop: '10px' }} className='grid grid-cols-4 gap-5'>
                     {productsIsloading && <h1>Loading...</h1>}
-                    {productsIsSuccess && filteredProducts.map(product => <ProductCard key={product.id} product={product} {...product} />)}
+                    {productsIsSuccess && filteredProducts?.map(product => <ProductCard key={product.id} product={product} {...product} />)}
                 </div>
             </div>
         </div>

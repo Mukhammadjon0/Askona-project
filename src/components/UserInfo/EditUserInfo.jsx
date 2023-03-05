@@ -34,7 +34,6 @@ function EditUserInfo() {
         handleCloseEdit()
       })
       .catch(err => console.log(err))
-
   }
   const handelEditUser = (e) => {
     e.preventDefault();
@@ -43,8 +42,6 @@ function EditUserInfo() {
       [e.target.name]: e.target.value
     });
   }
-
-
   const style = {
     position: 'absolute',
     top: '50%',
@@ -57,13 +54,12 @@ function EditUserInfo() {
   };
   return (
     <div>
+      {/* Edit User Info ================================================ */}
       <Modal
         open={openEditUser}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-
-        {/* Edit User Info ================================================ */}
         <Box sx={style} className='rounded-xl'>
           <Box sx={{ width: '100%' }}>
             <Box sx={{}}>

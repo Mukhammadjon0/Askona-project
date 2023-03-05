@@ -6,6 +6,7 @@ import { useRemoveProductFromSavedMutation } from '../../services/savedApi'
 
 function LikedCard({ name, price, images, id, prosaved_id, handleClose }) {
     const [deleteProdSaved] = useRemoveProductFromSavedMutation()
+    const navigate = useNavigate()
 
     const handleDeleteProdFromSaved = () => {
         deleteProdSaved(prosaved_id)
@@ -15,7 +16,6 @@ function LikedCard({ name, price, images, id, prosaved_id, handleClose }) {
         navigate(`/productdetail/${id}`)
     }
 
-    const navigate = useNavigate()
     return (
         <div className='py-2'>
             <div className="flex group items-center gap-5">

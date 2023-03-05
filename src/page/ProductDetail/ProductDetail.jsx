@@ -28,7 +28,6 @@ function ProductDetail() {
     }
     setMainImgId((prev) => prev - 1)
   }
-
   useEffect(() => {
     if (mainImgId < 0) {
       setMainImgId(4)
@@ -54,7 +53,7 @@ function ProductDetail() {
                   </button>
 
                   {data.images.map((item, index) => (
-                    <img onClick={() => setMainImgId(index)} className='border-2 border-solid border-red-50 mt-4 w-28 cursor-pointer' src={`https://askona.herokuapp.com/${item}`} key={index} alt="" />
+                    <img onClick={() => setMainImgId(index)} className={`border-2 border-solid ${mainImgId === index ? 'border-[#00B6C9]' : 'border-gray-200'} mt-4 w-28 cursor-pointer`} src={`https://askona.herokuapp.com/${item}`} key={index} alt="" />
                   ))}
                   <button onClick={nextImg} className='border-2 border-solid border-red-50  px-12 py-1 mt-4'>
                     <MdOutlineKeyboardArrowDown className='text-[#00b6c9]' />
@@ -80,7 +79,6 @@ function ProductDetail() {
                 </div>
                 <div id="about"></div>
               </div>
-
               <div className="bg-[#F6F6F6] py-6 px-8 divide-y flex flex-col">
                 <h1 className='font-extrabold text-2xl mb-3'>Характеристики</h1>
                 <div className="flex justify-between items-center py-3">
@@ -148,16 +146,13 @@ function ProductDetail() {
                 <Comments data={data} />
               </div>
             </div>
-
             <div className='w-full'>
               <DivanHunburg data={data} />
             </div>
           </div>
-
         </div>
       )}
     </div>
-
   )
 }
 

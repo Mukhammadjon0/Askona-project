@@ -4,18 +4,16 @@ import { HiMinus, HiXMark } from 'react-icons/hi2';
 import { useRemoveProductFromBasketMutation, useUpdateProductQuantityInBasketMutation } from '../../services/basketApi';
 import { BsPlus } from 'react-icons/bs';
 
-function BasketComponent({ product, soni, bronId, summa, setState, state }) {
+function BasketComponent({ product, soni, bronId, summa, state }) {
     const [count, setCount] = useState(soni)
     const [updateQuantity] = useUpdateProductQuantityInBasketMutation();
     const [deleteProduct] = useRemoveProductFromBasketMutation()
 
     const handleUpdateQuantity = async () => {
         await updateQuantity({ bron_id: bronId, quantity: count });
-        console.log(count)
     };
     const plusBtn = () => {
         setCount(p => p + 1)
-
     }
     const minusBtn = () => {
         if (count > 1) setCount((p) => p - 1);
@@ -28,7 +26,7 @@ function BasketComponent({ product, soni, bronId, summa, setState, state }) {
         return () => {
             handleUpdateQuantity()
         }
-    }, [state])
+    }, [count])
 
     return (
         <div className="">
@@ -43,10 +41,9 @@ function BasketComponent({ product, soni, bronId, summa, setState, state }) {
                         </button>
                     </div>
                 </div>
-
                 <div className="flex flex-col justify-between">
                     <div className="flex flex-col">
-                        <p className='text-[#00B9C0] font-semibold text-sm'>{summa.toLocaleString("uz-UZ")} BYN</p>
+                        <p className='text-[#00B9C0] font-semibold text-sm'>{summa?.toLocaleString("uz-UZ")} BYN</p>
                         <span className='text-gray-400 line-through text-xs'>98 000 BYN</span>
                     </div>
                     <div className="flex items-center gap-2">

@@ -17,7 +17,6 @@ import Login from '../Login/Login';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -28,7 +27,6 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
-
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -48,51 +46,43 @@ function TabPanel(props) {
         </div>
     );
 }
-
 TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
 };
-
 function a11yProps(index) {
     return {
         id: `simple-tab-${index}`,
         'aria-controls': `simple-tabpanel-${index}`,
     };
 }
-
 function Register() {
-    const { open, setOpen, userData, setUserData } = React.useContext(StateContext)
+    const { open, setOpen, setUserData } = React.useContext(StateContext)
 
     const [tel, setTel] = React.useState("")
     const [otp, setOtp] = React.useState("")
-
     const [user, setUser] = React.useState({
         name: "",
         password: "",
         mobile: "",
         email: "",
     })
-
+    const [telErr, setTelErr] = React.useState('')
+    const [otpErr, setOtpErr] = React.useState('')
+    const [regisErr, setRegisErr] = React.useState('')
     const [openRegister, setOpenRegister] = React.useState(false)
     const [openOtp, setOpenOtp] = React.useState(false)
+    const [value, setValue] = React.useState(0);
 
     const handleOpenRegister = () => setOpenRegister(true)
     const handleCloseRegister = () => setOpenRegister(false)
     const handleOpenOtp = () => setOpenOtp(true)
     const handleCloseOtp = () => setOpenOtp(false)
-
     const handleClose = () => setOpen(false);
-
-    const [value, setValue] = React.useState(0);
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
-
-
     const sendOtpHandler = (e) => {
         e.preventDefault();
         const postData = {
@@ -109,10 +99,8 @@ function Register() {
                 handleClose();
                 handleOpenOtp();
             })
-            .catch(err => alert(err.response?.data?.Error))
-
+            .catch(err => setTelErr(err.response?.data?.Error))
     }
-
     const checkVerificationHandler = (e) => {
         e.preventDefault()
         const token = localStorage.getItem("askonaToken")
@@ -127,7 +115,7 @@ function Register() {
             .then(res => {
                 console.log(res.data)
                 if (res.data?.Error) {
-                    alert(res.data?.Error)
+                    setOtpErr(res.data?.Error)
                     return;
                 }
                 if (res.data?.is_registered) alert("bu raqam oldin royxatdan otgan")
@@ -138,7 +126,6 @@ function Register() {
             })
             .catch(err => console.log(err.message));
     };
-
     const handelRegisterUser = (e) => {
         e.preventDefault();
         setUser({
@@ -146,7 +133,6 @@ function Register() {
             [e.target.name]: e.target.value
         });
     }
-
     const handleSignUp = (e) => {
         e.preventDefault();
         const postAuthData = {
@@ -157,7 +143,7 @@ function Register() {
         axios.post("https://askona.herokuapp.com/api/v1/auth/", postAuthData)
             .then(res => {
                 if (res.data?.Error) {
-                    alert(res.data?.Error)
+                    setRegisErr(res.data?.Error)
                     return;
                 }
                 console.log(res.data)
@@ -167,16 +153,16 @@ function Register() {
                 handleCloseRegister();
             })
             .catch(err => console.log(err))
-
     }
+
     return (
         <div>
+            {/* Tel number register modal ======================================================== */}
             <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {/* Tel number register modal ======================================================== */}
                 <Box sx={style} className='rounded-xl'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{}}>
@@ -188,6 +174,7 @@ function Register() {
                                 <Tab label="РЕГИСТРАЦИЯ" {...a11yProps(0)} />
                                 <Tab label="ВХОД" {...a11yProps(1)} />
                             </Tabs>
+                            <p className='text-red-600 font-medium text-sm'>{telErr}</p>
                             <form onSubmit={sendOtpHandler} action="" className='flex flex-col items-center gap-5'>
                                 <PhoneInput
                                     inputProps={{
@@ -226,19 +213,19 @@ function Register() {
                 </Box>
             </Modal>
 
-
+            {/* OTP check modal =============================================== */}
             <Modal
                 open={openOtp}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {/* OTP check modal =============================================== */}
                 <Box sx={style} className='rounded-xl'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{}}>
                             <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseOtp}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
                             <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
                         </Box>
+                        <p className='text-red-600 font-medium text-sm'>{otpErr}</p>
                         <p>Mы отправили код на ваш номер телефона ({tel})</p>
                         <form onSubmit={checkVerificationHandler} action="" className='flex flex-col items-center gap-5'>
                             <input onChange={e => setOtp(e.target.value)} className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="number" placeholder='Введите код сюда' />
@@ -248,19 +235,19 @@ function Register() {
                 </Box>
             </Modal>
 
-
+            {/* SignUp user modal ================================================ */}
             <Modal
                 open={openRegister}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {/* SignUp user modal ================================================ */}
                 <Box sx={style} className='rounded-xl'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{}}>
                             <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseRegister}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
                             <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
                         </Box>
+                        <p className='text-red-600 font-medium text-sm'>{regisErr}</p>
                         <form onSubmit={handleSignUp} action="" className='flex flex-col items-center gap-5'>
                             <input onChange={handelRegisterUser} name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="text" placeholder='Имя' />
                             <input onChange={handelRegisterUser} name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="email" placeholder='Адрес электронной почты' />

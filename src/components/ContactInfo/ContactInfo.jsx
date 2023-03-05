@@ -4,6 +4,7 @@ import icon2 from '../../assets/svg/videokonsultaciya.svg'
 import icon3 from '../../assets/svg/faq.svg'
 import { Link } from 'react-router-dom'
 import './ContactInfo.css'
+
 function ContactInfo() {
   return (
     <div className='Contact_info container'>

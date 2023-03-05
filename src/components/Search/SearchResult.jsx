@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 function SearchResult({ name, images, id, setSearchTerm }) {
     const navigate = useNavigate()
+    
     const handleProductClick = () => {
         setSearchTerm("");
         navigate(`/productdetail/${id}`)

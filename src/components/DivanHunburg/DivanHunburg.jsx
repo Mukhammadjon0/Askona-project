@@ -138,7 +138,6 @@ function DivanHunburg({ data, }) {
                 <MdKeyboardArrowRight className='text-[#00B6C9]' />
               </div>
             </Link>
-
             {["right"].map((anchor) => (
               <React.Fragment key={anchor}>
                 <button onClick={toggleDrawer(anchor, true)} className='w-full'>

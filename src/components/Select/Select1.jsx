@@ -15,7 +15,7 @@ export default function Select1() {
   return (
     <Box sx={{ width: '100%', }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Minsk</InputLabel>
+        <InputLabel id="demo-simple-select-label">город</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="minsk"
@@ -23,11 +23,12 @@ export default function Select1() {
           label="Age"
           onChange={handleChange}
         >
-          <MenuItem value={10}>minsk</MenuItem>
-          <MenuItem value={20}>minsk</MenuItem>
-          <MenuItem value={30}>minsk</MenuItem>
+          <MenuItem value={10}>Tashkent</MenuItem>
+          <MenuItem value={20}>Moscow</MenuItem>
+          <MenuItem value={30}>USA</MenuItem>
         </Select>
       </FormControl>
     </Box>
   );
+
 }

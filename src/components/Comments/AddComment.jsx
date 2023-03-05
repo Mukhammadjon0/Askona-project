@@ -6,10 +6,8 @@ function AddComment({ data }) {
     const [addCommentOpen, setAddCommentOpen] = useState(true)
     const { userData, handleOpen } = useContext(StateContext)
     const [text, setText] = useState('')
-
     const [addComment] = useAddCommentMutation()
     const { data: comments = [] } = useCommentsQuery(data.id)
-
     const handleSubmitComment = (event) => {
         event.preventDefault()
         addComment({ product_id: data?.id, text })

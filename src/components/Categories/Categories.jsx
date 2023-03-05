@@ -38,7 +38,7 @@ function Categories() {
                     },
                 }}
             >
-                {isSuccessCategory && category?.data.map((item) => (
+                {isSuccessCategory && category?.data?.map((item) => (
                     <SwiperSlide key={item.id}>
                         <div onClick={() => navigate(`/products?category=${item.content}`)} className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
                             <img className='w-20 h-10' src={`https://askona.herokuapp.com${item.img}`} alt="img" />

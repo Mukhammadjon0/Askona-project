@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { IconButton } from '@mui/material'
 import { CgLogIn, CgShoppingCart } from 'react-icons/cg'
 import logoAksona from "../../assets/img/logo.svg";
@@ -10,12 +10,9 @@ import { BsChevronDown } from 'react-icons/bs'
 import Search from '../Search/Search'
 import { useBasketQuery } from '../../services/basketApi'
 import Call from '../CallClient/Call'
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { IoCallOutline } from 'react-icons/io5'
 
 function Nav() {
     const { data: basket, isSuccess: isBasketSuccess } = useBasketQuery();
-
     const { handleOpen, handleOpenBasket, userData } = useContext(StateContext)
 
     return (
@@ -60,7 +57,6 @@ function Nav() {
                         <div className=''>
                             <Liked />
                         </div>
-
                         {["right"].map((anchor) => (
                             <React.Fragment key={anchor}>
                                 <IconButton onClick={handleOpenBasket(anchor, true)}>

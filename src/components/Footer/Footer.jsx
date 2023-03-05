@@ -20,6 +20,7 @@ import ApplePay from '../../assets/img/applepayLogo.jpg'
 import GooglePay from '../../assets/img/googlepayLogo.png'
 import MirPay from '../../assets/img/mirLogo.jpg'
 import Opl from '../../assets/img/oplLogo.png'
+
 function Footer() {
     return (
         <div className="">
@@ -60,8 +61,6 @@ function Footer() {
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                         <div >
                             <h1 className="font-bold text-2xl">Следите за новостями</h1>
@@ -104,8 +103,6 @@ function Footer() {
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                         <div >
                             <div className="flex flex-col items-center gap-3 text-right">
