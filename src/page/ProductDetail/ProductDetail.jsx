@@ -11,10 +11,8 @@ import AddComment from '../../components/Comments/AddComment';
 import { BiHomeSmile } from 'react-icons/bi';
 
 
-function ProductDetail({ handleOpen, userData }) {
+function ProductDetail() {
   const { id } = useParams()
-
-  // const data = products.find(item => item.id === Number(id))
   const { data, isSuccess, } = useProductItemDetailsQuery(Number(id))
   const [mainImgId, setMainImgId] = useState(0)
 
@@ -56,7 +54,7 @@ function ProductDetail({ handleOpen, userData }) {
                   </button>
 
                   {data.images.map((item, index) => (
-                    <img onClick={() => setMainImgId(index)} className='border-2 border-solid border-red-50 mt-4 w-28 cursor-pointer' src={`https://askona.herokuapp.com${item}`} key={index} alt="" />
+                    <img onClick={() => setMainImgId(index)} className='border-2 border-solid border-red-50 mt-4 w-28 cursor-pointer' src={`https://askona.herokuapp.com/${item}`} key={index} alt="" />
                   ))}
                   <button onClick={nextImg} className='border-2 border-solid border-red-50  px-12 py-1 mt-4'>
                     <MdOutlineKeyboardArrowDown className='text-[#00b6c9]' />
@@ -71,7 +69,7 @@ function ProductDetail({ handleOpen, userData }) {
                       Доставка 1 день
                     </p>
                   </div>
-                  <img className="flex items-start w-full relative h-[100%]" src={`https://askona.herokuapp.com${data.images[mainImgId]}`} alt="" />
+                  <img className="flex items-start w-full relative h-[100%]" src={`https://askona.herokuapp.com/${data.images[mainImgId]}`} alt="" />
                   <div className="flex justify-between items-center">
                     <div className="flex absolute right-4 bottom-4">
                       <img className="mr-2" src={Pauz} alt="" />
@@ -80,6 +78,7 @@ function ProductDetail({ handleOpen, userData }) {
                     <img className='absolute bottom-4 left-4' src={search} alt="" />
                   </div>
                 </div>
+                <div id="about"></div>
               </div>
 
               <div className="bg-[#F6F6F6] py-6 px-8 divide-y flex flex-col">
@@ -128,6 +127,7 @@ function ProductDetail({ handleOpen, userData }) {
                   <h2 className='font-semibold text-lg'>Жесткость</h2>
                   <p className='text-black font-medium text-base'>{data.qattiqlik}</p>
                 </div>
+                <div id="ops"></div>
                 <div className="flex justify-between items-center py-3">
                   <h2 className='font-semibold text-lg'>Бренд</h2>
                   <p className='text-black font-medium text-base'>{data.brand}</p>
@@ -141,8 +141,9 @@ function ProductDetail({ handleOpen, userData }) {
                 <span className='font-semibold text-xl'>Важно знать</span>
                 <p className='font-normal text-xl'>Мягкий и на высоких деревянных ножках, в духе ультрамодных тенденций. Сдержанный дизайн и продуманная до мелочей функциональность – в актуальном скандинавском стиле. Компактный Talo освободит пространство даже на небольших площадях.
                   Диван трансформируется в полноценную кровать, с ровным, без заломов спальным местом. Усиленный механизм «Клик-кляк» обеспечит ежедневную трансформацию без особых усилий. Геометрическая стежка чехла подчеркивает лаконичность и выразительность модели. Плавные линии, мягкие углы и ребра делают Talo безопасным даже для детей.</p>
+                <div id="comment"></div>
               </div>
-              <div id='comment'>
+              <div>
                 <AddComment data={data} />
                 <Comments data={data} />
               </div>

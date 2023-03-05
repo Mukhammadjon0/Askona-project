@@ -9,7 +9,7 @@ function SearchResult({ name, images, id, setSearchTerm }) {
     };
     return (
         <div className='flex p-5 cursor-pointer justify-between hover:text-[#00b6c9]' onClick={handleProductClick}>
-            <img className='w-20' src={`https://askona.herokuapp.com${images[0]}`} alt="product" />
+            <img className='w-20' src={`https://askona.herokuapp.com/${images[0]}`} alt="product" />
             <h1>{name}</h1>
         </div>
     )

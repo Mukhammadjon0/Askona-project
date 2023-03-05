@@ -10,9 +10,8 @@ import { useBasketQuery } from '../../services/basketApi';
 import { HiXMark } from 'react-icons/hi2';
 
 function Basket({ setState }) {
-    const { data: basket, isLoading: isBasketLoading,} = useBasketQuery();
+    const { data: basket, isLoading: isBasketLoading, } = useBasketQuery();
     const { state, userData, handleOpenBasket, handleOpen } = React.useContext(StateContext)
-    const [itog, setItog] = React.useState()
     const navigate = useNavigate()
     const handleNavigate = () => {
         if (userData.token) {
@@ -21,9 +20,6 @@ function Basket({ setState }) {
         }
         else handleOpen()
     }
-
-
-
     return (
         <div>
             {['right'].map((anchor) => (
@@ -40,31 +36,32 @@ function Basket({ setState }) {
 
                             <div className='bg-white w-[604px] h-screen '>
                                 <div className="flex justify-between items-center px-6 py-6 border-b-[1px] border-gray-300">
-                                    <h1 className='font-semibold text-3xl'>В корзине ({basket?.length || 0}) товара</h1>
+                                    <h1 className='font-semibold text-3xl'>В корзине ({basket?.data?.length || 0}) товара</h1>
                                     <button onClick={handleOpenBasket(anchor, false)}>
-                                        <HiXMark />
+                                        <HiXMark className='text-2xl text-[#00B6C9]' />
                                     </button>
                                 </div>
                                 <div className="divide-y px-6">
                                     {isBasketLoading && <h1>loading...</h1>}
-                                    {basket?.length > 0 ? (
-                                        basket.map((item) => (
+                                    {basket?.data?.length > 0 ? (
+                                        basket.data.map((item) => (
                                             <BasketComponent
                                                 key={item.id}
                                                 product={item.product}
                                                 soni={item.soni}
                                                 bronId={item.id}
                                                 summa={item.summa}
-                                                setItog={setItog}
+                                                setState={setState}
+                                                state={state}
                                             />
                                         ))
                                     ) : (
-                                        <p>Ваша корзина пуста</p>
+                                        <p className='my-5 text-red-500 text-xl font-semibold'>Ваша корзина пуста</p>
                                     )}
                                 </div>
                                 <div className="flex flex-row justify-between px-6 py-5 border-t-[1px] border-gray-300">
                                     <h1 className='font-bold text-xl text-black'>Итого:</h1>
-                                    <span className='text-[#00B6C9] font-bold text-xl'>{itog} BYN</span>
+                                    <span className='text-[#00B6C9] font-bold text-xl'>{basket?.summa.toLocaleString("uz-UZ") || 0} BYN</span>
                                 </div>
                                 <div className=" w-full px-6">
                                     <div className="bg-gray-200 px-3 py-2 rounded flex flex-row items-center gap-3">
@@ -79,7 +76,7 @@ function Basket({ setState }) {
                                 <div className="flex flex-row items-center p-6 justify-between">
                                     <h1 className='font-bold text-2xl text-black'>С этим товаром покупают</h1>
                                 </div>
-                                <Recommended handleOpenBasket={handleOpenBasket} setState={setState} />
+                                <Recommended setState={setState} />
                             </div>
 
                         </Box>

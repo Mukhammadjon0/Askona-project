@@ -2,13 +2,17 @@ import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { StateContext } from '../../context'
 import PhoneInput from 'react-phone-input-2'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
     const { handleClose, setUserData } = useContext(StateContext)
     const [loginTel, setLoginTel] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
+    const navigate = useNavigate()
     const loginHandler = (e) => {
         e.preventDefault()
+
+
         const loginData = {
             method: "login",
             params: {

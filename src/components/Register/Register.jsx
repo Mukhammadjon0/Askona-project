@@ -216,10 +216,10 @@ function Register() {
                         <div className="flex flex-col items-center mt-8">
                             <p className='text-center font-extrabold'>Войти через соцсети</p>
                             <div className="flex items-center gap-2">
-                                <SiVk className='text-[#00b6c9] w-8 h-8 rounded-full cursor-pointer hover:w-[34px] hover:h-[34px] duration-300' />
-                                <AiFillGoogleCircle className='text-[#00b6c9] w-9 h-9 cursor-pointer hover:w-[38px] hover:h-[38px] duration-300' />
-                                <FaOdnoklassnikiSquare className='text-[#00b6c9] w-9 h-9 rounded-full cursor-pointer hover:w-[38px] hover:h-[38px] duration-300' />
-                                <BsFacebook className='text-[#00b6c9] w-8 h-8 cursor-pointer hover:w-[34px] hover:h-[34px] duration-300' />
+                                <SiVk className='text-[#00b6c9] w-8 h-8 rounded-full cursor-pointer hover:scale-125 duration-300' />
+                                <AiFillGoogleCircle className='text-[#00b6c9] w-9 h-9 cursor-pointer hover:scale-125 duration-300' />
+                                <FaOdnoklassnikiSquare className='text-[#00b6c9] w-9 h-9 rounded-full cursor-pointer hover:scale-125 duration-300' />
+                                <BsFacebook className='text-[#00b6c9] w-8 h-8 cursor-pointer hover:w-[34px] hover:scale-125 duration-300' />
                             </div>
                         </div>
                     </Box>

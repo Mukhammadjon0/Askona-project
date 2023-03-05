@@ -1,6 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { useContext } from 'react';
-import { StateContext } from '../context';
 const BASE_URL = 'https://askona.herokuapp.com/api/v1';
 
 const baseQuery = fetchBaseQuery({

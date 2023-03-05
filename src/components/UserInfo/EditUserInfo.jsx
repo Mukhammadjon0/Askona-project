@@ -4,20 +4,21 @@ import React, { useContext, useState } from 'react'
 import { MdCancel } from 'react-icons/md';
 import { StateContext } from '../../context';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function EditUserInfo() {
-  const { openEditUser, setOpenEditUser, userInfo, setUserInfo } = useContext(StateContext)
-  const userData = JSON.parse(localStorage.getItem("userData"))
-
+  const { openEditUser, setOpenEditUser, userInfo, setUserInfo, userData } = useContext(StateContext)
   const [editUserInfo, setEditUserInfo] = useState({
     name: "",
     email: "",
     mobile: "",
   })
   const handleCloseEdit = () => setOpenEditUser(false)
-
+  const navigate = useNavigate()
   const editHandler = (e) => {
     e.preventDefault();
+    navigate('/')
+    window.location.reload()
     const body = {
       name: editUserInfo.name,
       email: editUserInfo.email,

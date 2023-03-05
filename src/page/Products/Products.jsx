@@ -2,7 +2,7 @@ import ProductCard from './ProductCard'
 import { useProductsQuery } from '../../services/productApi';
 import { Link, useLocation } from 'react-router-dom';
 import { BiHomeSmile } from 'react-icons/bi';
-import Categories from '../../components/Categories/Categories';
+import Katalog from '../../components/Katalog/Katalog';
 function Products() {
     const { data: products, isLoading: productsIsloading, isSuccess: productsIsSuccess } = useProductsQuery()
     const location = useLocation();
@@ -13,14 +13,13 @@ function Products() {
     const filteredProducts = category
         ? products?.filter((product) => product.sub_ctg.name === category)
         : products;
-
     return (
         <div className="py-10 container">
             <Link to={'/'} className='text-gray-400 text-xl my-10 flex items-center'>
                 <BiHomeSmile /> /
             </Link>
             <div className="p-0">
-                <Categories />
+                <Katalog />
             </div>
             <div style={{ paddingBottom: '60px', paddingTop: '10px' }} className='grid grid-cols-4 gap-5'>
                 {productsIsloading && <h1>Loading...</h1>}

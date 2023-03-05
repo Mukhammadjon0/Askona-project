@@ -3,10 +3,9 @@ import "./BasketTop.css";
 import Order from "../order/Order";
 import { useNavigate } from "react-router-dom";
 import BasketComponent from "../Basket/BasketComponent";
-import { StateContext } from "../../context";
 import { useBasketQuery } from "../../services/basketApi";
 
-function BasketTop() {
+function BasketTop({ setState, state }) {
   const { data: basket } = useBasketQuery()
   const navigate = useNavigate()
   return (
@@ -16,14 +15,17 @@ function BasketTop() {
         <div className="flex flex-col gap-8">
           <div className="bask1 flex flex-col gap-8">
             <div className="basket__Box bg-white p-5">
-              <h2>Ваш заказ ({basket?.length || 0})</h2>
-              {basket?.length > 0 ? (
-                basket.map((item) => (
+              <h2>Ваш заказ ({basket?.data?.length || 0})</h2>
+              {basket?.data?.length > 0 ? (
+                basket?.data?.map((item) => (
                   <BasketComponent
                     key={item.id}
                     product={item.product}
                     soni={item.soni}
                     bronId={item.id}
+                    summa={item.summa}
+                    setState={setState}
+                    state={state}
                   />
                 ))
               ) : (
@@ -44,16 +46,13 @@ function BasketTop() {
               <p>Скидка</p>
             </div>
             <div className="sale">
-              <p>100 BYN</p>
-              <p>-0 BYN</p>
+              <p>{basket?.summa.toLocaleString("uz-UZ")} BYN</p>
+              <p>0 BYN</p>
             </div>
           </div>
           <hr />
-          <select>
-            <option>Использовать промокод</option>
-            <option>Использовать промокод</option>
-            <option>Использовать промокод</option>
-          </select>
+          <input type="text" placeholder="Использовать промокод" />
+
           <hr />
           <div className="tot1">
             <div className="total">
@@ -61,13 +60,13 @@ function BasketTop() {
               <h3>Сейчас к оплате</h3>
             </div>
             <div className="pay">
-              <p>127 BYN</p>
-              <p>127 BYN</p>
+              <p>{basket?.summa.toLocaleString("uz-UZ")} BYN</p>
+              <p>{basket?.summa.toLocaleString("uz-UZ")} BYN</p>
             </div>
           </div>
           <div className="btns">
-            <button onClick={() => navigate('/')} className="butt1">Купить в 1 клик</button>
-            <button onClick={() => navigate('/')} className="butt2">Отправить заказ</button>
+            <button className="butt1">Купить в 1 клик</button>
+            <button className="butt2">Отправить заказ</button>
           </div>
           <div className="end1">
             <p>

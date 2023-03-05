@@ -1,10 +1,23 @@
 import React from 'react'
 import { Box, IconButton, Menu } from '@mui/material';
-// import Prod from '../../assets/img/router.png'
 import { AiOutlineHeart } from 'react-icons/ai';
 import LikedCard from './LikedCard';
+import { useSavedQuery } from '../../services/savedApi';
+import { useProductsQuery } from '../../services/productApi';
 
 function Liked() {
+    const { data: proSaved } = useSavedQuery();
+    const { data: products } = useProductsQuery()
+    console.log(proSaved)
+    const productDetails = Array.isArray(proSaved) && proSaved?.map(prod => {
+        const product = products?.find(p => p.id === prod.product_id);
+        return {
+            ...prod,
+            ...product
+        }
+    });
+
+    //product saved modal
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -13,12 +26,6 @@ function Liked() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    const liked = [
-        {  title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 1 },
-        {  title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 2 },
-        {  title: 'Анатомический матрас Askona Benefit', price: 48900, oldPrice: 97800, id: 3 },
-    ]
     return (
         <div>
             <React.Fragment>
@@ -33,7 +40,7 @@ function Liked() {
                     >
                         <div className="relative cursor-pointer">
                             <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
-                                <p className='font-semibold text-[12px] text-white'>{liked.length}</p>
+                                <p className='font-semibold text-[12px] text-white'>{proSaved?.length || 0}</p>
                             </div>
                             <AiOutlineHeart className='cursor-pointer text-black' />
                         </div>
@@ -78,11 +85,9 @@ function Liked() {
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
                     <div className="flex flex-col p-3 gap-5">
-                        <div className="flex flex-col gap-2">
-                            {liked.map(item => <LikedCard key={item.id} {...item} />)}
+                        <div className="flex flex-col gap-2 divide-y">
+                            {productDetails?.length > 0 ? (productDetails?.map(item => <LikedCard key={item.id} {...item} handleClose={handleClose} />)) : (<h1 className='my-2 mx-2 text-red-500 text-xl font-semibold' >Вы еще не сохранили товар</h1>)}
                         </div>
-
-                        <button className='w-full py-2 bg-[#00bac9] text-white'>delete all</button>
                     </div>
                 </Menu>
             </React.Fragment>

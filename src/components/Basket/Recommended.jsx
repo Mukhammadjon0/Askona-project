@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Recommended.css'
 import Discount from '../../assets/img/spanImg.png'
-import { IoIosStats } from 'react-icons/io';
-import { CiHeart } from 'react-icons/ci';
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -39,18 +37,10 @@ function Recommended({ setState }) {
                                     navigate(`/productdetail/${item.id}`);
                                     setState({ right: false })
 
-                                }} style={{ backgroundImage: `url(https://askona.herokuapp.com${item.images[0]})`, backgroundSize: 'cover' }} className='w-[246px] h-[128px] bg-center bg-no-repeat m-auto flex flex-col justify-between'>
-                                    <div className="flex flex-row justify-between">
-                                        <div className="w-[34px] h-[34px] rounded-full flex justify-center items-center cursor-pointer">
-                                            <IoIosStats className='text-gray-400 hover:text-red-600' />
-                                        </div>
-                                        <div className="w-[34px] h-[34px] rounded-full flex justify-center items-center cursor-pointer">
-                                            <CiHeart className='text-gray-400 hover:text-red-600' />
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-row justify-between items-center">
-                                        <div className="w-[34px] h-[34px] rounded-full flex justify-center items-center cursor-pointer">
-                                            <img className='' src={Discount} alt="img" />
+                                }} style={{ backgroundImage: `url(https://askona.herokuapp.com/${item.images[0]})`, backgroundSize: 'cover' }} className='w-[246px] h-[128px] bg-center bg-no-repeat m-auto flex flex-col justify-between p-3'>
+                                    <div className="flex flex-row justify-between mt-24">
+                                        <div className="rounded-full flex items-center justify-center cursor-pointer">
+                                            <img className='w-10' src={Discount} alt="img" />
                                         </div>
                                         <div className="w-[76px] h-[18px] rounded-full flex justify-center items-center cursor-pointer">
                                             <span className="main__card-span bg-[#FFD54F] w-[116px] h-[24px] rounded whitespace-nowrap flex justify-center items-center text-[12px] font-medium">Товар недели

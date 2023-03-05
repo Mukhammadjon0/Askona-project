@@ -7,7 +7,6 @@ import EditUserInfo from './components/UserInfo/EditUserInfo'
 import Footer from './components/Footer/Footer';
 import Home from './page/Home/Home';
 import Zakaz from './page/Zakaz/Zakaz';
-import Katalog from './page/Katalog/Katalog';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import { Route, Routes, } from 'react-router-dom';
 import Products from './page/Products/Products';
@@ -15,6 +14,7 @@ import ChangePassword from './components/UserInfo/ChangePassword';
 import Header from './components/Header/Header';
 import Nav from './components/Navbar/Nav';
 import ScrollTop from './components/ScrollTop/ScrollTop';
+import Aksi from './page/Aksi/Aksi';
 
 function App() {
   const [userData, setUserData] = React.useState(JSON.parse(localStorage.getItem("userData")) || {})
@@ -50,12 +50,12 @@ function App() {
           <Route path='/products' element={<Products />} />
           <Route path='/productdetail/:id' element={<ProductDetail />} />
           <Route path='/zakaz' element={<Zakaz />} />
-          <Route path='/katalog' element={<Katalog />} />
+          <Route path='/aksi' element={<Aksi />} />
         </Routes>
         <Register />
         <EditUserInfo />
         <ChangePassword />
-        <Basket setState={setState} />
+        <Basket setState={setState} state={state} />
         <Footer />
         <ScrollTop />
       </div>

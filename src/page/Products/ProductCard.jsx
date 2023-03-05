@@ -18,8 +18,7 @@ function ProductCard({ product }) {
           <button onClick={getDetail}>
             <div className="main__card-img cursor-pointer">
               {
-                <img src={`https://askona.herokuapp.com${images[0]}`} alt="product" />
-
+                <img src={`https://askona.herokuapp.com/${images[0]}`} alt="product" />
               }
             </div>
             <div className="main__card-status flex justify-between px-[13px]">
@@ -35,7 +34,7 @@ function ProductCard({ product }) {
           <p className="card__body-price">
             от
             <span className="card__body-spanPrice text-[#00B9C0]">
-              {price} BYN
+              {price.toLocaleString("uz-UZ")} BYN
             </span>
             <span className="card__body-spanOldPrice">
               89000 BYN

@@ -24,7 +24,7 @@ function Footer() {
     return (
         <div className="">
             <footer className='bg-[#F6F6F6C9] pt-16 pb-5'>
-                <div className="w-[1400px] m-auto flex flex-col gap-16">
+                <div className="container flex flex-col gap-16">
                     <div className="flex justify-between">
                         <div className="flex flex-row gap-24">
                             <div className="flex flex-col">
