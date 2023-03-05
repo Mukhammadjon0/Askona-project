@@ -10,9 +10,8 @@ function debounce(func, delay) {
         timer = setTimeout(() => func.apply(this, args), delay);
     };
 }
-
 function Search() {
-    const { data: products, isLoading: productsIsLoading, isSuccess: productsIsSuccess } = useProductsQuery()
+    const { data: products,} = useProductsQuery()
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [isFocused, setIsFocused] = useState(false);
@@ -32,21 +31,16 @@ function Search() {
 
         delayedSearch();
     }, [searchTerm, products]);
-
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
     };
-
     const handleInputFocus = () => {
         setIsFocused(true);
     }
-
     const handleInputBlur = () => {
         setIsFocused(false);
     }
-
     if (!searchTerm) {
-        // Hide search results if searchTerm is empty
         return (
             <div className='sm:hidden'>
                 <div className={`rounded py-2 px-2 flex items-center gap-4 w-96 border ${isFocused ? 'border-[#00B6C9]' : 'border-gray-300'}`}>
@@ -63,7 +57,6 @@ function Search() {
             </div>
         )
     }
-
     return (
         <div className=''>
             <div className={`rounded py-2 px-2 flex items-center gap-4 w-96 border ${isFocused ? 'border-[#00B6C9]' : 'border-gray-300'}`}>

@@ -6,7 +6,6 @@ import { StateContext } from '../../context';
 function TransitionUp(props) {
     return <Slide {...props} direction="up" />;
 }
-
 function Call() {
     const [open, setOpen] = React.useState(false);
     const [transition, setTransition] = React.useState(undefined);
@@ -16,7 +15,6 @@ function Call() {
         setTransition(() => Transition);
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };
@@ -32,7 +30,6 @@ function Call() {
                         <TbPhoneCall className="text-gray-400 pr-2 text-2xl group-hover:text-[#00b6c9]" />
                         Перезвоните мне
                     </button>
-
                     <Snackbar
                         autoHideDuration={2000}
                         open={open}
@@ -50,9 +47,7 @@ function Call() {
                     Перезвоните мне
                 </button>
             )}
-
         </div>
-
     );
 }
 

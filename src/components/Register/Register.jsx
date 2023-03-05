@@ -17,7 +17,6 @@ import Login from '../Login/Login';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -28,7 +27,6 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
-
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -48,51 +46,40 @@ function TabPanel(props) {
         </div>
     );
 }
-
 TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
 };
-
 function a11yProps(index) {
     return {
         id: `simple-tab-${index}`,
         'aria-controls': `simple-tabpanel-${index}`,
     };
 }
-
 function Register() {
-    const { open, setOpen, userData, setUserData } = React.useContext(StateContext)
+    const { open, setOpen, setUserData } = React.useContext(StateContext)
 
     const [tel, setTel] = React.useState("")
     const [otp, setOtp] = React.useState("")
-
     const [user, setUser] = React.useState({
         name: "",
         password: "",
         mobile: "",
         email: "",
     })
-
     const [openRegister, setOpenRegister] = React.useState(false)
     const [openOtp, setOpenOtp] = React.useState(false)
+    const [value, setValue] = React.useState(0);
 
     const handleOpenRegister = () => setOpenRegister(true)
     const handleCloseRegister = () => setOpenRegister(false)
     const handleOpenOtp = () => setOpenOtp(true)
     const handleCloseOtp = () => setOpenOtp(false)
-
     const handleClose = () => setOpen(false);
-
-    const [value, setValue] = React.useState(0);
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
-
-
     const sendOtpHandler = (e) => {
         e.preventDefault();
         const postData = {
@@ -110,9 +97,7 @@ function Register() {
                 handleOpenOtp();
             })
             .catch(err => alert(err.response?.data?.Error))
-
     }
-
     const checkVerificationHandler = (e) => {
         e.preventDefault()
         const token = localStorage.getItem("askonaToken")
@@ -138,7 +123,6 @@ function Register() {
             })
             .catch(err => console.log(err.message));
     };
-
     const handelRegisterUser = (e) => {
         e.preventDefault();
         setUser({
@@ -146,7 +130,6 @@ function Register() {
             [e.target.name]: e.target.value
         });
     }
-
     const handleSignUp = (e) => {
         e.preventDefault();
         const postAuthData = {
@@ -167,16 +150,16 @@ function Register() {
                 handleCloseRegister();
             })
             .catch(err => console.log(err))
-
     }
+
     return (
         <div>
+            {/* Tel number register modal ======================================================== */}
             <Modal
                 open={open}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {/* Tel number register modal ======================================================== */}
                 <Box sx={style} className='rounded-xl'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{}}>
@@ -226,13 +209,12 @@ function Register() {
                 </Box>
             </Modal>
 
-
+            {/* OTP check modal =============================================== */}
             <Modal
                 open={openOtp}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {/* OTP check modal =============================================== */}
                 <Box sx={style} className='rounded-xl'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{}}>
@@ -248,13 +230,12 @@ function Register() {
                 </Box>
             </Modal>
 
-
+            {/* SignUp user modal ================================================ */}
             <Modal
                 open={openRegister}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {/* SignUp user modal ================================================ */}
                 <Box sx={style} className='rounded-xl'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{}}>

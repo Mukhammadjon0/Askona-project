@@ -10,7 +10,6 @@ function ProductCard({ product }) {
   const getDetail = () => {
     navigate(`/productdetail/${id}`)
   }
-  console.log(product)
   return (
     <div>
       <div className="product-card p-4">

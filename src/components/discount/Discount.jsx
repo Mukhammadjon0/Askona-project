@@ -3,7 +3,6 @@ import './Discount.css'
 import img1 from '../../assets/img/pngwing 14.png'
 import img2 from '../../assets/img/pngwing 13.png'
 
-
 function Discount() {
     return (
         <div className='Discount container'>
@@ -34,7 +33,6 @@ function Discount() {
                     <img src={img1} alt="" />
                 </div>
             </div>
-            {/*  */}
             <div className="Selection_mattresses">
                 <img className='Selection_mattresses_img' src={img2} alt="" />
                 <h3 className='Address_shop_h3'>Подбор матрасов</h3>

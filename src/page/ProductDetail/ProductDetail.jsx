@@ -28,7 +28,6 @@ function ProductDetail() {
     }
     setMainImgId((prev) => prev - 1)
   }
-
   useEffect(() => {
     if (mainImgId < 0) {
       setMainImgId(4)
@@ -80,7 +79,6 @@ function ProductDetail() {
                 </div>
                 <div id="about"></div>
               </div>
-
               <div className="bg-[#F6F6F6] py-6 px-8 divide-y flex flex-col">
                 <h1 className='font-extrabold text-2xl mb-3'>Характеристики</h1>
                 <div className="flex justify-between items-center py-3">
@@ -148,16 +146,13 @@ function ProductDetail() {
                 <Comments data={data} />
               </div>
             </div>
-
             <div className='w-full'>
               <DivanHunburg data={data} />
             </div>
           </div>
-
         </div>
       )}
     </div>
-
   )
 }
 

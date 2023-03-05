@@ -10,7 +10,10 @@ import { useNavigate } from 'react-router-dom';
 function UserInfo() {
     const { setOpenEditUser, userInfo, setUserInfo, setOpenChangePassword, setUserData } = useContext(StateContext)
     const userData = JSON.parse(localStorage.getItem("userData"))
+    const [logOutAlert, setLogOutAlert] = useState(false)
+    const [anchorEl, setAnchorEl] = React.useState(null);
     const navigate = useNavigate()
+
     const userBtn = async () => {
         await axios.get('https://askona.herokuapp.com/api/v1/user/',
             {
@@ -26,16 +29,13 @@ function UserInfo() {
     useEffect(() => {
         userBtn()
     }, [])
+
     const handleLogOut = () => {
         navigate('/')
         window.location.reload()
         setUserData({})
         localStorage.removeItem('askonaToken')
     }
-
-    const [logOutAlert, setLogOutAlert] = useState(false)
-
-    const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);

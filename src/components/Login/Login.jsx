@@ -2,17 +2,13 @@ import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { StateContext } from '../../context'
 import PhoneInput from 'react-phone-input-2'
-import { useNavigate } from 'react-router-dom'
 
 function Login() {
     const { handleClose, setUserData } = useContext(StateContext)
     const [loginTel, setLoginTel] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
-    const navigate = useNavigate()
     const loginHandler = (e) => {
         e.preventDefault()
-
-
         const loginData = {
             method: "login",
             params: {
@@ -45,7 +41,8 @@ function Login() {
                     onChange={phone => setLoginTel(phone)}
                     inputStyle={{ width: '100%' }}
 
-                />                <input onChange={(e) => setLoginPassword(e.target.value)} className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="password" placeholder='Пароль' autoComplete='current password' />
+                />
+                <input onChange={(e) => setLoginPassword(e.target.value)} className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="password" placeholder='Пароль' autoComplete='current password' />
                 <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>ВОЙТИ</button>
             </form>
         </div>

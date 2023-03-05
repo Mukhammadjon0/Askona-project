@@ -15,13 +15,12 @@ function LogOut({ logOutAlert, setLogOutAlert, handleLogOut }) {
     };
     return (
         <div>
+            {/* Edit User Info ================================================ */}
             <Modal
                 open={logOutAlert}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-
-                {/* Edit User Info ================================================ */}
                 <Box sx={style} className='rounded-xl'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{}}>

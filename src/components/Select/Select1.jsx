@@ -23,11 +23,12 @@ export default function Select1() {
           label="Age"
           onChange={handleChange}
         >
-          <MenuItem value={10}>minsk</MenuItem>
-          <MenuItem value={20}>minsk</MenuItem>
-          <MenuItem value={30}>minsk</MenuItem>
+          <MenuItem value={10}>Tashkent</MenuItem>
+          <MenuItem value={20}>Moscow</MenuItem>
+          <MenuItem value={30}>USA</MenuItem>
         </Select>
       </FormControl>
     </Box>
   );
+
 }

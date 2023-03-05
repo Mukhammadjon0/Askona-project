@@ -13,6 +13,7 @@ function Basket({ setState }) {
     const { data: basket, isLoading: isBasketLoading, } = useBasketQuery();
     const { state, userData, handleOpenBasket, handleOpen } = React.useContext(StateContext)
     const navigate = useNavigate()
+
     const handleNavigate = () => {
         if (userData.token) {
             navigate('/zakaz')
@@ -20,6 +21,7 @@ function Basket({ setState }) {
         }
         else handleOpen()
     }
+    
     return (
         <div>
             {['right'].map((anchor) => (
@@ -33,7 +35,6 @@ function Basket({ setState }) {
                             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 'auto' }}
                             role="presentation"
                         >
-
                             <div className='bg-white w-[604px] h-screen '>
                                 <div className="flex justify-between items-center px-6 py-6 border-b-[1px] border-gray-300">
                                     <h1 className='font-semibold text-3xl'>В корзине ({basket?.data?.length || 0}) товара</h1>
@@ -61,7 +62,7 @@ function Basket({ setState }) {
                                 </div>
                                 <div className="flex flex-row justify-between px-6 py-5 border-t-[1px] border-gray-300">
                                     <h1 className='font-bold text-xl text-black'>Итого:</h1>
-                                    <span className='text-[#00B6C9] font-bold text-xl'>{basket?.summa.toLocaleString("uz-UZ") || 0} BYN</span>
+                                    <span className='text-[#00B6C9] font-bold text-xl'>{basket?.summa?.toLocaleString("uz-UZ") || 0} BYN</span>
                                 </div>
                                 <div className=" w-full px-6">
                                     <div className="bg-gray-200 px-3 py-2 rounded flex flex-row items-center gap-3">
@@ -78,15 +79,11 @@ function Basket({ setState }) {
                                 </div>
                                 <Recommended setState={setState} />
                             </div>
-
                         </Box>
                     </Drawer>
                 </React.Fragment>
             ))}
         </div>
-
-
-
     )
 }
 

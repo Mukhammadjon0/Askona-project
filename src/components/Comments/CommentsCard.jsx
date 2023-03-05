@@ -40,6 +40,7 @@ function CommentsCard({ text, user, comment_id }) {
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
+    
     return (
         <div className='py-3 flex flex-col gap-2'>
             <h1 className='font-semibold'>{user.name}</h1>

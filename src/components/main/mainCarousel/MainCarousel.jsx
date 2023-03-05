@@ -14,16 +14,14 @@ import { StateContext } from "../../../context";
 import { useAddProductToSavedMutation, useSavedQuery } from "../../../services/savedApi";
 import Like from '../../../assets/svg/heart-regular.svg'
 import Liked from '../../../assets/svg/heart-solid.svg'
-import { Slide } from "@mui/material";
 
-function MainCarousel({ handleClickProSaved }) {
-  // const { products } = useContext(StateContext)
+function MainCarousel() {
   const { data: products, isSuccess: productsIsSuccess } = useProductsQuery()
   const [addToProSaved] = useAddProductToSavedMutation()
   const { userData, handleOpen } = useContext(StateContext)
   const { data: proSaved } = useSavedQuery();
   const navigate = useNavigate()
-  console.log(products)
+  
   return (
     <div className="">
       <h1 className="title">Хиты продаж</h1>
@@ -64,7 +62,6 @@ function MainCarousel({ handleClickProSaved }) {
                   } className="absolute z-30 top-3 right-3">
                     {proSaved?.length > 0 ? proSaved?.some(saved => saved.product_id === el.id) ? (<img className="w-5" src={Liked} alt="icon" />) : (<img className="w-5" src={Like} alt="icon" />) : <img className="w-5" src={Like} alt="icon" />}
                   </button>
-
                   <div className="main__card-status flex justify-between px-[13px]">
                     <img src={DiscountImg} alt="" />
                     <span className="main__card-span bg-[#FFD54F] w-[116px] h-[24px] rounded flex justify-center items-center text-[12px] font-medium">Товар недели

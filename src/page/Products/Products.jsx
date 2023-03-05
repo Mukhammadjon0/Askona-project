@@ -3,10 +3,10 @@ import { useProductsQuery } from '../../services/productApi';
 import { Link, useLocation } from 'react-router-dom';
 import { BiHomeSmile } from 'react-icons/bi';
 import Katalog from '../../components/Katalog/Katalog';
+
 function Products() {
     const { data: products, isLoading: productsIsloading, isSuccess: productsIsSuccess } = useProductsQuery()
     const location = useLocation();
-    console.log(products)
     const queryParams = new URLSearchParams(location.search);
     const category = queryParams.get("category");
 

@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./BasketTop.css";
 import Order from "../order/Order";
-import { useNavigate } from "react-router-dom";
 import BasketComponent from "../Basket/BasketComponent";
 import { useBasketQuery } from "../../services/basketApi";
 
 function BasketTop({ setState, state }) {
   const { data: basket } = useBasketQuery()
-  const navigate = useNavigate()
+
   return (
     <div className="flex flex-col container bg-gray-200 py-14">
       <h1 className="font-bold text-2xl">Оформление заказа</h1>
@@ -35,8 +34,6 @@ function BasketTop({ setState, state }) {
             <Order />
           </div>
         </div>
-
-
         <div className="bask2">
           <h1>Стоимость заказа</h1>
           <h2>Сроки доставки уточнит менеджер при обработке заказа</h2>
@@ -46,13 +43,12 @@ function BasketTop({ setState, state }) {
               <p>Скидка</p>
             </div>
             <div className="sale">
-              <p>{basket?.summa.toLocaleString("uz-UZ")} BYN</p>
+              <p>{basket?.summa?.toLocaleString("uz-UZ")} BYN</p>
               <p>0 BYN</p>
             </div>
           </div>
           <hr />
           <input type="text" placeholder="Использовать промокод" />
-
           <hr />
           <div className="tot1">
             <div className="total">
@@ -61,7 +57,7 @@ function BasketTop({ setState, state }) {
             </div>
             <div className="pay">
               <p>{basket?.summa.toLocaleString("uz-UZ")} BYN</p>
-              <p>{basket?.summa.toLocaleString("uz-UZ")} BYN</p>
+              <p className="text-[#00B6C9] font-semibold">{basket?.summa.toLocaleString("uz-UZ")} BYN</p>
             </div>
           </div>
           <div className="btns">
@@ -76,9 +72,7 @@ function BasketTop({ setState, state }) {
           </div>
         </div>
       </div>
-
     </div>
-
   );
 }
 

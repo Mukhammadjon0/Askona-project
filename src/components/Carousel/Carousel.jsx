@@ -7,6 +7,7 @@ import './Carousel.css'
 import HomeTop from '../../assets/img/home-top.png'
 import HomeTop1 from '../../assets/img/home-top2.png'
 import HomeTop2 from '../../assets/img/home-top3.png'
+
 function Carousel() {
     return (
         <div className="py-5 cursor-pointer">

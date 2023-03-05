@@ -9,8 +9,8 @@ function ChangePassword() {
     const { openChangePassword, setOpenChangePassword, userData } = useContext(StateContext)
     const [oldPass, setOldPass] = useState("")
     const [newPass, setNewPass] = useState("")
-
     const navigate = useNavigate()
+
     const editPasswordHandler = (e) => {
         navigate('/')
         window.location.reload()
@@ -29,7 +29,6 @@ function ChangePassword() {
             })
             .catch(err => console.log(err))
     }
-
     const style = {
         position: 'absolute',
         top: '50%',
@@ -46,13 +45,12 @@ function ChangePassword() {
 
     return (
         <div>
+            {/* Edit Password ================================================ */}
             <Modal
                 open={openChangePassword}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-
-                {/* Edit Password ================================================ */}
                 <Box sx={style} className='rounded-xl'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{}}>
