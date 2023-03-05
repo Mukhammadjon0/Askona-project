@@ -68,6 +68,9 @@ function Register() {
         mobile: "",
         email: "",
     })
+    const [telErr, setTelErr] = React.useState('')
+    const [otpErr, setOtpErr] = React.useState('')
+    const [regisErr, setRegisErr] = React.useState('')
     const [openRegister, setOpenRegister] = React.useState(false)
     const [openOtp, setOpenOtp] = React.useState(false)
     const [value, setValue] = React.useState(0);
@@ -96,7 +99,7 @@ function Register() {
                 handleClose();
                 handleOpenOtp();
             })
-            .catch(err => alert(err.response?.data?.Error))
+            .catch(err => setTelErr(err.response?.data?.Error))
     }
     const checkVerificationHandler = (e) => {
         e.preventDefault()
@@ -112,7 +115,7 @@ function Register() {
             .then(res => {
                 console.log(res.data)
                 if (res.data?.Error) {
-                    alert(res.data?.Error)
+                    setOtpErr(res.data?.Error)
                     return;
                 }
                 if (res.data?.is_registered) alert("bu raqam oldin royxatdan otgan")
@@ -140,7 +143,7 @@ function Register() {
         axios.post("https://askona.herokuapp.com/api/v1/auth/", postAuthData)
             .then(res => {
                 if (res.data?.Error) {
-                    alert(res.data?.Error)
+                    setRegisErr(res.data?.Error)
                     return;
                 }
                 console.log(res.data)
@@ -171,6 +174,7 @@ function Register() {
                                 <Tab label="РЕГИСТРАЦИЯ" {...a11yProps(0)} />
                                 <Tab label="ВХОД" {...a11yProps(1)} />
                             </Tabs>
+                            <p className='text-red-600 font-medium text-sm'>{telErr}</p>
                             <form onSubmit={sendOtpHandler} action="" className='flex flex-col items-center gap-5'>
                                 <PhoneInput
                                     inputProps={{
@@ -221,6 +225,7 @@ function Register() {
                             <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseOtp}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
                             <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
                         </Box>
+                        <p className='text-red-600 font-medium text-sm'>{otpErr}</p>
                         <p>Mы отправили код на ваш номер телефона ({tel})</p>
                         <form onSubmit={checkVerificationHandler} action="" className='flex flex-col items-center gap-5'>
                             <input onChange={e => setOtp(e.target.value)} className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="number" placeholder='Введите код сюда' />
@@ -242,6 +247,7 @@ function Register() {
                             <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseRegister}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
                             <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
                         </Box>
+                        <p className='text-red-600 font-medium text-sm'>{regisErr}</p>
                         <form onSubmit={handleSignUp} action="" className='flex flex-col items-center gap-5'>
                             <input onChange={handelRegisterUser} name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="text" placeholder='Имя' />
                             <input onChange={handelRegisterUser} name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="email" placeholder='Адрес электронной почты' />

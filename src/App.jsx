@@ -40,7 +40,7 @@ function App() {
   }, [userData])
 
   return (
-    <StateContext.Provider value={{ userData, open, openChangePassword, setOpenChangePassword, handleOpenBasket, handleOpen, setOpen, state, setState, handleClose, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
+    <StateContext.Provider value={{ userData,setUserData, open, openChangePassword, setOpenChangePassword, handleOpenBasket, handleOpen, setOpen, state, setState, handleClose, userInfo, setUserInfo, openEditUser, setOpenEditUser }}>
       <div className="App">
         <Header />
         <Nav />

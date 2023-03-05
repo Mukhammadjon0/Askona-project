@@ -39,16 +39,16 @@ function BasketTop({ setState, state }) {
           <h2>Сроки доставки уточнит менеджер при обработке заказа</h2>
           <div className="prod1">
             <div className="product">
-              <p>Товары ({basket?.length || 0})</p>
+              <p>Товары ({basket?.data?.length || 0})</p>
               <p>Скидка</p>
             </div>
             <div className="sale">
-              <p>{basket?.summa?.toLocaleString("uz-UZ")} BYN</p>
+              <p>{basket?.summa?.toLocaleString("uz-UZ") || 0} BYN</p>
               <p>0 BYN</p>
             </div>
           </div>
           <hr />
-          <input type="text" placeholder="Использовать промокод" />
+          <input className="w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1" type="text" placeholder="Использовать промокод" />
           <hr />
           <div className="tot1">
             <div className="total">
@@ -56,13 +56,13 @@ function BasketTop({ setState, state }) {
               <h3>Сейчас к оплате</h3>
             </div>
             <div className="pay">
-              <p>{basket?.summa.toLocaleString("uz-UZ")} BYN</p>
-              <p className="text-[#00B6C9] font-semibold">{basket?.summa.toLocaleString("uz-UZ")} BYN</p>
+              <p>{basket?.summa?.toLocaleString("uz-UZ") || 0} BYN</p>
+              <p className="text-[#00B6C9] font-semibold">{basket?.summa?.toLocaleString("uz-UZ") || 0} BYN</p>
             </div>
           </div>
           <div className="btns">
-            <button className="butt1">Купить в 1 клик</button>
-            <button className="butt2">Отправить заказ</button>
+            <button className="butt1 border-gray-500 py-2 rounded duration-200 hover:bg-gray-100 active:scale-95">Купить в 1 клик</button>
+            <button className="butt2 duration-200 hover:bg-[#0099a8] active:scale-95">Отправить заказ</button>
           </div>
           <div className="end1">
             <p>

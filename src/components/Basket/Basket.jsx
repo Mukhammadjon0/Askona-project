@@ -19,9 +19,11 @@ function Basket({ setState }) {
             navigate('/zakaz')
             setState({ right: false })
         }
+        if (basket?.data?.length > 0) {
+        }
         else handleOpen()
     }
-    
+
     return (
         <div>
             {['right'].map((anchor) => (

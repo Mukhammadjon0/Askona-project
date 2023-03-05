@@ -8,7 +8,6 @@ import { useProductsQuery } from '../../services/productApi';
 function Liked() {
     const { data: proSaved } = useSavedQuery();
     const { data: products } = useProductsQuery()
-    console.log(proSaved)
     const productDetails = Array.isArray(proSaved) && proSaved?.map(prod => {
         const product = products?.find(p => p.id === prod.product_id);
         return {
@@ -16,7 +15,6 @@ function Liked() {
             ...product
         }
     });
-
     //product saved modal
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);

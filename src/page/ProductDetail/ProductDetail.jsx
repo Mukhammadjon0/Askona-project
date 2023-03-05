@@ -53,7 +53,7 @@ function ProductDetail() {
                   </button>
 
                   {data.images.map((item, index) => (
-                    <img onClick={() => setMainImgId(index)} className='border-2 border-solid border-red-50 mt-4 w-28 cursor-pointer' src={`https://askona.herokuapp.com/${item}`} key={index} alt="" />
+                    <img onClick={() => setMainImgId(index)} className={`border-2 border-solid ${mainImgId === index ? 'border-[#00B6C9]' : 'border-gray-200'} mt-4 w-28 cursor-pointer`} src={`https://askona.herokuapp.com/${item}`} key={index} alt="" />
                   ))}
                   <button onClick={nextImg} className='border-2 border-solid border-red-50  px-12 py-1 mt-4'>
                     <MdOutlineKeyboardArrowDown className='text-[#00b6c9]' />

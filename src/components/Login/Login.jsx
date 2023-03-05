@@ -7,6 +7,7 @@ function Login() {
     const { handleClose, setUserData } = useContext(StateContext)
     const [loginTel, setLoginTel] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
+    const [loginErr, setLoginErr] = useState('')
     const loginHandler = (e) => {
         e.preventDefault()
         const loginData = {
@@ -19,7 +20,7 @@ function Login() {
         axios.post("https://askona.herokuapp.com/api/v1/auth/", loginData)
             .then(res => {
                 if (res.data?.Error) {
-                    alert(res.data?.Error)
+                    setLoginErr(res.data?.Error)
                     return;
                 }
                 localStorage.setItem("userData", JSON.stringify(res.data.result))
@@ -29,6 +30,7 @@ function Login() {
     }
     return (
         <div>
+            <p className='text-red-600 font-medium text-sm'>{loginErr}</p>
             <form onSubmit={loginHandler} action="" className=' flex flex-col items-center gap-5'>
                 <PhoneInput
                     inputProps={{

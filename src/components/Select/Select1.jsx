@@ -15,7 +15,7 @@ export default function Select1() {
   return (
     <Box sx={{ width: '100%', }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Minsk</InputLabel>
+        <InputLabel id="demo-simple-select-label">город</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="minsk"

@@ -11,7 +11,6 @@ function BasketComponent({ product, soni, bronId, summa, state }) {
 
     const handleUpdateQuantity = async () => {
         await updateQuantity({ bron_id: bronId, quantity: count });
-        console.log(count)
     };
     const plusBtn = () => {
         setCount(p => p + 1)
@@ -27,7 +26,7 @@ function BasketComponent({ product, soni, bronId, summa, state }) {
         return () => {
             handleUpdateQuantity()
         }
-    }, [state])
+    }, [count])
 
     return (
         <div className="">
