@@ -18,7 +18,7 @@ export default function Sidebar({ setState }) {
         <div className="said_top">
           <h1>Доставка и самовывоз</h1>
           <button onClick={() => setState({ right: false })}>
-            <HiXMark className="text-[#00B6C9] text-lg" />
+            <HiXMark className="text-[#00B6C9] text-2xl" />
           </button>
         </div>
         <div className="ourTop">

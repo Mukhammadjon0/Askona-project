@@ -3,15 +3,17 @@ import React, { useContext, useState } from 'react'
 import { StateContext } from '../../context';
 import { MdCancel } from 'react-icons/md';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function ChangePassword() {
-    const { openChangePassword, setOpenChangePassword } = useContext(StateContext)
+    const { openChangePassword, setOpenChangePassword, userData } = useContext(StateContext)
     const [oldPass, setOldPass] = useState("")
     const [newPass, setNewPass] = useState("")
 
-    const userData = JSON.parse(localStorage.getItem("userData"))
-
+    const navigate = useNavigate()
     const editPasswordHandler = (e) => {
+        navigate('/')
+        window.location.reload()
         e.preventDefault();
         const body = {
             old: { oldPass },
@@ -27,8 +29,6 @@ function ChangePassword() {
             })
             .catch(err => console.log(err))
     }
-
-
 
     const style = {
         position: 'absolute',

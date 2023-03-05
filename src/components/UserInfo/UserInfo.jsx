@@ -1,14 +1,16 @@
-import React, { useContext, useEffect } from 'react'
-import { Button, IconButton, Menu, } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react'
+import { IconButton, Menu, } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios'
 import { BiUser } from 'react-icons/bi';
 import { StateContext } from '../../context';
+import LogOut from './LogOut';
+import { useNavigate } from 'react-router-dom';
 
 function UserInfo() {
     const { setOpenEditUser, userInfo, setUserInfo, setOpenChangePassword, setUserData } = useContext(StateContext)
-
     const userData = JSON.parse(localStorage.getItem("userData"))
+    const navigate = useNavigate()
     const userBtn = async () => {
         await axios.get('https://askona.herokuapp.com/api/v1/user/',
             {
@@ -24,13 +26,14 @@ function UserInfo() {
     useEffect(() => {
         userBtn()
     }, [])
-
     const handleLogOut = () => {
-        // localStorage.removeItem('userData')
+        navigate('/')
+        window.location.reload()
         setUserData({})
         localStorage.removeItem('askonaToken')
     }
 
+    const [logOutAlert, setLogOutAlert] = useState(false)
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -106,11 +109,12 @@ function UserInfo() {
                                 Редактировать
                             </button>
                             <button onClick={handleOpenChangePassword} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>Изменить пароль</button>
-                            <button onClick={handleLogOut} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>Выйти</button>
+                            <button onClick={() => setLogOutAlert(true)} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>Выйти</button>
                         </div>
                     </div>
                 </Menu>
             </React.Fragment>
+            <LogOut handleLogOut={handleLogOut} setLogOutAlert={setLogOutAlert} logOutAlert={logOutAlert} />
         </div>
     )
 }

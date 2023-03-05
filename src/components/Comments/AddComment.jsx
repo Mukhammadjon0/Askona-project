@@ -4,7 +4,7 @@ import { useAddCommentMutation, useCommentsQuery } from '../../services/commentA
 
 function AddComment({ data }) {
     const [addCommentOpen, setAddCommentOpen] = useState(true)
-    const { userData } = useContext(StateContext)
+    const { userData, handleOpen } = useContext(StateContext)
     const [text, setText] = useState('')
 
     const [addComment] = useAddCommentMutation()
@@ -20,7 +20,7 @@ function AddComment({ data }) {
         <div>
             <div className="flex justify-between">
                 <h1 className='font-bold text-2xl'>Отзывы ({comments?.cnt})</h1>
-                <button onClick={() => setAddCommentOpen((p) => !p)} className='py-1 px-6 bg-[#00B9C0] rounded text-white'>Оставить отзыв</button>
+                <button onClick={() => userData?.token ? setAddCommentOpen((p) => !p) : handleOpen()} className='py-1 px-6 bg-[#00B9C0] rounded text-white'>Оставить отзыв</button>
             </div>
 
             <form onSubmit={handleSubmitComment} action="" className={`${addCommentOpen ? "hidden" : 'flex flex-col gap-3 mt-5'}`}>

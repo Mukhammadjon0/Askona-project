@@ -1,24 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FaPercentage } from 'react-icons/fa'
 import { HiBars3BottomLeft } from 'react-icons/hi2'
-import { NavLink } from 'react-router-dom'
-import Card from '../card/Card';
-import { data } from '../../datas';
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useGetCategoriesQuery } from '../../services/categoryApi';
 
 function NavCategories() {
     const { data: categories, isSuccess: isSuccessCategory } = useGetCategoriesQuery()
-    const [categoriesOpen, setCategoriesOpen] = useState(true);
+    // const [categoriesOpen, setCategoriesOpen] = useState(true);
+    const navigate = useNavigate()
     return (
-        <div className='shadow'>
+        <div className='shadow sm:hidden'>
             <div className="w-full border-b-[1px] border-gray-200 py-3">
                 <div className="container">
                     <div className="flex items-center justify-between flex-wrap">
                         <button
-                            onClick={() => setCategoriesOpen((p) => !p)}
+                            onClick={() => navigate('/products')}
                             className="w-[180px] border border-solid px-4 py-3 flex items-center text-white font-bold whitespace-nowrap bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95"
                         >
-                            <HiBars3BottomLeft className="mr-5" /> Все товары{" "}
+                            <HiBars3BottomLeft className="mr-5" /> Все товары
                         </button>
                         {isSuccessCategory && categories.data?.map(category =>
                             <NavLink
@@ -29,13 +28,13 @@ function NavCategories() {
                                 {category.content}
                             </NavLink>
                         )}
-                        <NavLink className="text-red-400 flex items-center text-base" to="/products">
+                        <NavLink className="text-red-400 flex items-center text-base" to="/aksi">
                             <FaPercentage /> Акции
                         </NavLink>
                     </div>
                 </div>
             </div>
-            <div
+            {/* <div
                 className={`${categoriesOpen
                     ? "hidden"
                     : "bg-white w-full absolute z-50 border-2 flex"
@@ -58,7 +57,7 @@ function NavCategories() {
                         ))}
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div >
     )
 }

@@ -34,8 +34,7 @@ function Call() {
                     </button>
 
                     <Snackbar
-                        className='z-50'
-                        autoHideDuration={3000}
+                        autoHideDuration={2000}
                         open={open}
                         onClose={handleClose}
                         TransitionComponent={transition}
@@ -45,7 +44,7 @@ function Call() {
                 </div>) : (
                 <button
                     onClick={handleOpen}
-                    className="group rounded flex items-center border border-gray-300 py-2 px-2 text-center hover:text-[#00b6c9] hover:border-[#00b6c9] active:scale-95"
+                    className="group rounded flex items-center border border-gray-300 py-2 px-2 text-center hover:text-[#00b6c9] hover:border-[#00b6c9] active:scale-95 sm:hidden"
                 >
                     <TbPhoneCall className="text-gray-400 pr-2 text-2xl group-hover:text-[#00b6c9]" />
                     Перезвоните мне

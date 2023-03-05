@@ -48,7 +48,7 @@ function Search() {
     if (!searchTerm) {
         // Hide search results if searchTerm is empty
         return (
-            <div>
+            <div className='sm:hidden'>
                 <div className={`rounded py-2 px-2 flex items-center gap-4 w-96 border ${isFocused ? 'border-[#00B6C9]' : 'border-gray-300'}`}>
                     <BiSearchAlt2 className="text-[#00B6C9] text-lg font-bold" />
                     <input
