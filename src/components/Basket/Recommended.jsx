@@ -45,7 +45,7 @@ function Recommended({ setState }) {
                                 </div>
                                 <div className="border-t-[1px] border-gray-200 m-2 pt-2">
                                     <h1 className='font-semibold text-sm'>{item.name}</h1>
-                                    <p className='font-medium text-xs text-gray-400 mt-2'>от <span className='text-[#00B6C9] text-sm font-bold'>{item.price} BYN</span>  <span className='text-gray-400 line-through'>180 BYN</span></p>
+                                    <p className='font-medium text-xs text-gray-400 mt-2'>от <span className='text-[#00B6C9] text-sm font-bold'>{item.price.toLocaleString("uz-UZ")} BYN</span>  <span className='text-gray-400 line-through'>180 BYN</span></p>
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,6 @@ import { useCommentsQuery } from '../../services/commentApi'
 
 function Comments({ data }) {
   const { data: comments = [] } = useCommentsQuery(data.id)
-  console.log(comments)
   return (
     <div className='w-[800px] border-t-[1px] border-gray-200 py-5'>
       <div className="flex flex-col divide-y">
