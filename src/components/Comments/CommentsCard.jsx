@@ -19,7 +19,7 @@ function CommentsCard({ text, user, comment_id }) {
         const headers = {
             Authorization: `Bearer ${userData?.token}`
         }
-        axios.post("https://askona.herokuapp.com/api/v1/comment/", body, { headers })
+        axios.post("http://68.183.21.222:1233/api/v1/comment/", body, { headers })
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
@@ -34,7 +34,7 @@ function CommentsCard({ text, user, comment_id }) {
         const headers = {
             Authorization: `Bearer ${userData?.token}`
         }
-        axios.post("https://askona.herokuapp.com/api/v1/comment/", body, { headers })
+        axios.post("http://68.183.21.222:1233/api/v1/comment/", body, { headers })
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }

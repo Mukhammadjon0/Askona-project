@@ -50,7 +50,7 @@ function MainCarousel() {
                 <div className="main__card-head">
                   <div className="main__card-img">
                     {
-                      <img onClick={() => navigate(`productdetail/${el.id}`)} src={`https://askona.herokuapp.com/${el.images[0]}`} alt="img" />
+                      <img onClick={() => navigate(`productdetail/${el.id}`)} src={`http://68.183.21.222:1233/${el.images[0]}`} alt="img" />
                     }
                   </div>
                   <button onClick={() => {

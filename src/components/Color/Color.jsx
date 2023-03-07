@@ -4,7 +4,11 @@ import { HiXMark } from 'react-icons/hi2';
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import './Color.css'
 import Colorss from '../../assets/img/tkan.png'
+import Colors2 from '../../assets/img/tkan-2.png'
+import Colors3 from '../../assets/img/tkan-3.png'
+import Colors4 from '../../assets/img/tkan-4.png'
 import ColorCard from './ColorCard';
+import { useProductsQuery } from '../../services/productApi';
 
 function Color() {
     const [mainColorId, setMainColorId] = React.useState(0)
@@ -23,11 +27,13 @@ function Color() {
 
     const colors = [
         { id: 1, image: Colorss, name: 'Sky Vallet 98', color: 'Серый', material: 'Микровелюр', price: 7900 },
-        { id: 2, image: Colorss, name: 'Sky Vallet 96', color: 'Серый', material: 'Микровелюр', price: 9900 },
-        { id: 3, image: Colorss, name: 'Sky Vallet 45', color: 'Серый', material: 'Микровелюр', price: 5900 },
-        { id: 4, image: Colorss, name: 'Sky Vallet 12', color: 'Серый', material: 'Микровелюр', price: 6900 },
-        { id: 5, image: Colorss, name: 'Sky Vallet 92', color: 'Серый', material: 'Микровелюр', price: 8000 },
+        { id: 2, image: Colors2, name: 'Enrich1 848', color: 'Серый', material: 'Микровелюр', price: 9900 },
+        { id: 3, image: Colors3, name: 'Iris 507', color: 'Серый', material: 'Микровелюр', price: 5900 },
+        { id: 4, image: Colors4, name: 'Enrich1 212', color: 'Серый', material: 'Микровелюр', price: 6900 },
+        { id: 5, image: Colorss, name: 'Sky Vallet 52', color: 'Серый', material: 'Микровелюр', price: 8000 },
     ]
+    const { data: products, } = useProductsQuery()
+    console.log(products)
     return (
         <div>
             {["right"].map((anchor) => (

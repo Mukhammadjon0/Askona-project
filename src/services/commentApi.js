@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const API_URL = 'https://askona.herokuapp.com/api/v1'
+const API_URL = 'http://68.183.21.222:1233/api/v1/'
 const user = JSON.parse(localStorage.getItem('userData'))
 
 export const commentsApi = createApi({

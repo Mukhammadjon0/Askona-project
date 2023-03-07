@@ -17,7 +17,7 @@ function ProductCard({ product }) {
           <button onClick={getDetail}>
             <div className="main__card-img cursor-pointer">
               {
-                <img src={`https://askona.herokuapp.com/${images[0]}`} alt="product" />
+                <img src={`http://68.183.21.222:1233/${images[0]}`} alt="product" />
               }
             </div>
             <div className="main__card-status flex justify-between px-[13px]">

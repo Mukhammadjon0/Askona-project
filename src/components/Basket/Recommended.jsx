@@ -32,7 +32,7 @@ function Recommended({ setState }) {
                                 <div onClick={() => {
                                     navigate(`/productdetail/${item.id}`);
                                     setState({ right: false })
-                                }} style={{ backgroundImage: `url(https://askona.herokuapp.com/${item.images[0]})`, backgroundSize: 'cover' }} className='w-[246px] h-[128px] bg-center bg-no-repeat m-auto flex flex-col justify-between p-3'>
+                                }} style={{ backgroundImage: `url(http://68.183.21.222:1233/${item.images[0]})`, backgroundSize: 'cover' }} className='w-[246px] h-[128px] bg-center bg-no-repeat m-auto flex flex-col justify-between p-3'>
                                     <div className="flex flex-row justify-between mt-24">
                                         <div className="rounded-full flex items-center justify-center cursor-pointer">
                                             <img className='w-10' src={Discount} alt="img" />

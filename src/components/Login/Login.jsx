@@ -17,7 +17,7 @@ function Login() {
                 password: loginPassword,
             },
         }
-        axios.post("https://askona.herokuapp.com/api/v1/auth/", loginData)
+        axios.post("http://68.183.21.222:1233/api/v1/auth/", loginData)
             .then(res => {
                 if (res.data?.Error) {
                     setLoginErr(res.data?.Error)

@@ -22,7 +22,7 @@ function ChangePassword() {
         const headers = {
             Authorization: `Bearer ${userData?.token}`
         }
-        axios.put("https://askona.herokuapp.com/api/v1/user/", body, { headers })
+        axios.put("http://68.183.21.222:1233/api/v1/user/", body, { headers })
             .then(res => {
                 console.log(res)
                 closeChangePassword()

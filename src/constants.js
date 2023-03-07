@@ -1,1 +1,1 @@
-export const BASE_URL = "https://askona.herokuapp.com/api/v1/";
+export const BASE_URL = "http://68.183.21.222:1233/api/v1/";

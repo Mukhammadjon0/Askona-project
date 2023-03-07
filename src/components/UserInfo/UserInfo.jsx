@@ -15,7 +15,7 @@ function UserInfo() {
     const navigate = useNavigate()
 
     const userBtn = async () => {
-        await axios.get('https://askona.herokuapp.com/api/v1/user/',
+        await axios.get('http://68.183.21.222:1233/api/v1/user/',
             {
                 headers: {
                     Authorization: `Bearer ${userData?.token}`
