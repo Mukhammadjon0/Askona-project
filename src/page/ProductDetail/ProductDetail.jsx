@@ -53,7 +53,7 @@ function ProductDetail() {
                   </button>
 
                   {data.images.map((item, index) => (
-                    <img onClick={() => setMainImgId(index)} className={`border-2 border-solid ${mainImgId === index ? 'border-[#00B6C9]' : 'border-gray-200'} mt-4 w-28 cursor-pointer`} src={`https://askona.herokuapp.com/${item}`} key={index} alt="" />
+                    <img onClick={() => setMainImgId(index)} className={`border-2 border-solid ${mainImgId === index ? 'border-[#00B6C9]' : 'border-gray-200'} mt-4 w-28 cursor-pointer`} src={`http://68.183.21.222:1233/${item}`} key={index} alt="" />
                   ))}
                   <button onClick={nextImg} className='border-2 border-solid border-red-50  px-12 py-1 mt-4'>
                     <MdOutlineKeyboardArrowDown className='text-[#00b6c9]' />
@@ -68,7 +68,7 @@ function ProductDetail() {
                       Доставка 1 день
                     </p>
                   </div>
-                  <img className="flex items-start w-full relative h-[100%]" src={`https://askona.herokuapp.com/${data.images[mainImgId]}`} alt="" />
+                  <img className="flex items-start w-full relative h-[100%]" src={`http://68.183.21.222:1233/${data.images[mainImgId]}`} alt="" />
                   <div className="flex justify-between items-center">
                     <div className="flex absolute right-4 bottom-4">
                       <img className="mr-2" src={Pauz} alt="" />

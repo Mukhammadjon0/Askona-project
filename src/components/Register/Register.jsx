@@ -88,11 +88,11 @@ function Register() {
         const postData = {
             method: "step.one",
             params: {
-                mobile: tel,
+                mobile: `+${tel}`,
                 lang: "ru",
             },
         }
-        axios.post("https://askona.herokuapp.com/api/v1/auth/", postData)
+        axios.post("http://68.183.21.222:1233/api/v1/auth/", postData)
             .then(res => {
                 console.log(res.data)
                 localStorage.setItem("askonaToken", res.data.token)
@@ -111,7 +111,7 @@ function Register() {
                 token: token,
             },
         };
-        axios.post("https://askona.herokuapp.com/api/v1/auth/", postData)
+        axios.post("http://68.183.21.222:1233/api/v1/auth/", postData)
             .then(res => {
                 console.log(res.data)
                 if (res.data?.Error) {
@@ -140,7 +140,7 @@ function Register() {
             params: user,
         }
         console.log(user)
-        axios.post("https://askona.herokuapp.com/api/v1/auth/", postAuthData)
+        axios.post("http://68.183.21.222:1233/api/v1/auth/", postAuthData)
             .then(res => {
                 if (res.data?.Error) {
                     setRegisErr(res.data?.Error)

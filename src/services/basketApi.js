@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const BASE_URL = 'https://askona.herokuapp.com/api/v1';
+const BASE_URL = 'http://68.183.21.222:1233/api/v1/';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: BASE_URL,

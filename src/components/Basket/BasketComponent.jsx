@@ -32,7 +32,7 @@ function BasketComponent({ product, soni, bronId, summa, state }) {
         <div className="">
             <div className='flex bg-white py-6 justify-between group'>
                 <div className="flex">
-                    <img className='w-32' src={`https://askona.herokuapp.com/${product?.images[0]}`} alt="img" />
+                    <img className='w-32' src={`http://68.183.21.222:1233/${product?.images[0]}`} alt="img" />
                     <div className="flex flex-col justify-between ml-8">
                         <h1 className='font-semibold text-sm group-hover:text-[#00B9C0] duration-200'>{product.name}</h1>
                         <button onClick={handleDeleteProduct} className="flex gap-3 cursor-pointer cancel-basket">

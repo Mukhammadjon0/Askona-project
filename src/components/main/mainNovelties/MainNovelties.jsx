@@ -47,7 +47,7 @@ function MainCarousel() {
                 <div className="main__card-head">
                   <div className="main__card-img">
                     {
-                      <img onClick={() => navigate(`productdetail/${el.id}`)} src={`https://askona.herokuapp.com/${el.images[0]}` || `MockImg`} alt="" />
+                      <img onClick={() => navigate(`productdetail/${el.id}`)} src={`http://68.183.21.222:1233/${el.images[0]}` || `MockImg`} alt="" />
                     }
                   </div>
                   <button onClick={() => userData ? addToProSaved(el.id) : handleOpen} className="absolute z-30 top-3 right-3">
