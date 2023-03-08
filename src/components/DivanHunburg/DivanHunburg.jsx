@@ -29,14 +29,14 @@ function DivanHunburg({ data, }) {
 
   // add To basket
   const addToBasket = () => {
-    if (userData.token) {
+    if (userData?.token) {
       addProduct(data.id)
     }
     else handleOpen()
   }
   // kutip 1 click
   const kupitClick = () => {
-    if (userData.token) {
+    if (userData?.token) {
       addProduct(data.id)
       navigate('/zakaz')
     }

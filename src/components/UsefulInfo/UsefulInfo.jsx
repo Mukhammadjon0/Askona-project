@@ -5,6 +5,7 @@ import icon3 from '../../assets/svg/eco.svg'
 import './UsefulInfo.css'
 
 function UsefulInfo() {
+    
     return (
         <div className='Useful_info'>
             <h2 className='font-semibold text-4xl text-center'>Askona заряжает сном</h2>

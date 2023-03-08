@@ -11,6 +11,7 @@ import Opl from "../../assets/img/oplLogo.png";
 import { HiXMark } from "react-icons/hi2";
 
 export default function Sidebar({ setState }) {
+  
   return (
     <div>
       <div>

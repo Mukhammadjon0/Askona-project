@@ -21,7 +21,7 @@ function Call() {
 
     return (
         <div className="">
-            {userData.token ? (
+            {userData?.token ? (
                 <div className="">
                     <button
                         onClick={handleClick(TransitionUp)}
@@ -35,7 +35,7 @@ function Call() {
                         open={open}
                         onClose={handleClose}
                         TransitionComponent={transition}
-                        message={`Мы звоним на ваш номер ${userData.mobile}`}
+                        message={`Мы звоним на ваш номер ${userData?.mobile}`}
                         key={transition ? transition.name : ''}
                     />
                 </div>) : (

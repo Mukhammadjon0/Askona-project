@@ -6,7 +6,6 @@ import logoAksona from "../../assets/img/logo.svg";
 import UserInfo from '../UserInfo/UserInfo'
 import Liked from '../Liked/Liked'
 import { StateContext } from '../../context'
-import { BsChevronDown } from 'react-icons/bs'
 import Search from '../Search/Search'
 import { useBasketQuery } from '../../services/basketApi'
 import Call from '../CallClient/Call'
@@ -31,7 +30,6 @@ function Nav() {
                                 <option className='font-normal text-sm' value="">
                                     Ташкент
                                 </option>
-                                <BsChevronDown className='text-navTopbBg pl-2 text-3xl' />
                             </select>
                             <span className='text-start flex items-center text-gray-400 text-sm sm:hidden'>Магазины: <p className='font-bold text-black pl-2'>30</p></span>
                             <div className="flex gap-8">

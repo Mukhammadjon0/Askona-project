@@ -18,7 +18,7 @@ function NavCategories() {
                         >
                             <HiBars3BottomLeft className="mr-5" /> Все товары
                         </button>
-                        {isSuccessCategory && categories.data?.map(category =>
+                        {isSuccessCategory && categories?.data?.map(category =>
                             <NavLink
                                 to={`/products?category=${category.content}`}
                                 key={category.id}

@@ -71,10 +71,10 @@ function Search() {
                 />
             </div>
             <div className="absolute z-[9999] bg-white w-1/3 shadow-2xl mt-5 p-5 divide-y">
-                {searchTerm !== "" && searchResults.length === 0 ? (
+                {searchTerm !== "" && searchResults?.length === 0 ? (
                     <p>товар не найден</p>
                 ) : (
-                    searchResults.map((product) => <SearchResult key={product.id} setSearchTerm={setSearchTerm} {...product} />)
+                    searchResults?.map((product) => <SearchResult key={product.id} setSearchTerm={setSearchTerm} {...product} />)
                 )}
             </div>
         </div>

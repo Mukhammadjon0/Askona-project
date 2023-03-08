@@ -22,7 +22,7 @@ function UserInfo() {
                 }
             })
             .then(res => {
-                setUserInfo(res.data)
+                setUserInfo(res?.data)
             })
             .catch((err) => console.log(err))
     }
@@ -100,9 +100,9 @@ function UserInfo() {
                 >
                     <div className="p-4">
                         <div className="p-4 pt-0 flex flex-col items-center">
-                            <span className='font-semibold text-xl'>{userInfo.name}</span>
-                            <span className='font-medium text-ms'>{userInfo.email}</span>
-                            <span>{userInfo.mobile}</span>
+                            <span className='font-semibold text-xl'>{userInfo?.name}</span>
+                            <span className='font-medium text-ms'>{userInfo?.email}</span>
+                            <span>{userInfo?.mobile}</span>
                         </div>
                         <div className="flex flex-col gap-2">
                             <button onClick={handleOpenEditUser} className='w-full py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>

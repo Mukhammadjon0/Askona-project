@@ -6,7 +6,7 @@ const baseQuery = fetchBaseQuery({
     prepareHeaders: (headers, { getState }) => {
         const user = JSON.parse(localStorage.getItem('userData'))
         if (user) {
-            headers.set('Authorization', `Bearer ${user.token}`)
+            headers.set('Authorization', `Bearer ${user?.token}`)
         }
         return headers
     },
@@ -23,7 +23,7 @@ export const savedApi = createApi({
                 url: '/prosaved',
                 method: "GET",
                 headers: {
-                    Authorization: `Bearer ${user.token}`
+                    Authorization: `Bearer ${user?.token}`
                 },
             }),
             providesTags: ['Saved']
@@ -34,7 +34,7 @@ export const savedApi = createApi({
                 method: 'POST',
                 body: { product_id: id },
                 headers: {
-                    Authorization: `Bearer ${user.token}`
+                    Authorization: `Bearer ${user?.token}`
                 }
             }),
             invalidatesTags: ['Saved']

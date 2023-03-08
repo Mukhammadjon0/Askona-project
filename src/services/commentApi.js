@@ -7,7 +7,7 @@ export const commentsApi = createApi({
     reducerPath: 'commentsApi',
     baseQuery: fetchBaseQuery({
         baseUrl: API_URL,
-       
+
     }),
     tagTypes: ["Comment"],
 
@@ -16,7 +16,7 @@ export const commentsApi = createApi({
             query: (id) => `/comment/${id}`,
             providesTags: ["Comment"]
         }),
-        // Define the POST request
+
         addComment: builder.mutation({
             query: (data) => ({
                 url: '/comment/',
@@ -35,5 +35,4 @@ export const commentsApi = createApi({
     }),
 })
 
-// Export the hooks to use the API endpoints
 export const { useAddCommentMutation, useCommentsQuery } = commentsApi

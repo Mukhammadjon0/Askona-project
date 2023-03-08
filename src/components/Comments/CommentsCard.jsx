@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai'
 import { StateContext } from '../../context'
 
-function CommentsCard({ text, user, comment_id }) {
+function CommentsCard({ text, user, comment_id, like, dislike }) {
     const [commentClass, setCommentClass] = useState("like")
     const [commentDisClass, setCommentDisClass] = useState("dislike")
     const { userData } = useContext(StateContext)
@@ -20,9 +20,10 @@ function CommentsCard({ text, user, comment_id }) {
             Authorization: `Bearer ${userData?.token}`
         }
         axios.post("http://68.183.21.222:1233/api/v1/comment/", body, { headers })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+        // .then(res => setLikes(res?.data))
+        // .catch(err => console.log(err))
     }
+
     const handleDisLike = (e) => {
         const body = {
             method: "like",
@@ -41,7 +42,7 @@ function CommentsCard({ text, user, comment_id }) {
 
     return (
         <div className='py-3 flex flex-col gap-2'>
-            <h1 className='font-semibold'>{user.name}</h1>
+            <h1 className='font-semibold'>{user?.name}</h1>
             <p className=''>{text}</p>
             <div className="flex gap-4">
                 <p className='text-gray-400'>Полезный отзыв?</p>
@@ -50,13 +51,13 @@ function CommentsCard({ text, user, comment_id }) {
                         <button onClick={handleLike}>
                             <AiOutlineLike className='text-gray-600 hover:text-[#00b9c0] text-xl cursor-pointer' />
                         </button>
-                        {/* <p>{commentClass}</p> */}
+                        <p>{like}</p>
                     </div>
                     <div className="flex flex-row gap-2">
                         <button onClick={handleDisLike}>
                             <AiOutlineDislike className='text-gray-600 hover:text-[#00b9c0] text-xl cursor-pointer' />
                         </button>
-                        {/* <p>{commentDisClass}</p> */}
+                        <p>{dislike}</p>
                     </div>
                 </div>
             </div>

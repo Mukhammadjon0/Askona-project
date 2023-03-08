@@ -21,7 +21,7 @@ function MainCarousel() {
   const { userData, handleOpen } = useContext(StateContext)
   const { data: proSaved } = useSavedQuery();
   const navigate = useNavigate()
-  
+
   return (
     <div className="">
       <h1 className="title">Хиты продаж</h1>
@@ -44,7 +44,7 @@ function MainCarousel() {
 
       >
         <div className="">
-          {productsIsSuccess && products.map((el) => (
+          {productsIsSuccess && products?.map((el) => (
             <SwiperSlide key={el.id}>
               <div className="main__card p-4">
                 <div className="main__card-head">
