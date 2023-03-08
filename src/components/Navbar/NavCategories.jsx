@@ -3,6 +3,7 @@ import { FaPercentage } from 'react-icons/fa'
 import { HiBars3BottomLeft } from 'react-icons/hi2'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useGetCategoriesQuery } from '../../services/categoryApi';
+import { Skeleton } from '@mui/material';
 
 function NavCategories() {
     const { data: categories, isSuccess: isSuccessCategory } = useGetCategoriesQuery()
@@ -18,7 +19,7 @@ function NavCategories() {
                         >
                             <HiBars3BottomLeft className="mr-5" /> Все товары
                         </button>
-                        {isSuccessCategory && categories?.data?.map(category =>
+                        {isSuccessCategory ? categories?.data?.map(category =>
                             <NavLink
                                 to={`/products?category=${category.content}`}
                                 key={category.id}
@@ -26,7 +27,7 @@ function NavCategories() {
                             >
                                 {category.content}
                             </NavLink>
-                        )}
+                        ) : <Skeleton variant="text" sx={{ fontSize: '2rem' }} />}
                         <NavLink className="text-red-400 flex items-center text-base" to="/aksi">
                             <FaPercentage /> Акции
                         </NavLink>

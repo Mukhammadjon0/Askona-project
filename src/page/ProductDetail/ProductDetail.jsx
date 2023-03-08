@@ -9,6 +9,7 @@ import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from 'react-icon
 import { useProductItemDetailsQuery } from '../../services/productApi';
 import AddComment from '../../components/Comments/AddComment';
 import { BiHomeSmile } from 'react-icons/bi';
+import { Skeleton } from '@mui/material';
 
 
 function ProductDetail() {
@@ -39,7 +40,7 @@ function ProductDetail() {
 
   return (
     <div>
-      {isSuccess && (
+      {isSuccess ? (
         <div className='py-8 px-10'>
           <Link to={'/'} className='text-gray-400 text-xl mb-10 flex items-center'>
             <BiHomeSmile />
@@ -151,7 +152,7 @@ function ProductDetail() {
             </div>
           </div>
         </div>
-      )}
+      ) : <Skeleton variant="rectangular" className='w-full' height={600} />}
     </div>
   )
 }
