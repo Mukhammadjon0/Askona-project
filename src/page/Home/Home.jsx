@@ -10,7 +10,7 @@ import NavCategories from "../../components/Navbar/NavCategories";
 
 function Home() {
   return (
-    <div>
+    <>
       <NavCategories />
       <Carousel />
       <Categories />
@@ -19,7 +19,7 @@ function Home() {
       <Discount />
       <UsefulInfo />
       <ContactInfo />
-    </div>
+    </>
   );
 }
 

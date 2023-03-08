@@ -33,7 +33,7 @@ function ProductCard({ product }) {
           <p className="card__body-price">
             от
             <span className="card__body-spanPrice text-[#00B9C0]">
-              {price.toLocaleString("uz-UZ")} BYN
+              {price?.toLocaleString("uz-UZ")} BYN
             </span>
             <span className="card__body-spanOldPrice">
               89000 BYN

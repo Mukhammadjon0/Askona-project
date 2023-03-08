@@ -20,11 +20,11 @@ function Login() {
         axios.post("http://68.183.21.222:1233/api/v1/auth/", loginData)
             .then(res => {
                 if (res.data?.Error) {
-                    setLoginErr(res.data?.Error)
+                    setLoginErr(res?.data?.Error)
                     return;
                 }
-                localStorage.setItem("userData", JSON.stringify(res.data.result))
-                setUserData(res.data.result)
+                localStorage.setItem("userData", JSON.stringify(res?.data?.result))
+                setUserData(res?.data?.result)
                 handleClose();
             })
     }

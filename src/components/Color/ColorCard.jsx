@@ -12,7 +12,7 @@ function ColorCard({ image, price, color, name, material, index, setMainColorId,
                 </h4>
                 <div className='form_img_info_df'>
                     <h5 className='form_img_info_h5'>от</h5>
-                    <h6 className='form_img_info_h6'>{price.toLocaleString("uz-UZ")} BYN</h6>
+                    <h6 className='form_img_info_h6'>{price?.toLocaleString("uz-UZ")} BYN</h6>
                 </div>
             </div>
         </div>

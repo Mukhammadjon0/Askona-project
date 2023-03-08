@@ -15,7 +15,7 @@ function Basket({ setState }) {
     const navigate = useNavigate()
 
     const handleNavigate = () => {
-        if (userData.token) {
+        if (userData?.token) {
             navigate('/zakaz')
             setState({ right: false })
         }

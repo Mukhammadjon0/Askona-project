@@ -33,7 +33,7 @@ function Color() {
         { id: 5, image: Colorss, name: 'Sky Vallet 52', color: 'Серый', material: 'Микровелюр', price: 8000 },
     ]
     const { data: products, } = useProductsQuery()
-    console.log(products)
+
     return (
         <div>
             {["right"].map((anchor) => (

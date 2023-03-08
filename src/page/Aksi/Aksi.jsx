@@ -8,7 +8,6 @@ import ProductCard from '../Products/ProductCard'
 function Aksi() {
     const { data: products, isLoading: productsIsloading, isSuccess: productsIsSuccess } = useProductsQuery()
     const location = useLocation();
-    console.log(products)
     const queryParams = new URLSearchParams(location.search);
     const category = queryParams.get("category");
 

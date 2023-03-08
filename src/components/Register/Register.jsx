@@ -59,6 +59,7 @@ function a11yProps(index) {
 }
 function Register() {
     const { open, setOpen, setUserData } = React.useContext(StateContext)
+    const token = localStorage.getItem("askonaToken")
 
     const [tel, setTel] = React.useState("")
     const [otp, setOtp] = React.useState("")
@@ -67,6 +68,8 @@ function Register() {
         password: "",
         mobile: "",
         email: "",
+        otp: token,
+
     })
     const [telErr, setTelErr] = React.useState('')
     const [otpErr, setOtpErr] = React.useState('')
@@ -88,18 +91,18 @@ function Register() {
         const postData = {
             method: "step.one",
             params: {
-                mobile: `+${tel}`,
-                lang: "ru",
+                mobile: `${tel}`,
+                // lang: "ru",
             },
         }
         axios.post("http://68.183.21.222:1233/api/v1/auth/", postData)
             .then(res => {
-                console.log(res.data)
-                localStorage.setItem("askonaToken", res.data.token)
+                console.log(res?.data)
+                localStorage.setItem("askonaToken", res?.data?.token)
                 handleClose();
                 handleOpenOtp();
             })
-            .catch(err => setTelErr(err.response?.data?.Error))
+            .catch(err => setTelErr(err?.response?.data?.Error))
     }
     const checkVerificationHandler = (e) => {
         e.preventDefault()
@@ -113,9 +116,9 @@ function Register() {
         };
         axios.post("http://68.183.21.222:1233/api/v1/auth/", postData)
             .then(res => {
-                console.log(res.data)
-                if (res.data?.Error) {
-                    setOtpErr(res.data?.Error)
+                console.log(res?.data)
+                if (res?.data?.Error) {
+                    setOtpErr(res?.data?.Error)
                     return;
                 }
                 if (res.data?.is_registered) alert("bu raqam oldin royxatdan otgan")
@@ -146,9 +149,8 @@ function Register() {
                     setRegisErr(res.data?.Error)
                     return;
                 }
-                console.log(res.data)
-                localStorage.setItem("userData", JSON.stringify(res.data.result))
-                setUserData(res.data.result)
+                localStorage.setItem("userData", JSON.stringify(res?.data?.result))
+                setUserData(res?.data?.result)
                 // localStorage.setItem
                 handleCloseRegister();
             })

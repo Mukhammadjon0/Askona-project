@@ -42,7 +42,7 @@ function ProductDetail() {
       {isSuccess && (
         <div className='py-8 px-10'>
           <Link to={'/'} className='text-gray-400 text-xl mb-10 flex items-center'>
-            <BiHomeSmile /> /
+            <BiHomeSmile />
           </Link>
           <div className="flex flex-row gap-10">
             <div className='flex flex-col gap-12 w-[60%]'>
@@ -68,7 +68,7 @@ function ProductDetail() {
                       Доставка 1 день
                     </p>
                   </div>
-                  <img className="flex items-start w-full relative h-[100%]" src={`http://68.183.21.222:1233/${data.images[mainImgId]}`} alt="" />
+                  <img className="flex items-start w-full relative h-[100%]" src={`http://68.183.21.222:1233/${data?.images[mainImgId]}`} alt="" />
                   <div className="flex justify-between items-center">
                     <div className="flex absolute right-4 bottom-4">
                       <img className="mr-2" src={Pauz} alt="" />

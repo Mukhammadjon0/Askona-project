@@ -50,9 +50,13 @@ function MainCarousel() {
                       <img onClick={() => navigate(`productdetail/${el.id}`)} src={`http://68.183.21.222:1233/${el.images[0]}` || `MockImg`} alt="" />
                     }
                   </div>
-                  <button onClick={() => userData ? addToProSaved(el.id) : handleOpen} className="absolute z-30 top-3 right-3">
-                    {proSaved?.length > 0 ? proSaved?.some(saved => saved.product_id === el.id) ? (<img className="w-5" src={Liked} alt="" />) : (<img className="w-5" src={Like} alt="" />) : <img className="w-5" src={Like} alt="" />}
-                  </button>
+                  <button onClick={() => {
+                    if (userData?.token) {
+                      addToProSaved(el.id)
+                    }
+                    else handleOpen()
+                  }} className="absolute z-30 top-3 right-3">
+                    {proSaved?.length > 0 ? proSaved?.some(saved => saved.product_id === el.id) ? (<img className="w-5" src={Liked} alt="icon" />) : (<img className="w-5" src={Like} alt="icon" />) : <img className="w-5" src={Like} alt="icon" />}                  </button>
                   <div className="main__card-status flex justify-between px-[13px]">
                     <img src={DiscountImg} alt="" />
                     <span className="main__card-span bg-[#FFD54F] w-[116px] h-[24px] rounded flex justify-center items-center text-[12px] font-medium">Товар недели
