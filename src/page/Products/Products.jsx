@@ -9,6 +9,7 @@ function Products() {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const category = queryParams.get("category");
+    console.log(products);
 
     const filteredProducts = category
         ? products?.filter((product) => product.sub_ctg.name === category)
