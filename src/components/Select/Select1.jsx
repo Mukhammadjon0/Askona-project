@@ -4,6 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { StateContext } from '../../context';
 
 export default function Select1() {
   const [age, setAge] = React.useState('');
@@ -11,11 +12,12 @@ export default function Select1() {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+  const { lang } = React.useContext(StateContext)
 
   return (
     <Box sx={{ width: '100%', }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">город</InputLabel>
+        <InputLabel id="demo-simple-select-label">{lang === 'ry' ? 'Город' : 'Hudud'}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="minsk"
@@ -23,9 +25,10 @@ export default function Select1() {
           label="Age"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Tashkent</MenuItem>
-          <MenuItem value={20}>Moscow</MenuItem>
-          <MenuItem value={30}>USA</MenuItem>
+          <MenuItem value={0}>{lang === 'ru' ? 'Ташкент' : 'Tashkent'}</MenuItem>
+          <MenuItem value={1}>{lang === 'ru' ? 'Во все область' : 'Barcha viloyatlarga'}</MenuItem>
+          <MenuItem value={2}>{lang === 'ru' ? 'СНГ' : 'MDH'}</MenuItem>
+
         </Select>
       </FormControl>
     </Box>

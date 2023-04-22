@@ -3,18 +3,12 @@ import { Box, IconButton, Menu } from '@mui/material';
 import { AiOutlineHeart } from 'react-icons/ai';
 import LikedCard from './LikedCard';
 import { useSavedQuery } from '../../services/savedApi';
-import { useProductsQuery } from '../../services/productApi';
+import { useNavigate } from 'react-router-dom';
 
-function Liked() {
+function Liked({ language }) {
     const { data: proSaved } = useSavedQuery();
-    const { data: products } = useProductsQuery()
-    const productDetails = Array.isArray(proSaved) && proSaved?.map(prod => {
-        const product = products?.find(p => p.id === prod.product_id);
-        return {
-            ...prod,
-            ...product
-        }
-    });
+    const navigate = useNavigate()
+
     //product saved modal
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -24,6 +18,11 @@ function Liked() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const handleNavigate = () => {
+        setAnchorEl(null)
+        navigate('/liked')
+    }
+
     return (
         <div>
             <React.Fragment>
@@ -40,7 +39,7 @@ function Liked() {
                             <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
                                 <p className='font-semibold text-[12px] text-white'>{proSaved?.length || 0}</p>
                             </div>
-                            <AiOutlineHeart className='cursor-pointer text-black' />
+                            <AiOutlineHeart className='cursor-pointer text-gray-500' />
                         </div>
                     </IconButton>
                 </Box>
@@ -82,9 +81,14 @@ function Liked() {
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                    <div className="flex flex-col p-3 gap-5">
-                        <div className="flex flex-col gap-2 divide-y">
-                            {productDetails?.length > 0 ? (productDetails?.map(item => <LikedCard key={item.id} {...item} handleClose={handleClose} />)) : (<h1 className='my-2 mx-2 text-red-500 text-xl font-semibold' >Вы еще не сохранили товар</h1>)}
+                    <div className="flex flex-col divide-y">
+                        <div className="px-2">
+                            <div className="flex flex-col gap-2 divide-y max-h-96 scrollbar-thumb-[#00b6c9] scrollbar-track-gray-100 scrollbar-thin">
+                                {proSaved?.length > 0 ? (proSaved?.map(item => <LikedCard key={item.prosaved_id} {...item} setAnchorEl={setAnchorEl} />)) : (<h1 className='my-2 mx-2 text-black text-xl font-semibold' >{language?.sevimlilarim}</h1>)}
+                            </div>
+                        </div>
+                        <div className="flex justify-end p-2">
+                            <button onClick={handleNavigate} className='px-5 border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>{language?.sevimlilar}</button>
                         </div>
                     </div>
                 </Menu>

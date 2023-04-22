@@ -1,0 +1,99 @@
+.main__card {
+  width: 406px;
+  background-color: #fff;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  margin-top: 31px;
+  text-align: start !important;
+}
+.product-card {
+  width: 100%;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #eeeeee;
+}
+
+.main__card-head {
+  position: relative;
+  overflow: hidden;
+}
+
+.main__card-img {
+  max-width: 396px;
+  width: 100%;
+  height: 218px;
+  padding: 5px;
+}
+.main__card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.main__card-status {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+}
+.main__card-line {
+  border: 1px solid rgba(238, 238, 238, 1);
+  width: 100%;
+  display: block;
+  margin: 10px auto;
+}
+
+.main__card-body {
+  padding: 0 19px 28px 18px;
+}
+
+.main__card-body h2 {
+  line-height: 18px;
+  color: #262626;
+  font-weight: 500;
+}
+
+.card__body-price {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  line-height: 14px;
+  color: #7e7e7e;
+  font-weight: 400;
+}
+
+.card__body-spanOldPrice {
+  text-decoration: line-through;
+}
+
+.card__body-payment {
+  margin: 15px 0 16.19px 0;
+  font-size: 12px;
+  line-height: 14px;
+  color: #7e7e7e;
+  font-weight: 400;
+  margin-bottom: 19.81px;
+}
+
+.card__body-descInfo h2 {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #262626;
+}
+
+.card__body-descInfo p {
+  font-size: 14px;
+  line-height: 14px;
+  color: #878787;
+  font-weight: 400;
+}
+.swiper-button-prev {
+  left: 0 !important;
+  right: auto;
+}
+.swiper-button-next {
+  right: 0 !important;
+  left: auto;
+}

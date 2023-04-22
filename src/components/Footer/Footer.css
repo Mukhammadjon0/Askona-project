@@ -5,8 +5,7 @@
   color: #757575;
   transition: 0.2s linear;
 }
-.footer-link:hover{
-    text-decoration: underline;
-    color: #00bac9;
-
+.footer-link:hover {
+  text-decoration: underline;
+  color: #00bac9;
 }

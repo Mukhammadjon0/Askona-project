@@ -1,17 +1,11 @@
 import React, { useContext } from 'react'
-import span from "../../assets/img/spanImg.png"
-import undov from "../../assets/img/undov.png"
-import Frame from "../../assets/img/Frame.png"
 import Frame1 from "../../assets/img/Frame2.png"
 import Frame2 from "../../assets/img/Frame (1).png"
-import Frame3 from "../../assets/img/Frame (2).png"
 import Group from "../../assets/img/Group.png"
 import { Box, Drawer } from '@mui/material'
 import { StateContext } from '../../context'
 import Sidebar from '../Sidebar/Sidebar'
-import { useNavigate } from 'react-router-dom'
 import { useAddProductToBasketMutation } from '../../services/basketApi'
-import { useCommentsQuery } from '../../services/commentApi'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import Like from '../../assets/svg/heart-regular.svg'
 import Liked from '../../assets/svg/heart-solid.svg'
@@ -19,26 +13,29 @@ import { useAddProductToSavedMutation, useSavedQuery } from '../../services/save
 import { Link } from "react-scroll";
 import Color from '../Color/Color'
 
-function DivanHunburg({ data, }) {
-  const { data: comments = [] } = useCommentsQuery(data.id)
+function DivanHunburg({ data, language, languageDel }) {
   const [addProduct] = useAddProductToBasketMutation()
   const [addToProSaved] = useAddProductToSavedMutation()
   const { data: proSaved } = useSavedQuery();
-  const { userData, handleOpen } = useContext(StateContext)
-  const navigate = useNavigate()
+  const { userData, handleOpen, setTelInfo, lang } = useContext(StateContext)
+
 
   // add To basket
   const addToBasket = () => {
     if (userData?.token) {
-      addProduct(data.id)
+      addProduct({
+        product_id: data.prod_id,
+        type: data.sub_ctg.type,
+        sub_category_id: data.sub_ctg.id
+
+      })
     }
     else handleOpen()
   }
   // kutip 1 click
   const kupitClick = () => {
     if (userData?.token) {
-      addProduct(data.id)
-      navigate('/zakaz')
+      setTelInfo(true)
     }
     else handleOpen()
   }
@@ -47,12 +44,6 @@ function DivanHunburg({ data, }) {
     right: false,
   });
   const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
     setState({ ...state, [anchor]: open });
   };
   return (
@@ -60,91 +51,73 @@ function DivanHunburg({ data, }) {
       <div className='w-full'>
         <div className="flex justify-end">
           <div className="">
-            <button onClick={() => {
-              if (userData?.token) {
-                addToProSaved(data.id)
-              }
-              else handleOpen()
-            }
-            } className="">
-              {proSaved?.length > 0 ? proSaved?.some(saved => saved.product_id === data.id) ? (<img className="w-5" src={Liked} alt="icon" />) : (<img className="w-5" src={Like} alt="icon" />) : <img className="w-5" src={Like} alt="icon" />}
-            </button>
+            <button className="absolute z-30 top-3 right-3">
+              {proSaved?.length > 0 ? proSaved?.some(saved => saved.product_id.prod_id === data.prod_id) ? (<img className="w-5" src={Liked} alt="icon" />) : (<img onClick={() => {
+                if (userData?.token) {
+                  addToProSaved({
+                    product_id: data.prod_id,
+                    type: data.sub_ctg.type
+                  })
+                }
+                else handleOpen()
+              }} className="w-5" src={Like} alt="icon" />) : <img onClick={() => {
+                if (userData?.token) {
+                  addToProSaved({
+                    product_id: data.prod_id,
+                    type: data.sub_ctg.type
+                  })
+                }
+                else handleOpen()
+              }} className="w-5" src={Like} alt="icon" />}</button>
           </div>
 
         </div>
         <h1 className="font-extrabold text-3xl">
-          {data.name}
+          {lang === "ru" ? data.name_ru : data.name_uz}
         </h1>
-        <p className="text-gray-400 mt-2">Код товара: {data.code}</p>
-        <h2 className="flex font-semibold mt-4">
+        {/* <p className="text-gray-400 mt-2">{language?.kod}: {data.model_number}</p> */}
+        {/* <h2 className="flex font-semibold mt-4">
           <span className="text-[#FF0064] mr-2">До конца акции осталось: </span>
           <span>3 дня 10:16:31</span>
-        </h2>
+        </h2> */}
         <div className="flex items-end mt-4">
           <h2 className="text-[#00B9C0] font-semibold text-2xl mr-7">
-            {data.price.toLocaleString("uz-UZ")} BYN
+            {/* {data?.price?.toLocaleString("uz-UZ")} {lang === 'ru' ? 'сум' : 'so`m'} */}
+            {data.model_number}
           </h2>
-          <p className="font-normal text-gray-400 line-through mr-7">
-            97 800 BYN
-          </p>
-          <img src={span} alt="" />
         </div>
-        <div className="flex justify-between mt-2">
-          <div className="flex">
-            <p className="text-gray-400 mr-1">Рассрочка от </p>
-            <p className="underline"> {data.credit} BYN</p>
-          </div>
-          <p className='decoration-dotted'>Оплатить частями</p>
-        </div>
-        <div className="flex mt-2">
-          <img src={undov} alt="" />
-          <p className="mx-1 font-semibold">+ {data.bonus} </p>
-          <p className="text-gray-400">Бонусных баллов за покупку</p>
-        </div>
+
         <div className="mt-9">
-          <h1>Размер спального места:</h1>
-          <select className="h-10 flex justify-between border-2 border-solid border-gray-300 items-center px-2 rounded mt-3 w-full outline-[#00B6C9]">
-            <option>120x200</option>
-            <option>140x200</option>
-            <option>160x200</option>
-            <option>180x200</option>
-            <option>200x200</option>
-          </select>
+          <h1>{language?.hajm} ({language?.dan}):</h1>
+          <div className="border-b-2 mt-4">
+            <h1>{data.size}</h1>
+          </div>
+
         </div>
         <div className="mt-7">
-          <h1>Ткань:</h1>
-          <Color />
+          {data?.color ? (
+            <div><h1>{language?.rang}:</h1>
+              <Color data={data} /></div>
+          ) : (<></>)}
           <div>
-            <button className="h-10 w-[100%] bg-gray flex justify-center border-2 border-solid  border-gray-300 items-center px-2 rounded mt-5 bg-">Изменить конфигурацию</button>
             <div className="flex items-center mt-2 gap-5">
-
               <button onClick={addToBasket} className="rounded border-2 border-solid border-[#00B6C9] text-white w-full py-2 bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95">
-                В корзину
+                {lang === 'ru' ? 'В корзину' : 'Savatga qoshish'}
               </button>
-
               <button onClick={kupitClick} className="border-2 border-solid border-gray-300 rounded w-full py-2 bg-transparent duration-200 hover:bg-gray-100 active:scale-95">
-                Купить в 1 клик
+                {language?.xarid}
               </button>
             </div>
           </div>
 
           <div>
-            <Link className='cursor-pointer' to={'/products'}>
-              <div className="mt-10 flex items-center justify-between border-b border-solid border-gray-300 pb-5 ">
-                <div className="flex items-center">
-                  <img className="mr-2" src={Frame} alt="" />
-                  <h2>Мы рекомендуем к товару</h2>
-                </div>
-                <MdKeyboardArrowRight className='text-[#00B6C9]' />
-              </div>
-            </Link>
             {["right"].map((anchor) => (
               <React.Fragment key={anchor}>
                 <button onClick={toggleDrawer(anchor, true)} className='w-full'>
                   <div className="mt-5 flex items-center duration-300 justify-between border-b border-solid border-gray-300 pb-5 ">
                     <div className="flex items-center">
                       <img className="mr-2" src={Group} alt="" />
-                      <h2>Доставка и самовывоз</h2>
+                      <h2>{language?.yetkazish}</h2>
                     </div>
                     <MdKeyboardArrowRight className='text-[#00B6C9]' />
                   </div>
@@ -155,12 +128,10 @@ function DivanHunburg({ data, }) {
                   onClose={toggleDrawer(anchor, false)}
                 >
                   <Box
-                    sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 600 }}
+                    sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : "auto" }}
                     role="presentation"
-                  // onClick={toggleDrawer(anchor, false)}
-                  // onKeyDown={toggleDrawer(anchor, false)}
                   >
-                    <Sidebar setState={setState} />
+                    <Sidebar setState={setState} languageDel={languageDel} />
                   </Box>
                 </Drawer>
               </React.Fragment>
@@ -170,7 +141,7 @@ function DivanHunburg({ data, }) {
               <div className="mt-5 flex items-center justify-between border-b border-solid border-gray-300 pb-5 ">
                 <div className="flex items-center">
                   <img className="mr-2" src={Frame2} alt="" />
-                  <h2>Характеристики</h2>
+                  <h2>{language?.xususiyat}</h2>
                 </div>
               </div>
             </Link>
@@ -178,18 +149,18 @@ function DivanHunburg({ data, }) {
               <div className="mt-5 flex items-center justify-between border-b border-solid border-gray-300 pb-5">
                 <div className="flex items-center">
                   <img className="mr-2" src={Frame1} alt="" />
-                  <h2>Описание</h2>
+                  <h2>{language?.tavsif}</h2>
                 </div>
               </div>
             </Link>
-            <Link className={'cursor-pointer'} activeClass="active" smooth spy to={'comment'}>
+            {/* <Link className={'cursor-pointer'} activeClass="active" smooth spy to={'comment'}>
               <div className="mt-5 flex items-center justify-between border-b border-solid border-gray-300 pb-5">
                 <div className="flex items-center">
                   <img className="mr-2" src={Frame3} alt="" />
-                  <h2>Отзывы ({comments?.cnt})</h2>
+                  <h2>{language?.sharx} ({comments?.cnt})</h2>
                 </div>
               </div>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

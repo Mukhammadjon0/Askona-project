@@ -5,7 +5,7 @@ import { MdCancel } from 'react-icons/md';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function ChangePassword() {
+function ChangePassword({ language }) {
     const { openChangePassword, setOpenChangePassword, userData } = useContext(StateContext)
     const [oldPass, setOldPass] = useState("")
     const [newPass, setNewPass] = useState("")
@@ -22,9 +22,8 @@ function ChangePassword() {
         const headers = {
             Authorization: `Bearer ${userData?.token}`
         }
-        axios.put("http://68.183.21.222:1233/api/v1/user/", body, { headers })
+        axios.put("http://api.basito.uz/apps/api/v1/user/", body, { headers })
             .then(res => {
-                console.log(res)
                 closeChangePassword()
             })
             .catch(err => console.log(err))
@@ -34,7 +33,6 @@ function ChangePassword() {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
         bgcolor: 'background.paper',
         boxShadow: 24,
         p: 4,
@@ -51,7 +49,7 @@ function ChangePassword() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style} className='rounded-xl'>
+                <Box sx={style} className='rounded-xl tablet:w-[400px] desktop:w-[400px] mobile:w-11/12'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{}}>
                             <button className='absolute top-[-10px] right-[-10px] text-center' onClick={closeChangePassword}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
@@ -59,7 +57,7 @@ function ChangePassword() {
                         <form onSubmit={editPasswordHandler} action="" className='flex flex-col items-center gap-5'>
                             <input onChange={(e) => setOldPass(e.target.value)} name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="password" placeholder='Старый пароль' />
                             <input onChange={(e) => setNewPass(e.target.value)} name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="password" placeholder='Новый пароль' />
-                            <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>Изменить пароль</button>
+                            <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>{language?.tahrirlar}</button>
                         </form>
                     </Box>
                 </Box>

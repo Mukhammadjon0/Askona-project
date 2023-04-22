@@ -9,29 +9,28 @@
 /* Address_shop */
 
 .Address_shop {
+  align-items: center;
   background-image: url(../../assets/img/screenshot-yandex\ 1.png);
   background-repeat: no-repeat;
-  width: 406px;
-  height: 288px;
+  background-size: cover;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 24px;
+  height: 18.75rem;
+  justify-content: center;
+  width: 26.25rem;
 }
 
 .Address_shop_h3 {
-  font-weight: 600;
   font-size: 24px;
+  font-weight: 600;
   line-height: 29px;
-  text-align: center;
-  margin-top: 57px;
 }
 
 .Address_shop_p {
-  font-weight: 500;
   font-size: 16px;
+  font-weight: 500;
   line-height: 19px;
-  text-align: center;
-  margin-top: 20px;
 }
 
 .Address_shop_button {
@@ -49,13 +48,13 @@
 /* quality */
 
 .quality {
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 18.75rem;
   justify-content: space-between;
+  padding: 45px 30px;
   background: #00b9bf;
   border-radius: 4px;
-  width: 845px;
-  padding: 30px 60px 30px 50px;
 }
 
 .quality_left {
@@ -92,35 +91,31 @@
   margin-bottom: 35px;
   gap: 5px;
   width: 199px;
+  align-items: center;
 }
 
 .quality_left_button {
-  width: 148px;
-  height: 39px;
-  background: #ffffff;
-  border-radius: 3px;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
+  background: #fff;
+  border-radius: 4px;
   color: #00b6c9;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 4px 24px;
 }
 
 /* Selection_mattresses */
 
 .Selection_mattresses {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 406px;
-  height: 288px;
   background-color: #e8e5e9;
-  position: relative;
-  z-index: 1;
   border-radius: 4px;
-}
-
-.Selection_mattresses_img {
-  position: absolute;
-  bottom: 0;
-  z-index: -1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  height: 18.75rem;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  width: 26.25rem;
+  z-index: 1;
 }

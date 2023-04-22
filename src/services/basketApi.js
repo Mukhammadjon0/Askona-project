@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const BASE_URL = 'http://68.183.21.222:1233/api/v1/';
+const BASE_URL = 'http://api.basito.uz/apps/api/v1/';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: BASE_URL,
@@ -11,6 +11,7 @@ const baseQuery = fetchBaseQuery({
         return headers
     },
 })
+
 const user = JSON.parse(localStorage.getItem('userData'))
 
 export const basketApi = createApi({
@@ -19,14 +20,14 @@ export const basketApi = createApi({
     tagTypes: ["Basket"],
     endpoints: (builder) => ({
         basket: builder.query({
-            query: () => '/basket',
+            query: () => 'basket',
             providesTags: ['Basket']
         }),
         addProductToBasket: builder.mutation({
-            query: id => ({
+            query: data => ({
                 url: '/basket/',
                 method: 'POST',
-                body: { product_id: id },
+                body: data,
                 headers: {
                     Authorization: `Bearer ${user?.token}`
                 }
@@ -38,16 +39,15 @@ export const basketApi = createApi({
                 url: `/basket/`,
                 method: 'DELETE',
                 body: { bron_id: id },
-
             }),
             invalidatesTags: ['Basket']
 
         }),
         updateProductQuantityInBasket: builder.mutation({
-            query: ({ bron_id, quantity }) => ({
+            query: (body) => ({
                 url: '/basket/',
                 method: 'PUT',
-                body: { bron_id, quantity },
+                body: body,
             }),
             invalidatesTags: ['Basket']
         }),
