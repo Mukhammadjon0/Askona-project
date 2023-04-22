@@ -1,60 +1,15 @@
+import Kalso from './assets/img/kalso.png'
+import Karona from './assets/img/karona.png'
+import Noj from './assets/img/noj.png'
+import Karniz from './assets/img/karniz.png'
+import Baget from './assets/img/baget.png'
+import Sprayer from './assets/img/sprayer.webp'
 
-// export const data = [
-//     {
-//         title: "По категориям",
-//         type: [
-//             "Американские матрасы",
-//             "Чехлы на матрас",
-//             "Наматрасники",
-//             "Детские матрасы",
-//         ],
-//     },
-//     {
-//         title: "Обобенности",
-//         type: [
-//             "Двухспальные",
-//             "Односпальные",
-//             "Полуторные",
-//             "Евро",
-//             "Ортопедические",
-//         ],
-//     },
-
-//     {
-//         title: "По жесткости",
-//         type: [
-//             "Пружинные",
-//             "Средней жесткости",
-//             "Жесткие",
-//             "Очень жесткие",
-//             "Разносторонней жесткости",
-//         ],
-//     },
-//     {
-//         title: "По размеру",
-//         type: [
-//             "80х200",
-//             "90х200",
-//             "120х200",
-//             "140х200",
-//             "160х200",
-//             "180х200",
-//             "200х200",
-//         ],
-//     },
-
-//     {
-//         title: "По свойствам",
-//         type: ["Пружинные", "Беспружинные", "С независимым пружинным блоком"],
-//     },
-
-//     {
-//         title: "По материалау",
-//         type: [
-//             "Латексные",
-//             "Кокосовые",
-//             "С ортопедической пеной",
-//             "Из пены с памятью формы",
-//         ],
-//     },
-// ];
+export const categries = [
+    { name_ru: 'Кольцо', name_uz:'Kalso',  img: Kalso, type:'kalso', id: 1 },
+    { name_ru: 'Корона', name_uz:'Karona', img: Baget, type:'karona', id: 2 },
+    { name_ru: 'Ножка', name_uz:'Nojka', img: Noj, type: 'noj', id: 3 },
+    { name_ru: 'Карниз ', name_uz:'Karniz', img: Karniz, type: 'karniz', id: 4 },
+    { name_ru: 'Багет ', name_uz:'Baget', img: Karona, type:'baget', id: 5 },
+    { name_ru: 'Спрайер', name_uz:'Sprayer', img: Sprayer, type:'dori_aparat', id: 6 },
+]

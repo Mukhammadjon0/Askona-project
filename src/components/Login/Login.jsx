@@ -4,7 +4,7 @@ import { StateContext } from '../../context'
 import PhoneInput from 'react-phone-input-2'
 
 function Login() {
-    const { handleClose, setUserData } = useContext(StateContext)
+    const { handleClose, setUserData, lang } = useContext(StateContext)
     const [loginTel, setLoginTel] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
     const [loginErr, setLoginErr] = useState('')
@@ -17,7 +17,7 @@ function Login() {
                 password: loginPassword,
             },
         }
-        axios.post("http://68.183.21.222:1233/api/v1/auth/", loginData)
+        axios.post("http://api.basito.uz/apps/api/v1/auth/", loginData)
             .then(res => {
                 if (res.data?.Error) {
                     setLoginErr(res?.data?.Error)
@@ -44,8 +44,8 @@ function Login() {
                     inputStyle={{ width: '100%' }}
 
                 />
-                <input onChange={(e) => setLoginPassword(e.target.value)} className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="password" placeholder='Пароль' autoComplete='current password' />
-                <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>ВОЙТИ</button>
+                <input onChange={(e) => setLoginPassword(e.target.value)} className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="password" placeholder={lang === 'ru' ? 'Пароль' : 'Parol'} autoComplete='current password' />
+                <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>{lang === 'ru' ? 'Войти' : 'Kirish'}</button>
             </form>
         </div>
     )

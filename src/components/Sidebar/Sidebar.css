@@ -15,12 +15,11 @@
     justify-content: space-between;
   
 }
-
 .our{
     margin-top: 19px;
     margin-bottom: 25px;
     padding: 25px 0;
-   
+    text-align: end;
     border-bottom: 1px solid rgb(222, 219, 219);
     border-top:  1px solid rgb(222, 219, 219);
 }
@@ -50,7 +49,7 @@ line-height: 30px;
     margin-top: 25px;
 }
 .lastdown{
-    padding: 25px 34px ;
+    /* padding: 25px 34px ; */
 }
 
 

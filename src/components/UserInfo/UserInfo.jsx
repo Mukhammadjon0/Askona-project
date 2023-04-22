@@ -7,7 +7,7 @@ import { StateContext } from '../../context';
 import LogOut from './LogOut';
 import { useNavigate } from 'react-router-dom';
 
-function UserInfo() {
+function UserInfo({ language }) {
     const { setOpenEditUser, userInfo, setUserInfo, setOpenChangePassword, setUserData } = useContext(StateContext)
     const userData = JSON.parse(localStorage.getItem("userData"))
     const [logOutAlert, setLogOutAlert] = useState(false)
@@ -15,7 +15,7 @@ function UserInfo() {
     const navigate = useNavigate()
 
     const userBtn = async () => {
-        await axios.get('http://68.183.21.222:1233/api/v1/user/',
+        await axios.get('http://api.basito.uz/apps/api/v1/user/',
             {
                 headers: {
                     Authorization: `Bearer ${userData?.token}`
@@ -34,7 +34,7 @@ function UserInfo() {
         navigate('/')
         window.location.reload()
         setUserData({})
-        localStorage.removeItem('askonaToken')
+        localStorage.setItem('basitoToken', '')
     }
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -51,13 +51,14 @@ function UserInfo() {
                 <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                     <IconButton
                         onClick={handleClick}
+                        className='desktop:block tablet:hidden mobile:hidden'
                         // size="small"
                         // sx={{ ml: 2 }}
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <BiUser className='cursor-pointer text-black' />
+                        <BiUser className='cursor-pointer text-gray-500' />
                     </IconButton>
                 </Box>
                 <Menu
@@ -67,7 +68,6 @@ function UserInfo() {
                     id="account-menu"
                     open={open}
                     onClose={handleClose}
-
                     onClick={handleClose}
                     PaperProps={{
                         elevation: 0,
@@ -106,15 +106,15 @@ function UserInfo() {
                         </div>
                         <div className="flex flex-col gap-2">
                             <button onClick={handleOpenEditUser} className='w-full py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>
-                                Редактировать
+                                {language?.tahrirlash}
                             </button>
-                            <button onClick={handleOpenChangePassword} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>Изменить пароль</button>
-                            <button onClick={() => setLogOutAlert(true)} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>Выйти</button>
+                            <button onClick={handleOpenChangePassword} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>{language?.tahrirparol}</button>
+                            <button onClick={() => setLogOutAlert(true)} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>{language?.logout}</button>
                         </div>
                     </div>
                 </Menu>
             </React.Fragment>
-            <LogOut handleLogOut={handleLogOut} setLogOutAlert={setLogOutAlert} logOutAlert={logOutAlert} />
+            <LogOut handleLogOut={handleLogOut} setLogOutAlert={setLogOutAlert} logOutAlert={logOutAlert} language={language} />
         </div>
     )
 }

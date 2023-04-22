@@ -1,155 +1,151 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './Footer.css'
 import { Link } from 'react-router-dom'
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
-import Facebook from '../../assets/img/FacebookLogo.png'
-import Instagram from '../../assets/img/InstagramLogo.png'
-import Vk from '../../assets/img/VkLogo.png'
-import Youtube from '../../assets/img/YoutubeLogo.png'
-import Telegram from '../../assets/img/TelegromLogo.png'
+import Facebook from '../../assets/svg/facebook.svg'
+import Instagram from '../../assets/svg/insta.svg'
+import Youtube from '../../assets/svg/youtube.svg'
+import Telegram from '../../assets/svg/telegram.svg'
 
-import A1 from '../../assets/img/A1logo.png'
-import Mts from '../../assets/img/mtslogo.png'
-import Life from '../../assets/img/life-logo.png'
-import Like from '../../assets/img/like-logo.png'
+import FinTech from '../../assets/svg/fintech.svg'
+import { useContactQuery } from '../../services/contact'
+import { StateContext } from '../../context'
 
-import Hilding from '../../assets/img/HildingLogo.png'
-import Viza from '../../assets/img/VizaLogo.png'
-import Master from '../../assets/img/MastercardLogo.png'
-import ApplePay from '../../assets/img/applepayLogo.jpg'
-import GooglePay from '../../assets/img/googlepayLogo.png'
-import MirPay from '../../assets/img/mirLogo.jpg'
-import Opl from '../../assets/img/oplLogo.png'
 
-function Footer() {
+
+function Footer({ language }) {
+    const { data: contact } = useContactQuery()
+    const { lang } = useContext(StateContext)
+    const [show1, setShow1] = useState(false);
+    const [show2, setShow2] = useState(false);
+    const [show3, setShow3] = useState(false);
+    const [show4, setShow4] = useState(false);
     return (
         <div className="">
-            <footer className='bg-[#F6F6F6C9] pt-16 pb-5'>
-                <div className="container flex flex-col gap-16">
-                    <div className="flex justify-between">
-                        <div className="flex flex-row gap-24">
-                            <div className="flex flex-col">
-                                <h1 className='font-bold text-2xl'>Покупателям</h1>
-                                <div className="flex gap-20 ml-4 mt-3">
-                                    <div className="flex flex-col gap-2">
-                                        <Link className='footer-link'>Оплата и доставка</Link>
-                                        <Link className='footer-link'>Вопросы и ответы</Link>
-                                        <Link className='footer-link'>Рассрочка</Link>
-                                        <Link className='footer-link'>Обмен и возврат товара </Link>
-                                    </div>
-                                    <div className="flex flex-col gap-2">
-                                        <Link className='footer-link'>Гарантия</Link>
-                                        <Link className='footer-link'>Публичная оферта</Link>
-                                        <Link className='footer-link'>Статус заказа</Link>
-                                        <Link className='footer-link'>Подача претензии</Link>
-                                    </div>
-                                </div>
+            <footer className='bg-[#F6F6F6C9] pt-16 pb-5 flex flex-col gap-5'>
+                <div className="container flex desktop:flex-row tablet:flex-row mobile:flex-col desktop:justify-between tablet:justify-between mobile:gap-10 items-center">
+                    <div className="grid mobile:grid-cols-1 tablet:grid-cols-1 desktop:grid-cols-2 desktop:gap-10 tablet:gap-0 mobile:gap-0 desktop:divide-y-0 tablet:divide-y-2 mobile:divide-y-2 tablet:w-1/2 desktop:w-2/3 mobile:w-full">
+                        <div className="w-full flex flex-col desktop:border-0 mobile:border-t-2 border-gray-200">
+                            <div className="w-full flex flex-row justify-between items-center pl-1 mobile:py-2 desktop:py-0 tablet:py-3">
+                                <h1 className='font-bold text-2xl hover:bg-gray-200'>{language?.xaridor}</h1>
+                                <button className='hover:bg-gray-200 p-1 rounded-full active:scale-90' onClick={() => setShow1(p => !p)}>
+                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#00B6C9] text-xl' />
+                                </button>
                             </div>
-                            <div className="flex flex-col">
-                                <h1 className='font-bold text-2xl'>Компания</h1>
-                                <div className="flex gap-32 ml-4 mt-3">
-                                    <div className="flex flex-col gap-2">
-                                        <Link className='footer-link'>О нас</Link>
-                                        <Link className='footer-link'>Блог</Link>
-                                        <Link className='footer-link'>Вакансии</Link>
-                                        <Link className='footer-link'>Контакты</Link>
-                                    </div>
-                                    <div className="flex flex-col gap-2">
-                                        <Link className='footer-link'>Реквизиты</Link>
-                                        <Link className='footer-link'>Принципы и миссия</Link>
-                                        <Link className='footer-link'>Производство</Link>
-                                    </div>
+                            <div className={`mobile:${show1 ? 'flex  tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
+                                <div className="flex flex-col gap-3">
+                                    <Link className='footer-link'>{language?.yetkaz}</Link>
+                                    <Link className='footer-link'>{language?.garant}</Link>
+                                    <Link className='footer-link'>{language?.ariza}</Link>
                                 </div>
                             </div>
                         </div>
-                        <div >
-                            <h1 className="font-bold text-2xl">Следите за новостями</h1>
-                            <div className="flex flex-row items-center justify-center gap-3 mt-3">
-                                <img className='cursor-pointer' src={Facebook} alt="logo" />
-                                <img className='cursor-pointer' src={Instagram} alt="logo" />
-                                <img className='cursor-pointer' src={Vk} alt="logo" />
-                                <img className='cursor-pointer' src={Youtube} alt="logo" />
-                                <img className='cursor-pointer' src={Telegram} alt="logo" />
+
+                        <div className="flex flex-col">
+                            <div className="w-full flex flex-row justify-between items-center pl-1 mobile:py-2 desktop:py-0 tablet:py-3">
+                                <h1 className='font-bold text-2xl'>{language?.kompaniy}</h1>
+                                <button className='hover:bg-gray-200 p-1 rounded-full active:scale-90' onClick={() => setShow2(p => !p)}>
+                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#00B6C9] text-xl' />
+                                </button>
+                            </div>
+                            <div className={`mobile:${show2 ? 'flex  tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
+                                <div className="flex flex-col gap-3">
+                                    <Link className='footer-link'>{language?.bizhaqimizda}</Link>
+                                    <Link className='footer-link'>{language?.kontact}</Link>
+                                    <Link className='footer-link'>{language?.ishlabchiq}</Link>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col">
+                            <div className="w-full flex flex-row justify-between items-center pl-1 mobile:py-2 desktop:py-0 tablet:py-3">
+                                <h1 className='font-bold text-2xl'>{language?.taklif}</h1>
+                                <button className='hover:bg-gray-200 p-1 rounded-full active:scale-90' onClick={() => setShow3(p => !p)}>
+                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#00B6C9] text-xl' />
+                                </button>
+                            </div>
+                            <div className={`mobile:${show3 ? 'flex  tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
+                                <div className="flex flex-col gap-3">
+                                    <Link className='footer-link'>{language?.aksiya}</Link>
+                                    <Link className='footer-link'>{language?.chegirma}</Link>
+                                    <Link className='footer-link'>{language?.detalniy}</Link>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col">
+                            <div className="w-full flex flex-row justify-between items-center pl-1 mobile:py-2 desktop:py-0 tablet:py-3">
+                                <h1 className='font-bold text-2xl'>{language?.partnyor}</h1>
+                                <button className='hover:bg-gray-200 p-1 rounded-full active:scale-90' onClick={() => setShow4(p => !p)}>
+                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#00B6C9] text-xl' />
+                                </button>
+                            </div>
+                            <div className={`mobile:${show4 ? 'flex tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
+                                <div className="flex flex-col">
+                                    <Link className='footer-link'>{language?.yuridik}</Link>
+                                    <Link className='footer-link'>{language?.ulgurchi}</Link>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div className="flex justify-between">
-                        <div className="flex flex-row gap-16">
-                            <div className="flex flex-col">
-                                <h1 className='font-bold text-2xl'>Предложения</h1>
-                                <div className="flex gap-24 ml-4 mt-3">
-                                    <div className="flex flex-col gap-2">
-                                        <Link className='footer-link'>Бонусная программа</Link>
-                                        <Link className='footer-link'>Акции</Link>
-                                        <Link className='footer-link'>Уцененные товары</Link>
-                                    </div>
-                                    <div className="flex flex-col gap-2">
-                                        <Link className='footer-link'>Рекомендуемые товары</Link>
-                                        <Link className='footer-link'>Детальный подбор</Link>
-                                    </div>
+                    {contact?.data?.map((item, index) => (
+                        <div key={index} className="flex flex-col gap-24">
+                            <div className='flex flex-col items-center'>
+                                <h1 className="font-bold text-2xl">{language?.yangilik}</h1>
+                                <div className="flex flex-row items-center justify-center gap-3 mt-3">
+                                    <a href={item?.facebook} target='_blank'>
+                                        <img className='cursor-pointer hover:scale-110 duration-150 ' src={Facebook} alt="logo" />
+                                    </a>
+                                    <a href={item?.instagram} target='_blank'>
+                                        <img className='cursor-pointer hover:scale-110 duration-150' src={Instagram} alt="logo" />
+                                    </a>
+                                    <a href={item?.youtube} target='_blank'>
+                                        <img className='cursor-pointer hover:scale-110 duration-150' src={Youtube} alt="logo" />
+                                    </a>
+                                    <a href={item?.telegram} target='_blank'>
+                                        <img className='cursor-pointer hover:scale-110 duration-150' src={Telegram} alt="logo" />
+                                    </a>
                                 </div>
                             </div>
-                            <div className="flex flex-col">
-                                <h1 className='font-bold text-2xl'>Партнерам</h1>
-                                <div className="flex gap-16 ml-4 mt-3">
-                                    <div className="flex flex-col gap-2">
-                                        <Link className='footer-link'>Франчайзинг</Link>
-                                        <Link className='footer-link'>Юридическим лицам</Link>
-                                    </div>
-                                    <div className="flex flex-col gap-2">
-                                        <Link className='footer-link'>Предложения для отелей</Link>
-                                        <Link className='footer-link'>Оптовые предложения</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div >
                             <div className="flex flex-col items-center gap-3 text-right">
                                 <div className="flex items-center gap-3">
-                                    <img className='cursor-pointer' src={A1} alt="logo" />
-                                    <p className='font-medium text-xl' >+375 (44) 787-07-50</p>
+                                    <p className='font-medium text-xl' >{item.phone}</p>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <img className='cursor-pointer' src={Mts} alt="logo" />
-                                    <p className='font-medium text-xl'>+375 (29) 252-03-96</p>
+                                    <p className='font-medium text-xl'>{item.phone2}</p>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <img className='cursor-pointer' src={Life} alt="logo" />
-                                    <p className='font-medium text-xl'>+375 (25) 500-37-43</p>
+                                    <p className='font-medium text-xl'>{item.phone3}</p>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <p className='font-medium text-xl'>{item.phone4}</p>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <p className='font-medium text-xl'>{item.phone5}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="flex flex-row justify-between items-center">
-                        <p className='font-normal text-base'>Политика конфеденциальности</p>
-                        <div className="flex items-center gap-3">
-                            <p className='font-normal text-base'>Сайт разработан </p>
-                            <img src={Like} alt="logo" />
-                        </div>
-                    </div>
+                    ))}
+
                 </div>
-            </footer>
-            <div className="bg-[#F6F6F6C9] pb-16 border-t-[2px]">
-                <div className="container flex items-center justify-between">
-                    <div className="">
-                        <p className='font-semibold text-sm'>© 1990–2022. Компания «Аскона»</p>
-                        <p className='font-normal text-sm'>В торг. реестре с 18.12.2019г., № 468759, УНП 193341168, Мингорисполком. ООО «ТД Аскона-Импорт» </p>
-                        <p className='font-normal text-sm'>юр.адрес: 220089, город Минск, проспект Дзержинского, дом 57, помещение № 54-1, 14-й этаж.</p>
-                    </div>
-                    <div className="flex items-center gap-1">
-                        <img className='rounded-md' src={Hilding} alt="logo" />
-                        <img className='rounded-md' src={Viza} alt="logo" />
-                        <img className='rounded-md' src={Master} alt="logo" />
-                        <img className='rounded-md' src={ApplePay} alt="logo" />
-                        <img className='rounded-md' src={GooglePay} alt="logo" />
-                        <img className='rounded-md' src={MirPay} alt="logo" />
-                        <img className='rounded-md' src={Opl} alt="logo" />
+                <div className="desktop:text-start tablet:text-center mobile:text-center mobile:py-2 tablet:py-2 desktop:py-0 container">
+                    <p className='font-semibold text-sm'>© 2023. {lang === 'ru' ? 'Компания' : 'Kompaniya'} «Real Goal Forward»</p>
+                    <p className='font-normal text-sm'></p>
+                </div>
+            </footer >
+
+            <div className="bg-[#F6F6F6C9] pb-16 border-t-[2px] pt-5">
+                <div className="container flex desktop:flex-row mobile:flex-col tablet:flex-col justify-between items-center">
+                    <p className='font-normal text-base'>{language?.maxfiylik}</p>
+                    <div className="flex items-center gap-3">
+                        <p className='font-normal text-base'>{language?.fintech}</p>
+                        <img className='h-6' src={FinTech} alt="logo" />
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const BASE_URL = 'http://68.183.21.222:1233/api/v1/';
+const BASE_URL = 'http://api.basito.uz/apps/api/v1';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: BASE_URL,
@@ -29,10 +29,10 @@ export const savedApi = createApi({
             providesTags: ['Saved']
         }),
         addProductToSaved: builder.mutation({
-            query: id => ({
+            query: data => ({
                 url: '/prosaved/',
                 method: 'POST',
-                body: { product_id: id },
+                body: data,
                 headers: {
                     Authorization: `Bearer ${user?.token}`
                 }

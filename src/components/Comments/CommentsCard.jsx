@@ -1,43 +1,14 @@
-import axios from 'axios'
-import React, { useContext, useState } from 'react'
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai'
-import { StateContext } from '../../context'
+import { useAddDisLikeCommentMutation, useAddLikeCommentMutation } from '../../services/commentApi'
 
 function CommentsCard({ text, user, comment_id, like, dislike }) {
-    const [commentClass, setCommentClass] = useState("like")
-    const [commentDisClass, setCommentDisClass] = useState("dislike")
-    const { userData } = useContext(StateContext)
-
+    const [addLike] = useAddLikeCommentMutation()
+    const [addDisLike] = useAddDisLikeCommentMutation()
     const handleLike = (e) => {
-        const body = {
-            method: "like",
-            params: {
-                comment_id: comment_id,
-                liketype: commentClass
-            }
-        }
-        const headers = {
-            Authorization: `Bearer ${userData?.token}`
-        }
-        axios.post("http://68.183.21.222:1233/api/v1/comment/", body, { headers })
-        // .then(res => setLikes(res?.data))
-        // .catch(err => console.log(err))
+        addLike({ id: comment_id })
     }
-
     const handleDisLike = (e) => {
-        const body = {
-            method: "like",
-            params: {
-                comment_id: comment_id,
-                liketype: commentDisClass
-            }
-        }
-        const headers = {
-            Authorization: `Bearer ${userData?.token}`
-        }
-        axios.post("http://68.183.21.222:1233/api/v1/comment/", body, { headers })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+        addDisLike({ id: comment_id })
     }
 
     return (
@@ -49,13 +20,13 @@ function CommentsCard({ text, user, comment_id, like, dislike }) {
                 <div className="flex items-center gap-10">
                     <div className="flex flex-row gap-2">
                         <button onClick={handleLike}>
-                            <AiOutlineLike className='text-gray-600 hover:text-[#00b9c0] text-xl cursor-pointer' />
+                            <AiOutlineLike className='text-gray-600 hover:text-[#00B9C0] text-xl cursor-pointer' />
                         </button>
                         <p>{like}</p>
                     </div>
                     <div className="flex flex-row gap-2">
                         <button onClick={handleDisLike}>
-                            <AiOutlineDislike className='text-gray-600 hover:text-[#00b9c0] text-xl cursor-pointer' />
+                            <AiOutlineDislike className='text-gray-600 hover:text-[#00B9C0] text-xl cursor-pointer' />
                         </button>
                         <p>{dislike}</p>
                     </div>

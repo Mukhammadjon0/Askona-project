@@ -1,11 +1,13 @@
 .Contact_info {
-  height: 467px;
+  /* height: 467px; */
   background: #f4f4f4;
-  width: 1400px;
+  /* width: 1400px; */
   margin: 50px auto;
   padding: 50px 30px;
 }
-
+.Contact_info .swiper-slide {
+  background: #f4f4f4 !important;
+}
 .Contact_info_df {
   display: flex;
   align-items: center;
@@ -32,7 +34,7 @@
   flex-direction: column;
 }
 
-.Contact_info_df3 { 
+.Contact_info_df3 {
   display: flex;
   align-items: center;
   flex-direction: column;

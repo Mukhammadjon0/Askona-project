@@ -1,29 +1,27 @@
 import ProductCard from './ProductCard'
 import { useProductsQuery } from '../../services/productApi';
-import { Link, useLocation } from 'react-router-dom';
-import { BiHomeSmile } from 'react-icons/bi';
+import { useParams } from 'react-router-dom';
 import Katalog from '../../components/Katalog/Katalog';
+import { useContext, } from 'react';
+import { StateContext } from '../../context';
 
 function Products() {
-    const { data: products, isLoading: productsIsloading, isSuccess: productsIsSuccess } = useProductsQuery()
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const category = queryParams.get("category");
+    const { lang, type, } = useContext(StateContext)
+    const { id } = useParams()
 
-    const filteredProducts = category
-        ? products?.filter((product) => product.sub_ctg.name === category)
-        : products;
+    const { data: products, isLoading: productsIsloading } = useProductsQuery({
+        product_id: "all",
+        type: type,
+        sub_category_id: id,
+    });
     return (
         <div className="py-10 container">
-            <Link to={'/'} className='text-gray-400 text-xl my-10 flex items-center'>
-                <BiHomeSmile /> /
-            </Link>
             <div className="p-0">
                 <Katalog />
             </div>
-            <div style={{ paddingBottom: '60px', paddingTop: '10px' }} className='grid grid-cols-4 gap-5'>
-                {productsIsloading && <h1>Loading...</h1>}
-                {productsIsSuccess ? filteredProducts.map(product => <ProductCard key={product.id} product={product} {...product} />) : <h1>товар не найден в этой категории</h1>}
+            <div style={{ paddingBottom: '60px', paddingTop: '10px' }} className='grid desktop:grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-1 gap-5'>
+                {productsIsloading && <h1>loading...</h1>}
+                {products?.length > 0 ? products?.map(product => <ProductCard key={product.prod_id} product={product} {...product} />) : <h1>{lang === 'ru' ? 'продукт не найден' : 'Mahsulot topilmadi'}</h1>}
             </div>
         </div>
     )
