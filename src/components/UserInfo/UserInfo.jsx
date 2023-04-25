@@ -15,7 +15,7 @@ function UserInfo({ language }) {
     const navigate = useNavigate()
 
     const userBtn = async () => {
-        await axios.get('http://api.basito.uz/apps/api/v1/user/',
+        await axios.get('https://api.basito.uz/apps/api/v1/user/',
             {
                 headers: {
                     Authorization: `Bearer ${userData?.token}`
@@ -105,11 +105,11 @@ function UserInfo({ language }) {
                             <span>{userInfo?.mobile}</span>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <button onClick={handleOpenEditUser} className='w-full py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>
+                            <button onClick={handleOpenEditUser} className='w-full py-2 text-white rounded bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95'>
                                 {language?.tahrirlash}
                             </button>
-                            <button onClick={handleOpenChangePassword} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>{language?.tahrirparol}</button>
-                            <button onClick={() => setLogOutAlert(true)} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>{language?.logout}</button>
+                            <button onClick={handleOpenChangePassword} className='w-full border-t-[1px] py-2 text-white rounded bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95'>{language?.tahrirparol}</button>
+                            <button onClick={() => setLogOutAlert(true)} className='w-full border-t-[1px] py-2 text-white rounded bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95'>{language?.logout}</button>
                         </div>
                     </div>
                 </Menu>

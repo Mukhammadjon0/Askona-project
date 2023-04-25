@@ -20,7 +20,7 @@ function MobileImg({ img }) {
             >
                 {img?.map((item, index) => (
                     <SwiperSlide key={index} {...item}>
-                        <img className="flex items-start w-full relative h-[100%]" src={`http://api.basito.uz${item.img}`} alt="" />
+                        <img className="flex items-start w-full relative h-[100%]" src={`https://api.basito.uz${item.img}`} alt="" />
                     </SwiperSlide>
                 ))}
 

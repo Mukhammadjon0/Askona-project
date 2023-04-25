@@ -20,13 +20,13 @@ function CommentsCard({ text, user, comment_id, like, dislike }) {
                 <div className="flex items-center gap-10">
                     <div className="flex flex-row gap-2">
                         <button onClick={handleLike}>
-                            <AiOutlineLike className='text-gray-600 hover:text-[#00B9C0] text-xl cursor-pointer' />
+                            <AiOutlineLike className='text-gray-600 hover:text-[#407CD3] text-xl cursor-pointer' />
                         </button>
                         <p>{like}</p>
                     </div>
                     <div className="flex flex-row gap-2">
                         <button onClick={handleDisLike}>
-                            <AiOutlineDislike className='text-gray-600 hover:text-[#00B9C0] text-xl cursor-pointer' />
+                            <AiOutlineDislike className='text-gray-600 hover:text-[#407CD3] text-xl cursor-pointer' />
                         </button>
                         <p>{dislike}</p>
                     </div>

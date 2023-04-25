@@ -51,14 +51,14 @@ function ProductDetail() {
               <div className="mobile:hidden tablet:flex desktop:flex">
                 <div className=" flex justify-center items-center flex-col">
                   <button onClick={prevImg} className={`${data.img.length > 1 ? 'border-2 border-solid border-red-50 px-12 py-1' : 'hidden'}`}>
-                    <MdOutlineKeyboardArrowUp className='text-[#00b6c9]' />
+                    <MdOutlineKeyboardArrowUp className='text-[#407CD3]' />
                   </button>
 
                   {data?.img?.map((item, index) => (
-                    <img onClick={() => setMainImgId(index)} className={`border-2 border-solid ${mainImgId === index ? 'border-[#00B6C9]' : 'border-gray-200'} mt-4 w-28 cursor-pointer`} src={`http://api.basito.uz${item.img}`} key={index} alt="" />
+                    <img onClick={() => setMainImgId(index)} className={`border-2 border-solid ${mainImgId === index ? 'border-[#407CD3]' : 'border-gray-200'} mt-4 w-28 cursor-pointer`} src={`https://api.basito.uz${item.img}`} key={index} alt="" />
                   ))}
                   <button onClick={nextImg} className={`${data.img.length > 1 ? 'border-2 border-solid border-red-50 px-12 py-1' : 'hidden'}`}>
-                    <MdOutlineKeyboardArrowDown className='text-[#00b6c9]' />
+                    <MdOutlineKeyboardArrowDown className='text-[#407CD3]' />
                   </button>
                 </div>
                 <div className="w-[750px] border-2 border-solid border-gray-100 relative h-full">
@@ -67,7 +67,7 @@ function ProductDetail() {
                       {lang === 'ru' ? 'Товар недели' : 'Hafta mahsuloti'}
                     </p>
                   </div>
-                  <img className="flex items-start w-full relative h-[100%]" src={`http://api.basito.uz${data?.img[mainImgId]?.img}`} alt="" />
+                  <img className="flex items-start w-full relative h-[100%]" src={`https://api.basito.uz${data?.img[mainImgId]?.img}`} alt="" />
                 </div>
                 <div id="about"></div>
               </div>

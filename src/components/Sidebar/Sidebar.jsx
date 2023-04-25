@@ -11,7 +11,7 @@ export default function Sidebar({ languageDel, setState }) {
         <div className="said_top">
           <h1>{languageDel?.yetkazish}</h1>
           <button onClick={() => setState({ right: false })}>
-            <HiXMark className="text-[#00B6C9] text-2xl" />
+            <HiXMark className="text-[#407CD3] text-2xl" />
           </button>
         </div>
         <div className="ourTop">

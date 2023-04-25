@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const API_URL = 'http://api.basito.uz/apps/api/v1/'
+const API_URL = 'https://api.basito.uz/apps/api/v1/'
 const user = JSON.parse(localStorage.getItem('userData'))
 
 export const commentsApi = createApi({

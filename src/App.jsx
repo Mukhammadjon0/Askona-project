@@ -68,7 +68,7 @@ function App() {
         lan: lang
       }
     }
-    axios.post('http://api.basito.uz/apps/api/v1/pages/', body)
+    axios.post('https://api.basito.uz/apps/api/v1/pages/', body)
       .then(res => {
         setPage1Lang(res?.data?.data)
       })
@@ -82,7 +82,7 @@ function App() {
         lan: lang
       }
     }
-    axios.post('http://api.basito.uz/apps/api/v1/pages/', body)
+    axios.post('https://api.basito.uz/apps/api/v1/pages/', body)
       .then(res => {
         setPage2Lang(res?.data?.data)
       })

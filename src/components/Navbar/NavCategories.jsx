@@ -26,7 +26,7 @@ function NavCategories() {
                     <div className="flex items-center justify-between flex-wrap">
                         <button
                             onClick={handleOpenSubCtg}
-                            className="w-[180px] border border-solid px-4 py-3 flex items-center text-white font-bold whitespace-nowrap bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95"
+                            className="w-[180px] border border-solid px-4 py-3 flex items-center text-white font-bold whitespace-nowrap bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95"
                         >
                             <HiBars3BottomLeft className="" /> {lang === 'ru' ? 'Все товары' : 'Barcha tovarlar'}
                         </button>
@@ -34,7 +34,7 @@ function NavCategories() {
                             <button
                                 onClick={() => (getCategory(category.id, category.type))}
                                 key={category.id}
-                                className='text-black text-base font-medium hover:text-[#00B6C9] duration-200'
+                                className='text-black text-base font-medium hover:text-[#407CD3] duration-200'
                             >
                                 {lang === 'ru' ? category.name_ru : category.name_uz}
                             </button>

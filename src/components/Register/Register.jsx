@@ -58,13 +58,11 @@ function Register() {
 
     const [tel, setTel] = React.useState("")
     const [otp, setOtp] = React.useState("")
-    const [user, setUser] = React.useState({
-        name: "",
-        password: "",
-        mobile: "",
-        email: "",
-        otp: token,
-    })
+    const [userTel, setUserTel] = React.useState('')
+    const [userName, setUserName] = React.useState('')
+    const [userEmail, setUserEmail] = React.useState('')
+    const [userPass, setUserPass] = React.useState()
+
     const [otpCheck, setOtpCheck] = React.useState('')
     const [telErr, setTelErr] = React.useState('')
     const [otpErr, setOtpErr] = React.useState('')
@@ -86,10 +84,10 @@ function Register() {
         const postData = {
             method: "step.one",
             params: {
-                mobile: `${tel}`,
+                mobile: tel,
             },
         }
-        axios.post("http://api.basito.uz/apps/api/v1/auth/", postData)
+        axios.post("https://api.basito.uz/apps/api/v1/auth/", postData)
             .then(res => {
                 setOtpCheck(res?.data?.otp)
                 localStorage.setItem("basitoToken", res?.data?.token)
@@ -108,7 +106,7 @@ function Register() {
                 token: token,
             },
         };
-        axios.post("http://api.basito.uz/apps/api/v1/auth/", postData)
+        axios.post("https://api.basito.uz/apps/api/v1/auth/", postData)
             .then(res => {
                 if (res?.data?.Error) {
                     setOtpErr(res?.data?.Error)
@@ -122,20 +120,20 @@ function Register() {
             })
             .catch(err => console.log(err.message));
     };
-    const handelRegisterUser = (e) => {
-        e.preventDefault();
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value
-        });
-    }
+
     const handleSignUp = (e) => {
         e.preventDefault();
         const postAuthData = {
             method: "regis",
-            params: user,
+            params: {
+                name: userName,
+                password: userPass,
+                mobile: userTel,
+                email: userEmail,
+                otp: token,
+            }
         }
-        axios.post("http://api.basito.uz/apps/api/v1/auth/", postAuthData)
+        axios.post("https://api.basito.uz/apps/api/v1/auth/", postAuthData)
             .then(res => {
                 if (res.data?.Error) {
                     setRegisErr(res.data?.Error)
@@ -159,7 +157,7 @@ function Register() {
                 <Box sx={style} className='rounded-xl tablet:w-[400px] desktop:w-[400px] mobile:w-11/12'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{ marginBottom: '50px', paddingTop: "20px", }}>
-                            <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleClose}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
+                            <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleClose}> <MdCancel className='bg-white rounded-full text-[#407CD3] w-8 h-8' /> </button>
                             <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
                         </Box>
                         <TabPanel value={value} index={0}>
@@ -172,16 +170,14 @@ function Register() {
                                 <PhoneInput
                                     inputProps={{
                                         required: true,
-                                        autoFocus: true
                                     }}
-                                    required
                                     country={'uz'}
                                     value={tel}
                                     onChange={phone => setTel(phone)}
                                     inputStyle={{ width: '100%' }}
 
                                 />
-                                <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>{lang === 'ru' ? 'Зарегистрироваться' : 'Ro`yxatdan o`tish'}</button>
+                                <button className='text-center bg-[#407CD3] w-full text-white p-2 rounded'>{lang === 'ru' ? 'Зарегистрироваться' : 'Ro`yxatdan o`tish'}</button>
                             </form>
                         </TabPanel>
 
@@ -206,14 +202,14 @@ function Register() {
                 <Box sx={style} className='rounded-xl tablet:w-[400px] desktop:w-[400px] mobile:w-11/12'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{ marginBottom: '50px', paddingTop: "20px", }}>
-                            <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseOtp}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
+                            <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseOtp}> <MdCancel className='bg-white rounded-full text-[#407CD3] w-8 h-8' /> </button>
                             <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
                         </Box>
                         <p className='text-red-600 font-medium text-sm'>{otpErr}</p>
                         <p>{lang === 'ru' ? 'Код подтверждения' : 'Tasdiqlash kodi'} ({otpCheck})</p>
                         <form onSubmit={checkVerificationHandler} action="" className='flex flex-col items-center gap-5'>
-                            <input maxLength={5} onChange={e => setOtp(e.target.value)} className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="number" placeholder={lang === 'ru' ? 'Введите код сюда' : 'Kodni kiriting'} />
-                            <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>{lang === 'ru' ? 'Введите код' : 'Kodni kiriting'}</button>
+                            <input maxLength={5} onChange={e => setOtp(e.target.value)} className='w-full border-[1px] outline-[#407CD3] rounded border-gray-400 px-3 py-1' required type="number" placeholder={lang === 'ru' ? 'Введите код сюда' : 'Kodni kiriting'} />
+                            <button className='text-center bg-[#407CD3] w-full text-white p-2 rounded'>{lang === 'ru' ? 'Введите код' : 'Kodni kiriting'}</button>
                         </form>
                     </Box>
                 </Box>
@@ -228,16 +224,25 @@ function Register() {
                 <Box sx={style} className='rounded-xl tablet:w-[400px] desktop:w-[400px] mobile:w-11/12'>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{ marginBottom: '50px', paddingTop: "20px", }}>
-                            <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseRegister}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
+                            <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseRegister}> <MdCancel className='bg-white rounded-full text-[#407CD3] w-8 h-8' /> </button>
                             <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
                         </Box>
                         <p className='text-red-600 font-medium text-sm'>{regisErr}</p>
                         <form onSubmit={handleSignUp} action="" className='flex flex-col items-center gap-5'>
-                            <input onChange={handelRegisterUser} name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="text" placeholder={lang === 'ru' ? 'Имя' : 'Ism'} />
-                            <input onChange={handelRegisterUser} name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="email" placeholder={lang === 'ru' ? 'Адрес электронной почты' : 'Elektron pochta manzili'} />
-                            <input onChange={handelRegisterUser} name='mobile' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="tel" placeholder={lang === 'ru' ? 'Тел' : 'Tel'} />
-                            <input onChange={handelRegisterUser} name='password' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="password" placeholder={lang === 'ru' ? 'Пароль' : 'Parol'} />
-                            <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>{lang === 'ru' ? 'Зарегистрироваться' : 'Ro`yxatdan o`tish'}</button>
+                            <input value={userName} onChange={(e) => setUserName(e.target.value)} name='name' className='w-full border-[1px] outline-[#407CD3] rounded border-gray-400 px-3 py-1' required type="text" placeholder={lang === 'ru' ? 'Имя' : 'Ism'} />
+                            <input value={userEmail} onChange={(e) => setUserEmail(e.target.value)} name='email' className='w-full border-[1px] outline-[#407CD3] rounded border-gray-400 px-3 py-1' required type="email" placeholder={lang === 'ru' ? 'Адрес электронной почты' : 'Elektron pochta manzili'} />
+                            {/* <input onChange={handelRegisterUser} name='mobile' className='w-full border-[1px] outline-[#407CD3] rounded border-gray-400 px-3 py-1' required type="tel" placeholder={lang === 'ru' ? 'Тел' : 'Tel'} /> */}
+                            <PhoneInput
+                                inputProps={{
+                                    required: true,
+                                }}
+                                country={'uz'}
+                                value={userTel}
+                                onChange={phone => setUserTel(phone)}
+                                inputStyle={{ width: '100%' }}
+                            />
+                            <input value={userPass} onChange={(e) => setUserPass(e.target.value)} name='password' className='w-full border-[1px] outline-[#407CD3] rounded border-gray-400 px-3 py-1' required type="password" placeholder={lang === 'ru' ? 'Пароль' : 'Parol'} />
+                            <button className='text-center bg-[#407CD3] w-full text-white p-2 rounded'>{lang === 'ru' ? 'Зарегистрироваться' : 'Ro`yxatdan o`tish'}</button>
                         </form>
                     </Box>
                 </Box>

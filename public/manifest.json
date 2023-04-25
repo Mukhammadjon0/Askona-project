@@ -1,0 +1,15 @@
+{
+  "short_name": "Basito",
+  "name": "Basito uz",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "auto",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

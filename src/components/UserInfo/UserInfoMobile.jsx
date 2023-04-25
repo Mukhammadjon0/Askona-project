@@ -47,11 +47,11 @@ function UserInfoMobile({ language }) {
                                     <span>{userInfo?.mobile}</span>
                                 </div>
                                 <div className="flex flex-col gap-2">
-                                    <button onClick={() => setOpenEditUser(true)} className='w-full py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>
+                                    <button onClick={() => setOpenEditUser(true)} className='w-full py-2 text-white rounded bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95'>
                                         {language?.tahrirlash}
                                     </button>
-                                    <button onClick={() => setOpenChangePassword(true)} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>{language?.tahrirparol}</button>
-                                    <button onClick={() => setLogOutAlert(true)} className='w-full border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>{language?.logout}</button>
+                                    <button onClick={() => setOpenChangePassword(true)} className='w-full border-t-[1px] py-2 text-white rounded bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95'>{language?.tahrirparol}</button>
+                                    <button onClick={() => setLogOutAlert(true)} className='w-full border-t-[1px] py-2 text-white rounded bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95'>{language?.logout}</button>
                                 </div>
                             </div>
                         </Box>

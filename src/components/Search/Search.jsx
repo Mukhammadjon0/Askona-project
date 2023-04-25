@@ -55,8 +55,8 @@ function Search({ language }) {
     if (!searchTerm) {
         return (
             <div className="w-full">
-                <div className={`rounded py-2 px-2 flex items-center gap-4 mobile:w-full desktop:w-[28rem] tablet:w-[28rem] border ${isFocused ? 'border-[#00B6C9]' : 'border-gray-300'}`}>
-                    <BiSearchAlt2 className="text-[#00B6C9] text-lg font-bold" />
+                <div className={`rounded py-2 px-2 flex items-center gap-4 mobile:w-full desktop:w-[28rem] tablet:w-[28rem] border ${isFocused ? 'border-[#407CD3]' : 'border-gray-300'}`}>
+                    <BiSearchAlt2 className="text-[#407CD3] text-lg font-bold" />
                     <input
                         type="text"
                         placeholder={lang === 'ru' ? 'Поиск по товарам...' : 'Mahsulot qidirish...'}
@@ -71,8 +71,8 @@ function Search({ language }) {
     }
     return (
         <div className="mobile:w-full desktop:w-[28rem] tablet:w-[28rem]">
-            <div className={`rounded py-2 px-2 flex items-center gap-4  border ${isFocused ? 'border-[#00B6C9]' : 'border-gray-300'}`}>
-                <BiSearchAlt2 className="text-[#00B6C9] text-lg font-bold" />
+            <div className={`rounded py-2 px-2 flex items-center gap-4  border ${isFocused ? 'border-[#407CD3]' : 'border-gray-300'}`}>
+                <BiSearchAlt2 className="text-[#407CD3] text-lg font-bold" />
                 <input
                     type="text"
                     placeholder={lang === 'ru' ? 'Поиск по товарам...' : 'Mahsulot qidirish...'}
@@ -82,7 +82,7 @@ function Search({ language }) {
                     onBlur={handleInputBlur}
                 />
             </div>
-            <div className="absolute z-[9] bg-white mobile:w-[88%] desktop:w-[28rem] tablet:w-[28rem] shadow-2xl desktop:mt-5 tablet:mt-5 mobile:mt-1 desktop:p-5 tablet:p-2 mobile:p-0 divide-y max-h-96 scrollbar-thumb-[#00b6c9] scrollbar-track-gray-100 scrollbar-thin">
+            <div className="absolute z-[9] bg-white mobile:w-[88%] desktop:w-[28rem] tablet:w-[28rem] shadow-2xl desktop:mt-5 tablet:mt-5 mobile:mt-1 desktop:p-5 tablet:p-2 mobile:p-0 divide-y max-h-96 scrollbar-thumb-[#407CD3] scrollbar-track-gray-100 scrollbar-thin">
                 {searchTerm !== "" && searchResults?.length === 0 ? (
                     <p>{lang === 'ru' ? 'товар не найден' : 'Bunday tovar topilmadi'}</p>
                 ) : (

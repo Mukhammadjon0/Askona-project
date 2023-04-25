@@ -23,12 +23,12 @@ function LikedCard({ product_id, prosaved_id, setAnchorEl }) {
         <div className='py-2'>
             <div className="flex group items-center justify-between">
                 <div className="flex gap-4">
-                    <img onClick={getDetail} className='w-20 cursor-pointer' src={`http://api.basito.uz${product_id.img[0].img}`} alt="img" />
+                    <img onClick={getDetail} className='w-20 cursor-pointer' src={`https://api.basito.uz${product_id.img[0].img}`} alt="img" />
                     <div className="flex flex-col justify-between">
                         <div className="w-52">
-                            <h1 className='font-semibold text-sm group-hover:text-[#00B9C0] duration-200'>{lang === 'ru' ? product_id.name_ru : product_id.name_uz}</h1>
+                            <h1 className='font-semibold text-sm group-hover:text-[#407CD3] duration-200'>{lang === 'ru' ? product_id.name_ru : product_id.name_uz}</h1>
                         </div>
-                        <p className='text-[#00B9C0] font-semibold text-sm'>{product_id.model_number}</p>
+                        <p className='text-[#407CD3] font-semibold text-sm'>{product_id.model_number}</p>
                     </div>
                 </div>
                 <IconButton onClick={handleDeleteProdFromSaved}>

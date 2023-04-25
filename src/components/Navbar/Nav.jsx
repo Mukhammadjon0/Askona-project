@@ -90,7 +90,7 @@ function Nav({ language }) {
                             <React.Fragment key={anchor}>
                                 <IconButton onClick={handleOpenBasket(anchor, true)}>
                                     <div className="relative cursor-pointer">
-                                        <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
+                                        <div className="w-[18px] h-[18px] rounded-full bg-[#407CD3] absolute top-[-5px] right-[-5px] flex justify-center items-center">
                                             <p className='font-semibold text-[12px] text-white'>{(isBasketSuccess && basket?.data?.length) || 0}</p>
                                         </div>
                                         <CgShoppingCart className="cursor-pointer text-gray-500" />

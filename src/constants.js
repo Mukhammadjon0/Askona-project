@@ -1,1 +1,1 @@
-export const BASE_URL = "http://api.basito.uz/apps/api/v1";
+export const BASE_URL = "https://api.basito.uz/apps/api/v1";

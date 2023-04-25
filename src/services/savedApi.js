@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const BASE_URL = 'http://api.basito.uz/apps/api/v1';
+const BASE_URL = 'https://api.basito.uz/apps/api/v1';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: BASE_URL,
