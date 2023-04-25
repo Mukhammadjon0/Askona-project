@@ -10,7 +10,7 @@ import { StateContext } from '../../context';
 
 const swiperOption = {
   style: {
-    "--swiper-navigation-color": "#00BAC1",
+    "--swiper-navigation-color": "#407CD3",
     "--swiper-navigation-size": "20px",
   },
   loop: true,
@@ -66,7 +66,7 @@ function Katalog() {
       <Swiper {...swiperOption}>
         {categries.map((item) => (
           <SwiperSlide key={item.id}>
-            <div onClick={() => (getCategory(item.id, item.type))} className="flex flex-col items-center hover:text-[#00bac9] cursor-pointer">
+            <div onClick={() => (getCategory(item.id, item.type))} className="flex flex-col items-center hover:text-[#407CD3] cursor-pointer">
               <div className="bg-[#f4f4f4] h-32 w-32 rounded-full flex items-center justify-center group">
                 <img className='w-12 group-hover:scale-110 duration-200' src={item.img} alt="img" />
               </div>

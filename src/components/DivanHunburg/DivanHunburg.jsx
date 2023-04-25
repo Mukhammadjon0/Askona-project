@@ -81,7 +81,7 @@ function DivanHunburg({ data, language, languageDel }) {
           <span>3 дня 10:16:31</span>
         </h2> */}
         <div className="flex items-end mt-4">
-          <h2 className="text-[#00B9C0] font-semibold text-2xl mr-7">
+          <h2 className="text-[#407CD3] font-semibold text-2xl mr-7">
             {/* {data?.price?.toLocaleString("uz-UZ")} {lang === 'ru' ? 'сум' : 'so`m'} */}
             {data.model_number}
           </h2>
@@ -101,7 +101,7 @@ function DivanHunburg({ data, language, languageDel }) {
           ) : (<></>)}
           <div>
             <div className="flex items-center mt-2 gap-5">
-              <button onClick={addToBasket} className="rounded border-2 border-solid border-[#00B6C9] text-white w-full py-2 bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95">
+              <button onClick={addToBasket} className="rounded border-2 border-solid border-[#407CD3] text-white w-full py-2 bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95">
                 {lang === 'ru' ? 'В корзину' : 'Savatga qoshish'}
               </button>
               <button onClick={kupitClick} className="border-2 border-solid border-gray-300 rounded w-full py-2 bg-transparent duration-200 hover:bg-gray-100 active:scale-95">
@@ -119,7 +119,7 @@ function DivanHunburg({ data, language, languageDel }) {
                       <img className="mr-2" src={Group} alt="" />
                       <h2>{language?.yetkazish}</h2>
                     </div>
-                    <MdKeyboardArrowRight className='text-[#00B6C9]' />
+                    <MdKeyboardArrowRight className='text-[#407CD3]' />
                   </div>
                 </button>
                 <Drawer

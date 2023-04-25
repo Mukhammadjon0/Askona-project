@@ -17,7 +17,7 @@ function SubCategory() {
         setClickedCategoryType(type);
     };
     useEffect(() => {
-        axios.get(`http://api.basito.uz/apps/api/v1/subcategory/`,)
+        axios.get(`https://api.basito.uz/apps/api/v1/subcategory/`,)
             .then(res => {
                 setSubCtg(res?.data?.data)
             })
@@ -65,7 +65,7 @@ function SubCategory() {
 
                                         }}>
                                             <img className='w-10' src={item.img} alt="img" />
-                                            <p className='text-base whitespace-nowrap group-hover:underline group-hover:text-[#00b6c9]'>{lang === 'ru' ? item.name_ru : item.name_uz}</p>
+                                            <p className='text-base whitespace-nowrap group-hover:underline group-hover:text-[#407CD3]'>{lang === 'ru' ? item.name_ru : item.name_uz}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -73,7 +73,7 @@ function SubCategory() {
                                     <div className="grid desktop:grid-cols-4 tablet:grid-cols-2 mobile:grid-cols-1 desktop:gap-16 tablet:gap-10 mobile:gap-10">
                                         {filteredSubCtg?.map((item, index) => (
                                             <button
-                                                className={'text-base hover:underline hover:text-[#00b6c9]'}
+                                                className={'text-base hover:underline hover:text-[#407CD3]'}
                                                 onClick={() => (getSubCategory(item.id, item.type))}
                                                 key={index}
                                             >
@@ -87,7 +87,7 @@ function SubCategory() {
                                 setShowSubCtg({
                                     top: false
                                 })
-                            }} className={`absolute bottom-10 desktop:hidden tablet:hidden mobile:left-10 z-50 bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95 rounded-full desktop:p-3 mobile:p-2 tablet:p-3`}>
+                            }} className={`absolute bottom-10 desktop:hidden tablet:hidden mobile:left-10 z-50 bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95 rounded-full desktop:p-3 mobile:p-2 tablet:p-3`}>
                                 <AiOutlineArrowUp className='text-white font-bold desktop:text-2xl tablet:text-2xl mobile:text-xl' />
                             </button>
 

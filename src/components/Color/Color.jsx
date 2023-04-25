@@ -33,10 +33,10 @@ function Color({ data }) {
                                 <button onClick={handleOpenColor(anchor, true)} className='w-full'>
                                     <div className="h-10 flex justify-between border-2 border-solid border-gray-300 items-center px-2 rounded mt-3 cursor-pointer">
                                         <div className="flex items-center">
-                                            <img className="mr-2 w-5" src={`http://api.basito.uz${data?.color[mainColorId].color.img}`} alt="img" />
+                                            <img className="mr-2 w-5" src={`https://api.basito.uz${data?.color[mainColorId].color.img}`} alt="img" />
                                             <h2>{lang === 'ru' ? data?.color?.[mainColorId]?.color?.name_ru : data?.color?.[mainColorId]?.color?.name_uz}</h2>
                                         </div>
-                                        <MdKeyboardArrowRight className='text-[#00B9C0]' />
+                                        <MdKeyboardArrowRight className='text-[#407CD3]' />
                                     </div>
                                 </button>
                                 <Drawer
@@ -52,7 +52,7 @@ function Color({ data }) {
                                             <div className="flex items-center justify-between py-5 px-6">
                                                 <h1 className='font-bold text-3xl'>Цвета</h1>
                                                 <button onClick={handleOpenColor(anchor, false)}>
-                                                    <HiXMark className="text-[#00B6C9] text-2xl" />
+                                                    <HiXMark className="text-[#407CD3] text-2xl" />
                                                 </button>
                                             </div>
                                             <div className="py-4 px-6">

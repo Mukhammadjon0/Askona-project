@@ -50,7 +50,7 @@ function ContactInfo({ language }) {
                 <p className='Useful_info_df_p'>{lang === 'ru' ? 'Консультанты Basito готовы ответить на любой' : 'Basito maslahatchilari har-qanday savolga javob berishga tayyor'} <br />
                   {lang === 'ru' ? 'ваш вопрос в режиме онлайн.' : 'sizning online savolaringizga'}
                 </p>
-                <Link onClick={tels} className='Contact_info_df_a text-[#00B9C0]'>{language?.savolberish}</Link>
+                <Link onClick={tels} className='Contact_info_df_a text-[#407CD3]'>{language?.savolberish}</Link>
               </div>
             </div>
           </SwiperSlide>
@@ -62,7 +62,7 @@ function ContactInfo({ language }) {
                 <p className='Useful_info_df_p'>{lang === 'ru' ? 'Консультанты Basito покажут вам товар онлайн' : 'Basito maslahatchilari sizga mahsulotni onlayn korsatishadi'}<br />
                   {lang === 'ru' ? ' и ответят на любые вопросы' : 'va barcha savollarga javob berishadi'}
                 </p>
-                <Link onClick={tels} className='Contact_info_df_a text-[#00B9C0]'>{language?.telqil}</Link>
+                <Link onClick={tels} className='Contact_info_df_a text-[#407CD3]'>{language?.telqil}</Link>
               </div>
             </div>
           </SwiperSlide>
@@ -76,7 +76,7 @@ function ContactInfo({ language }) {
                   {lang === 'ru' ? ' Мы собрали самые популярные вопросы наших' : 'Biz ozimizning eng mashhur savollarni topladik'} <br />
                   {lang === 'ru' ? 'пользователей в одном удобном разделе.' : 'foydalanuvchilar bitta qulay bo`limda.'}
                 </p>
-                <Link onClick={tels} className='Contact_info_df_a text-[#00B9C0]'>{language?.bulimoching}</Link>
+                <Link onClick={tels} className='Contact_info_df_a text-[#407CD3]'>{language?.bulimoching}</Link>
               </div>
             </div>
           </SwiperSlide>

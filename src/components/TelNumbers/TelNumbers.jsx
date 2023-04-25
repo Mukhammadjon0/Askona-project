@@ -29,7 +29,7 @@ function TelNumbers() {
                 <Box sx={{ width: '100%' }}>
                     <Box sx={{ marginBottom: '50px', paddingTop: "20px", }}>
                         <button className='absolute top-[-10px] right-[-10px] text-center' onClick={(() => setTelInfo(false))}>
-                            <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' />
+                            <MdCancel className='bg-white rounded-full text-[#407CD3] w-8 h-8' />
                         </button>
                         <img className='w-[207px] my-[-30px]' src={Logo} alt="logo" />
                     </Box>

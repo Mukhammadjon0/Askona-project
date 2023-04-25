@@ -36,7 +36,7 @@ function Liked({ language }) {
                         aria-expanded={open ? 'true' : undefined}
                     >
                         <div className="relative cursor-pointer">
-                            <div className="w-[18px] h-[18px] rounded-full bg-[#00BAC1] absolute top-[-5px] right-[-5px] flex justify-center items-center">
+                            <div className="w-[18px] h-[18px] rounded-full bg-[#407CD3] absolute top-[-5px] right-[-5px] flex justify-center items-center">
                                 <p className='font-semibold text-[12px] text-white'>{proSaved?.length || 0}</p>
                             </div>
                             <AiOutlineHeart className='cursor-pointer text-gray-500' />
@@ -83,12 +83,12 @@ function Liked({ language }) {
                 >
                     <div className="flex flex-col divide-y">
                         <div className="px-2">
-                            <div className="flex flex-col gap-2 divide-y max-h-96 scrollbar-thumb-[#00b6c9] scrollbar-track-gray-100 scrollbar-thin">
+                            <div className="flex flex-col gap-2 divide-y max-h-96 scrollbar-thumb-[#407CD3] scrollbar-track-gray-100 scrollbar-thin">
                                 {proSaved?.length > 0 ? (proSaved?.map(item => <LikedCard key={item.prosaved_id} {...item} setAnchorEl={setAnchorEl} />)) : (<h1 className='my-2 mx-2 text-black text-xl font-semibold' >{language?.sevimlilarim}</h1>)}
                             </div>
                         </div>
                         <div className="flex justify-end p-2">
-                            <button onClick={handleNavigate} className='px-5 border-t-[1px] py-2 text-white rounded bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95'>{language?.sevimlilar}</button>
+                            <button onClick={handleNavigate} className='px-5 border-t-[1px] py-2 text-white rounded bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95'>{language?.sevimlilar}</button>
                         </div>
                     </div>
                 </Menu>

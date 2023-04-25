@@ -30,7 +30,7 @@ function Footer({ language }) {
                             <div className="w-full flex flex-row justify-between items-center pl-1 mobile:py-2 desktop:py-0 tablet:py-3">
                                 <h1 className='font-bold text-2xl hover:bg-gray-200'>{language?.xaridor}</h1>
                                 <button className='hover:bg-gray-200 p-1 rounded-full active:scale-90' onClick={() => setShow1(p => !p)}>
-                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#00B6C9] text-xl' />
+                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#407CD3] text-xl' />
                                 </button>
                             </div>
                             <div className={`mobile:${show1 ? 'flex  tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
@@ -46,7 +46,7 @@ function Footer({ language }) {
                             <div className="w-full flex flex-row justify-between items-center pl-1 mobile:py-2 desktop:py-0 tablet:py-3">
                                 <h1 className='font-bold text-2xl'>{language?.kompaniy}</h1>
                                 <button className='hover:bg-gray-200 p-1 rounded-full active:scale-90' onClick={() => setShow2(p => !p)}>
-                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#00B6C9] text-xl' />
+                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#407CD3] text-xl' />
                                 </button>
                             </div>
                             <div className={`mobile:${show2 ? 'flex  tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
@@ -62,7 +62,7 @@ function Footer({ language }) {
                             <div className="w-full flex flex-row justify-between items-center pl-1 mobile:py-2 desktop:py-0 tablet:py-3">
                                 <h1 className='font-bold text-2xl'>{language?.taklif}</h1>
                                 <button className='hover:bg-gray-200 p-1 rounded-full active:scale-90' onClick={() => setShow3(p => !p)}>
-                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#00B6C9] text-xl' />
+                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#407CD3] text-xl' />
                                 </button>
                             </div>
                             <div className={`mobile:${show3 ? 'flex  tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
@@ -78,7 +78,7 @@ function Footer({ language }) {
                             <div className="w-full flex flex-row justify-between items-center pl-1 mobile:py-2 desktop:py-0 tablet:py-3">
                                 <h1 className='font-bold text-2xl'>{language?.partnyor}</h1>
                                 <button className='hover:bg-gray-200 p-1 rounded-full active:scale-90' onClick={() => setShow4(p => !p)}>
-                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#00B6C9] text-xl' />
+                                    <MdOutlineKeyboardArrowDown className='desktop:hidden mobile:block tablet:block text-[#407CD3] text-xl' />
                                 </button>
                             </div>
                             <div className={`mobile:${show4 ? 'flex tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
@@ -131,7 +131,7 @@ function Footer({ language }) {
 
                 </div>
                 <div className="desktop:text-start tablet:text-center mobile:text-center mobile:py-2 tablet:py-2 desktop:py-0 container">
-                    <p className='font-semibold text-sm'>© 2023. {lang === 'ru' ? 'Компания' : 'Kompaniya'} «Real Goal Forward»</p>
+                    <p className='font-semibold text-sm'>© 2011. {lang === 'ru' ? 'Компания' : 'Kompaniya'} «Real Goal Forward»</p>
                     <p className='font-normal text-sm'></p>
                 </div>
             </footer >

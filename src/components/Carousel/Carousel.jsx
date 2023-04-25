@@ -10,7 +10,7 @@ function Carousel() {
     const [banner, setBanner] = useState()
 
     useEffect(() => {
-        axios.get(`http://api.basito.uz/apps/api/v1/banner`)
+        axios.get(`https://api.basito.uz/apps/api/v1/banner`)
             .then(res => {
                 setBanner(res?.data?.data)
             })
@@ -54,7 +54,7 @@ function Carousel() {
             >
                 {banner?.map((item, index) => (
                     <SwiperSlide key={index} >
-                        <img className="w-[700px]" src={`http://api.basito.uz${item.image}`} alt="img" />
+                        <img className="w-[700px]" src={`https://api.basito.uz${item.image}`} alt="img" />
                     </SwiperSlide>
                 ))}
             </Swiper>

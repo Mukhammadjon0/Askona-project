@@ -20,7 +20,7 @@ function ScrollTop() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
     return (
-        <button onClick={handleClick} className={`fixed bottom-20 right-10 z-50 bg-[#00bac9] duration-200 hover:bg-[#0099a5] active:scale-95 rounded-full desktop:p-3 mobile:p-2 tablet:p-3 ${showButton ? 'opacity-100' : 'opacity-0'} shadow-2xl`}>
+        <button onClick={handleClick} className={`fixed bottom-20 right-10 z-50 bg-[#407CD3] duration-200 hover:bg-[#2B58A0] active:scale-95 rounded-full desktop:p-3 mobile:p-2 tablet:p-3 ${showButton ? 'opacity-100' : 'opacity-0'} shadow-2xl`}>
             <AiOutlineArrowUp className='text-white font-bold desktop:text-2xl tablet:text-2xl mobile:text-xl' />
         </button>
     )

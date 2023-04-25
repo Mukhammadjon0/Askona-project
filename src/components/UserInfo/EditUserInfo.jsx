@@ -6,7 +6,7 @@ import { StateContext } from '../../context';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function EditUserInfo({language}) {
+function EditUserInfo({ language }) {
   const { openEditUser, setOpenEditUser, userInfo, setUserInfo, userData } = useContext(StateContext)
   const [editUserInfo, setEditUserInfo] = useState({
     name: "",
@@ -27,7 +27,7 @@ function EditUserInfo({language}) {
     const headers = {
       Authorization: `Bearer ${userData?.token}`
     }
-    axios.put("http://api.basito.uz/apps/api/v1/user/", body, { headers })
+    axios.put("https://api.basito.uz/apps/api/v1/user/", body, { headers })
       .then(res => {
         setUserInfo(res.data)
         handleCloseEdit()
@@ -61,14 +61,14 @@ function EditUserInfo({language}) {
         <Box sx={style} className='rounded-xl tablet:w-[400px] desktop:w-[400px] mobile:w-11/12'>
           <Box sx={{ width: '100%' }}>
             <Box sx={{}}>
-              <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseEdit}> <MdCancel className='bg-white rounded-full text-[#00b6c9] w-8 h-8' /> </button>
+              <button className='absolute top-[-10px] right-[-10px] text-center' onClick={handleCloseEdit}> <MdCancel className='bg-white rounded-full text-[#407CD3] w-8 h-8' /> </button>
               <img className='w-[207px] mb-5' src={Logo} alt="logo" />
             </Box>
             <form onSubmit={editHandler} action="" className='flex flex-col items-center gap-5'>
-              <input onChange={handelEditUser} defaultValue={userInfo.name} name='name' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="text" placeholder='Имя' />
-              <input onChange={handelEditUser} defaultValue={userInfo.email} name='email' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="email" placeholder='Адрес электронной почты' />
-              <input onChange={handelEditUser} defaultValue={userInfo.mobile} name='mobile' className='w-full border-[1px] outline-[#00B6C9] rounded border-gray-400 px-3 py-1' required type="tel" placeholder='Тел' />
-              <button className='text-center bg-[#00b6c9] w-full text-white p-2 rounded'>{language?.tahrirlash}</button>
+              <input onChange={handelEditUser} defaultValue={userInfo.name} name='name' className='w-full border-[1px] outline-[#407CD3] rounded border-gray-400 px-3 py-1' required type="text" placeholder='Имя' />
+              <input onChange={handelEditUser} defaultValue={userInfo.email} name='email' className='w-full border-[1px] outline-[#407CD3] rounded border-gray-400 px-3 py-1' required type="email" placeholder='Адрес электронной почты' />
+              <input onChange={handelEditUser} defaultValue={userInfo.mobile} name='mobile' className='w-full border-[1px] outline-[#407CD3] rounded border-gray-400 px-3 py-1' required type="tel" placeholder='Тел' />
+              <button className='text-center bg-[#407CD3] w-full text-white p-2 rounded'>{language?.tahrirlash}</button>
             </form>
           </Box>
         </Box>

@@ -3,7 +3,7 @@ import Karona from './assets/img/karona.png'
 import Noj from './assets/img/noj.png'
 import Karniz from './assets/img/karniz.png'
 import Baget from './assets/img/baget.png'
-import Sprayer from './assets/img/sprayer.webp'
+import Sprayer from './assets/img/sprayer.png'
 
 export const categries = [
     { name_ru: 'Кольцо', name_uz:'Kalso',  img: Kalso, type:'kalso', id: 1 },

@@ -36,7 +36,7 @@ function MainCarousel({ language }) {
       <h1 className="title">{language?.yangi}</h1>
       <Swiper
         style={{
-          "--swiper-navigation-color": "#00BAC1",
+          "--swiper-navigation-color": "#407CD3",
           "--swiper-navigation-size": "20px",
           paddingLeft: "50px",
           paddingRight: "50px",
@@ -98,7 +98,7 @@ function MainCarousel({ language }) {
               <div className="main__card p-4">
                 <div className="main__card-head">
                   <div className="main__card-img">
-                    <img onClick={() => getDetail(item.prod_id, item.sub_ctg.type, item.sub_ctg.id)} src={`http://api.basito.uz${item.img[0].img}`} alt="" />
+                    <img onClick={() => getDetail(item.prod_id, item.sub_ctg.type, item.sub_ctg.id)} src={`https://api.basito.uz${item.img[0].img}`} alt="" />
                   </div>
                   <button className="absolute z-30 top-3 right-3">
                     {proSaved?.length > 0 ? proSaved?.some(saved => saved.product_id.prod_id === item.prod_id) ? (<img className="w-5" src={Liked} alt="icon" />) : (<img onClick={() => {
@@ -129,7 +129,7 @@ function MainCarousel({ language }) {
                   <h2>{lang === "ru" ? item.name_ru : item.name_uz}</h2>
                   <p className="card__body-price">
                     {/* {lang === 'ru' ? 'от' : 'dan'} */}
-                    <span className="card__body-spanPrice text-[#00B9C0]">
+                    <span className="card__body-spanPrice text-[#407CD3]">
                       {/* {item.price.toLocaleString("uz-UZ")} {lang === 'ru' ? 'сум' : 'so`m'} */}
                       {item.model_number}
                     </span>
