@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import './Footer.css'
-import { Link } from 'react-router-dom'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 import Facebook from '../../assets/svg/facebook.svg'
@@ -35,9 +34,9 @@ function Footer({ language }) {
                             </div>
                             <div className={`mobile:${show1 ? 'flex  tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
                                 <div className="flex flex-col gap-3">
-                                    <Link className='footer-link'>{language?.yetkaz}</Link>
-                                    <Link className='footer-link'>{language?.garant}</Link>
-                                    <Link className='footer-link'>{language?.ariza}</Link>
+                                    <p className='footer-link'>{language?.yetkaz}</p>
+                                    <p className='footer-link'>{language?.garant}</p>
+                                    <p className='footer-link'>{language?.ariza}</p>
                                 </div>
                             </div>
                         </div>
@@ -51,9 +50,9 @@ function Footer({ language }) {
                             </div>
                             <div className={`mobile:${show2 ? 'flex  tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
                                 <div className="flex flex-col gap-3">
-                                    <Link className='footer-link'>{language?.bizhaqimizda}</Link>
-                                    <Link className='footer-link'>{language?.kontact}</Link>
-                                    <Link className='footer-link'>{language?.ishlabchiq}</Link>
+                                    <p className='footer-link'>{language?.bizhaqimizda}</p>
+                                    <p className='footer-link'>{language?.kontact}</p>
+                                    <p className='footer-link'>{language?.ishlabchiq}</p>
                                 </div>
                             </div>
                         </div>
@@ -67,9 +66,9 @@ function Footer({ language }) {
                             </div>
                             <div className={`mobile:${show3 ? 'flex  tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
                                 <div className="flex flex-col gap-3">
-                                    <Link className='footer-link'>{language?.aksiya}</Link>
-                                    <Link className='footer-link'>{language?.chegirma}</Link>
-                                    <Link className='footer-link'>{language?.detalniy}</Link>
+                                    <p className='footer-link'>{language?.aksiya}</p>
+                                    <p className='footer-link'>{language?.chegirma}</p>
+                                    <p className='footer-link'>{language?.detalniy}</p>
                                 </div>
                             </div>
                         </div>
@@ -83,8 +82,8 @@ function Footer({ language }) {
                             </div>
                             <div className={`mobile:${show4 ? 'flex tablet:flex-row mobile:flex-col tablet:justify-between mobile:gap-3 pb-3 mt-3' : 'hidden'} desktop:flex desktop:flex-row desktop:justify-between mx-4`}>
                                 <div className="flex flex-col">
-                                    <Link className='footer-link'>{language?.yuridik}</Link>
-                                    <Link className='footer-link'>{language?.ulgurchi}</Link>
+                                    <p className='footer-link'>{language?.yuridik}</p>
+                                    <p className='footer-link'>{language?.ulgurchi}</p>
                                 </div>
                             </div>
                         </div>

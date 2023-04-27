@@ -1,4 +1,4 @@
-import React, { useContext} from 'react'
+import React, { useContext } from 'react'
 import { BiHomeSmile } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import Katalog from '../../components/Katalog/Katalog'
@@ -7,7 +7,7 @@ import { StateContext } from '../../context'
 import ProductCard from './ProductCard'
 
 function ProductCtg() {
-    const { lang,type, } = useContext(StateContext)
+    const { lang, type, } = useContext(StateContext)
 
     const { data: products, isLoading: productsIsloading, } = useProductsQuery({
         type: type,
