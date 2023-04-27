@@ -22,22 +22,22 @@ function ProductDetail() {
   const [mainImgId, setMainImgId] = useState(0)
 
   const nextImg = () => {
-    if (mainImgId > 4) {
+    if (mainImgId > (data?.img.length - 1)) {
       setMainImgId(0)
     }
     setMainImgId((prev) => prev + 1)
   }
   const prevImg = () => {
     if (mainImgId < 0) {
-      setMainImgId(4)
+      setMainImgId((data?.img.length - 1))
     }
     setMainImgId((prev) => prev - 1)
   }
   useEffect(() => {
     if (mainImgId < 0) {
-      setMainImgId(4)
+      setMainImgId((data?.img.length - 1))
     }
-    if (mainImgId > 4) {
+    if (mainImgId > (data?.img.length - 1)) {
       setMainImgId(0)
     }
   }, [mainImgId])
@@ -61,7 +61,7 @@ function ProductDetail() {
                     <MdOutlineKeyboardArrowDown className='text-[#407CD3]' />
                   </button>
                 </div>
-                <div className="w-[750px] border-2 border-solid border-gray-100 relative h-full">
+                <div className="w-[750px] h-[450px] border-2 border-solid border-gray-100 relative">
                   <div className="flex flex-col items-end absolute z-20 right-0">
                     <p className="rounded bg-[#4FB7FF] px-2 py-1 w-32 text-white">
                       {lang === 'ru' ? 'Товар недели' : 'Hafta mahsuloti'}

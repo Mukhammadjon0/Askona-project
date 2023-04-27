@@ -58,8 +58,8 @@ function Categories() {
     const { lang, setType } = useContext(StateContext)
     const navigate = useNavigate()
 
-    const getCategory = (id, type) => {
-        navigate(`/productCtg/${id}`)
+    const getCategory = (type) => {
+        navigate(`/productCtg/${type}`)
         setType(type)
     }
     return (
@@ -67,7 +67,7 @@ function Categories() {
             <Swiper {...swiperOption}>
                 {categries.map((item) => (
                     <SwiperSlide key={item.id}>
-                        <div onClick={() => (getCategory(item.id, item.type))} className="flex flex-col items-center hover:text-[#407CD3] cursor-pointer">
+                        <div onClick={() => (getCategory(item.type))} className="flex flex-col items-center hover:text-[#407CD3] cursor-pointer">
                             <div className="bg-[#f4f4f4] h-32 w-32 rounded-full flex items-center justify-center group">
                                 <img className='w-12 group-hover:scale-110 duration-200' src={item.img} alt="img" />
                             </div>

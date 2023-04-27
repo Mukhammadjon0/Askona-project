@@ -8,8 +8,8 @@ function NavCategories() {
     const { setShowSubCtg, lang, setType } = useContext(StateContext)
     const navigate = useNavigate()
 
-    const getCategory = (id, type) => {
-        navigate(`/productCtg/${id}`)
+    const getCategory = (type) => {
+        navigate(`/productCtg/${type}`)
         setType(type)
     }
 
@@ -32,7 +32,7 @@ function NavCategories() {
                         </button>
                         {categries.map(category =>
                             <button
-                                onClick={() => (getCategory(category.id, category.type))}
+                                onClick={() => (getCategory(category.type))}
                                 key={category.id}
                                 className='text-black text-base font-medium hover:text-[#407CD3] duration-200'
                             >
